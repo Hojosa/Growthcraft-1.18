@@ -100,7 +100,7 @@ public class HopsCropBlock extends GrowthcraftCropsRopeBlock {
     }
 
     @Override
-    public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state, boolean isClientSide) {
+    public boolean isValidBonemealTarget(BlockGetter level, BlockPos pos, BlockState state, boolean isClientSide) {
         return super.isValidBonemealTarget(level, pos, state, isClientSide) || level.getBlockState(pos.above()).getBlock() instanceof RopeBlock;
     }
 
