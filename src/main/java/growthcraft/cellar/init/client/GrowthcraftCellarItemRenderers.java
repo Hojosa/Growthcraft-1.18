@@ -7,7 +7,7 @@ import growthcraft.lib.client.GrowthcraftItemColor;
 import growthcraft.lib.client.ItemRendererUtils;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.RegisterColorHandlersEvent;
+import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.RegistryObject;
@@ -16,7 +16,7 @@ import net.minecraftforge.registries.RegistryObject;
 public class GrowthcraftCellarItemRenderers {
 
     @SubscribeEvent
-    public static void registerItemRenders(RegisterColorHandlersEvent.Item event) {
+    public static void registerItemRenders(ColorHandlerEvent.Item event) {
         GrowthcraftItemColor itemColor = new GrowthcraftItemColor();
 
         for (RegistryObject<? extends Item> grain : GrowthcraftCellarItems.GRAINS) {

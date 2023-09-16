@@ -4,7 +4,7 @@ import growthcraft.apples.init.GrowthcraftApplesFluids;
 import growthcraft.apples.shared.Reference;
 import growthcraft.lib.client.ItemRendererUtils;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.RegisterColorHandlersEvent;
+import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -12,7 +12,7 @@ import net.minecraftforge.fml.common.Mod;
 public class GrowthcraftApplesItemRenders {
 
     @SubscribeEvent
-    public static void registerItemRenders(RegisterColorHandlersEvent.Item event) {
+    public static void registerItemRenders(ColorHandlerEvent.Item event) {
         ItemRendererUtils.registerItem(event, Reference.FluidColor.APPLE_CIDER_FLUID_COLOR.toItemColor(), GrowthcraftApplesFluids.APPLE_CIDER_FLUID.bucket.get());
         ItemRendererUtils.registerItem(event, Reference.FluidColor.APPLE_JUICE_FLUID_COLOR.toItemColor(), GrowthcraftApplesFluids.APPLE_JUICE_FLUID.bucket.get());
     }

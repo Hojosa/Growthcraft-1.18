@@ -7,7 +7,7 @@ import growthcraft.milk.shared.Reference;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.RegisterColorHandlersEvent;
+import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -42,7 +42,7 @@ public class GrowthcraftMilkBlockRenderers {
     }
 
     @SubscribeEvent
-    public static void registerBlockRenders(RegisterColorHandlersEvent.Block event) {
+    public static void registerBlockRenders(ColorHandlerEvent.Block event) {
         BlockRendererUtils.registerBlock(event, Reference.ItemColor.APPENZELLER_CHEESE, GrowthcraftMilkBlocks.APPENZELLER_CHEESE.get() );
         BlockRendererUtils.registerBlock(event, Reference.ItemColor.APPENZELLER_CHEESE, GrowthcraftMilkBlocks.APPENZELLER_CHEESE_CURDS.get() );
         BlockRendererUtils.registerBlock(event, Reference.ItemColor.ASIAGO_CHEESE, GrowthcraftMilkBlocks.ASIAGO_CHEESE.get() );
