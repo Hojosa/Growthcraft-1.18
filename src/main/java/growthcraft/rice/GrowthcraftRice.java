@@ -1,15 +1,15 @@
 package growthcraft.rice;
 
-import growthcraft.core.init.GrowthcraftCreativeModeTabs;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import growthcraft.rice.init.GrowthcraftRiceBlocks;
 import growthcraft.rice.init.GrowthcraftRiceFluids;
 import growthcraft.rice.init.GrowthcraftRiceItems;
 import growthcraft.rice.init.client.GrowthcraftRiceBlockRenderers;
 import growthcraft.rice.init.config.GrowthcraftRiceConfig;
 import growthcraft.rice.shared.Reference;
-import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -17,8 +17,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 @Mod(Reference.MODID)
 @Mod.EventBusSubscriber(modid = Reference.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
@@ -29,7 +27,7 @@ public class GrowthcraftRice {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(this::setup);
         modEventBus.addListener(this::clientSetupEvent);
-        modEventBus.addListener(this::buildCreativeTabContents);
+        //modEventBus.addListener(this::buildCreativeTabContents);
 
         // Config
         GrowthcraftRiceConfig.loadConfig();
@@ -37,8 +35,8 @@ public class GrowthcraftRice {
         // Blocks, Items, Fluids, Block Entities, Containers
         GrowthcraftRiceBlocks.BLOCKS.register(modEventBus);
         GrowthcraftRiceItems.ITEMS.register(modEventBus);
-        GrowthcraftRiceFluids.FLUID_TYPES.register(modEventBus);
-        GrowthcraftRiceFluids.FLUIDS.register(modEventBus);
+        //GrowthcraftRiceFluids.FLUID_TYPES.register(modEventBus);
+        //GrowthcraftRiceFluids.FLUIDS.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
     }
@@ -51,15 +49,15 @@ public class GrowthcraftRice {
         // Do Nothing for now ...
     }
 
-    public void buildCreativeTabContents(CreativeModeTabEvent.BuildContents event) {
-        if (event.getTab() == GrowthcraftCreativeModeTabs.GROWTHCRAFT_CREATIVE_TAB) {
-            GrowthcraftRiceItems.ITEMS.getEntries().forEach(itemRegistryObject -> {
-                if (!GrowthcraftRiceItems.excludeItemRegistry(itemRegistryObject.getId())) {
-                    event.accept(new ItemStack(itemRegistryObject.get()));
-                }
-            });
-        }
-    }
+//    public void buildCreativeTabContents(CreativeModeTabEvent.BuildContents event) {
+//        if (event.getTab() == GrowthcraftCreativeModeTabs.GROWTHCRAFT_CREATIVE_TAB) {
+//            GrowthcraftRiceItems.ITEMS.getEntries().forEach(itemRegistryObject -> {
+//                if (!GrowthcraftRiceItems.excludeItemRegistry(itemRegistryObject.getId())) {
+//                    event.accept(new ItemStack(itemRegistryObject.get()));
+//                }
+//            });
+//        }
+//    }
 
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {

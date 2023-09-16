@@ -1,7 +1,7 @@
 modLoader="javafml" #mandatory
-loaderVersion="[45,)"
+loaderVersion="[40,)"
 license = "GPL-3.0"
-issueTrackerURL = "https://github.com/GrowthcraftCE/Growthcraft-1.19/issues"
+issueTrackerURL = "https://github.com/GrowthcraftCE/Growthcraft-1.18/issues"
 
 [[mods]]
 modId = "growthcraft"
@@ -19,14 +19,14 @@ Growthcraft is a realistic and immersive Forge mod that adds various new element
 [[dependencies.growthcraft]] #optional
 modId = "forge"
 mandatory = true
-versionRange = "[45,)"
+versionRange = "[40,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.growthcraft]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.18.2,1.20)"
+versionRange = "[1.18.2,1.19)"
 ordering = "NONE"
 side = "BOTH"
 
@@ -106,7 +106,7 @@ description = '''
 [[dependencies.growthcraft_milk]]
 modId = "growthcraft"
 mandatory = true
-versionRange = "[8,)"
+versionRange = "[7,)"
 ordering = "AFTER"
 side = "BOTH"
 

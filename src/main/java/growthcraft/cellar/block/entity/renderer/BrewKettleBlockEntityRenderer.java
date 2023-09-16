@@ -1,8 +1,13 @@
 package growthcraft.cellar.block.entity.renderer;
 
+import java.awt.Color;
+
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.math.Axis;
+import com.mojang.math.Matrix3f;
+import com.mojang.math.Matrix4f;
+import com.mojang.math.Quaternion;
+
 import growthcraft.cellar.block.entity.BrewKettleBlockEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -10,14 +15,10 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.texture.TextureAtlas;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.client.extensions.common.IClientFluidTypeExtensions;
+import net.minecraftforge.fluids.FluidAttributes;
 import net.minecraftforge.fluids.FluidStack;
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-import org.joml.Quaternionf;
-
-import java.awt.*;
 
 public class BrewKettleBlockEntityRenderer implements BlockEntityRenderer<BrewKettleBlockEntity> {
     @Override
@@ -35,7 +36,8 @@ public class BrewKettleBlockEntityRenderer implements BlockEntityRenderer<BrewKe
 
         float baseOffset = 4.0F / 16F;
         float maxFluidHeight = 15.0F / 16F;
-
+        Quaternion rotation = new Quaternion(null, 90.0F, true);
+        
         if(!blockEntity.getFluidStackInTank(0).isEmpty()) {
 
             FluidStack inputFluidStack = blockEntity.getFluidStackInTank(0);
@@ -44,7 +46,7 @@ public class BrewKettleBlockEntityRenderer implements BlockEntityRenderer<BrewKe
             float inputAmount = inputFluidStack.getAmount();
             float inputFluidHeight = baseOffset + (maxFluidHeight - baseOffset) * inputAmount / inputCapacity;
 
-            renderFluidSingle(poseStack, multiBufferSource, inputFluidStack, 0.0F, inputFluidHeight, 0.0F, Axis.XP.rotationDegrees(90.0F), light, overlay);
+            renderFluidSingle(poseStack, multiBufferSource, inputFluidStack, 0.0F, inputFluidHeight, 0.0F, rotation, light, overlay);
         }
 
         if(!blockEntity.getFluidStackInTank(1).isEmpty()) {
@@ -54,11 +56,11 @@ public class BrewKettleBlockEntityRenderer implements BlockEntityRenderer<BrewKe
             float outputAmount = outputFluidStack.getAmount();
             float outputFluidHeight = baseOffset + (maxFluidHeight - baseOffset) * outputAmount / outputCapacity;
 
-            renderFluidSingle(poseStack, multiBufferSource, outputFluidStack, 0.0F, outputFluidHeight, 0.0F, Axis.XP.rotationDegrees(90.0F), light, overlay);
+            renderFluidSingle(poseStack, multiBufferSource, outputFluidStack, 0.0F, outputFluidHeight, 0.0F, rotation, light, overlay);
         }
     }
 
-    public void renderFluidSingle(PoseStack poseStack, MultiBufferSource buffer, FluidStack fluidStack, float xOffset, float height, float zOffset, Quaternionf rotation, int lightLevel, int overlay) {
+    public void renderFluidSingle(PoseStack poseStack, MultiBufferSource buffer, FluidStack fluidStack, float xOffset, float height, float zOffset, Quaternion rotation, int lightLevel, int overlay) {
         poseStack.pushPose();
         poseStack.translate(0.5F, height, 0.5F);
 
@@ -73,10 +75,13 @@ public class BrewKettleBlockEntityRenderer implements BlockEntityRenderer<BrewKe
 
         poseStack.scale(s, s, s);
 
-        IClientFluidTypeExtensions fluidTypeExtensions = IClientFluidTypeExtensions.of(fluidStack.getFluid());
-        Color color = new Color(fluidTypeExtensions.getTintColor());
+        Fluid fluid = fluidStack.getFluid();
+        FluidAttributes fluidAttributes = fluid.getAttributes();
+        
+        //IClientFluidTypeExtensions fluidTypeExtensions = IClientFluidTypeExtensions.of(fluidStack.getFluid());
+        Color color = new Color(fluidAttributes.getColor());
 
-        TextureAtlasSprite sprite = Minecraft.getInstance().getTextureAtlas(TextureAtlas.LOCATION_BLOCKS).apply(fluidTypeExtensions.getStillTexture(fluidStack));
+        TextureAtlasSprite sprite = Minecraft.getInstance().getTextureAtlas(TextureAtlas.LOCATION_BLOCKS).apply(fluidAttributes.getStillTexture(fluidStack));
 
         VertexConsumer vertexBuilder = buffer.getBuffer(RenderType.translucent());
 

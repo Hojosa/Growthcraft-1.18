@@ -2,7 +2,6 @@ package growthcraft.lib.block;
 
 import net.minecraft.world.level.block.DoorBlock;
 import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 
@@ -16,7 +15,7 @@ public class GrowthcraftDoorBlock extends DoorBlock {
     }
 
     public GrowthcraftDoorBlock(Properties properties) {
-        super(properties, BlockSetType.OAK);
+        super(properties);
     }
 
     private static Properties getInitProperties(Material material) {

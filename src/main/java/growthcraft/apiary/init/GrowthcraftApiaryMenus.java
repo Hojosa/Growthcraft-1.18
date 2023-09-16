@@ -15,7 +15,7 @@ import net.minecraftforge.registries.RegistryObject;
 public class GrowthcraftApiaryMenus {
 
     public static final DeferredRegister<MenuType<?>> MENUS = DeferredRegister.create(
-            ForgeRegistries.MENU_TYPES, Reference.MODID
+            ForgeRegistries.CONTAINERS, Reference.MODID
     );
 
     public static final RegistryObject<MenuType<BeeBoxMenu>> BEE_BOX_MENU =

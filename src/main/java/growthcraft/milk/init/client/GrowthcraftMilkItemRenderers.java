@@ -6,7 +6,7 @@ import growthcraft.milk.init.GrowthcraftMilkFluids;
 import growthcraft.milk.init.GrowthcraftMilkItems;
 import growthcraft.milk.shared.Reference;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.RegisterColorHandlersEvent;
+import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -14,7 +14,7 @@ import net.minecraftforge.fml.common.Mod;
 public class GrowthcraftMilkItemRenderers {
 
     @SubscribeEvent
-    public static void registerItemRenders(RegisterColorHandlersEvent.Item event) {
+    public static void registerItemRenders(ColorHandlerEvent.Item event) {
         ItemRendererUtils.registerItem(event, Reference.FluidColor.BUTTER_MILK.toItemColor(), GrowthcraftMilkFluids.BUTTER_MILK.bucket.get());
         ItemRendererUtils.registerItem(event, Reference.FluidColor.CHEESE_BASE.toItemColor(), GrowthcraftMilkFluids.CHEESE_BASE.bucket.get());
         ItemRendererUtils.registerItem(event, Reference.FluidColor.CONDENSED_MILK.toItemColor(), GrowthcraftMilkFluids.CONDENSED_MILK.bucket.get());

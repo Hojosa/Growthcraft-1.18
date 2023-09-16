@@ -3,6 +3,8 @@ package growthcraft.lib.kaupenjoe.screen.renderer;
 import com.google.common.base.Preconditions;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.*;
+import com.mojang.math.Matrix4f;
+
 import growthcraft.core.shared.Reference;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
@@ -10,17 +12,16 @@ import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.InventoryMenu;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraftforge.client.extensions.common.IClientFluidTypeExtensions;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidType;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.joml.Matrix4f;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -184,7 +185,7 @@ public class FluidTankRenderer {
         Fluid fluidType = fluidStack.getFluid();
         try {
             if (fluidType.isSame(Fluids.EMPTY)) {
-                MutableComponent amountString = Component.translatable(Reference.MODID.concat(".tooltip.liquid.empty"));
+                MutableComponent amountString = new TranslatableComponent(Reference.MODID.concat(".tooltip.liquid.empty"));
                 tooltip.add(amountString.withStyle(ChatFormatting.GRAY));
                 return tooltip;
             }
@@ -196,10 +197,10 @@ public class FluidTankRenderer {
             long milliBuckets = (amount * 1000) / FluidType.BUCKET_VOLUME;
 
             if (tooltipMode == TooltipMode.SHOW_AMOUNT_AND_CAPACITY) {
-                MutableComponent amountString = Component.translatable(Reference.MODID.concat(".tooltip.liquid.amount.with.capacity"), nf.format(milliBuckets), nf.format(capacity));
+                MutableComponent amountString = new TranslatableComponent(Reference.MODID.concat(".tooltip.liquid.amount.with.capacity"), nf.format(milliBuckets), nf.format(capacity));
                 tooltip.add(amountString.withStyle(ChatFormatting.GRAY));
             } else if (tooltipMode == TooltipMode.SHOW_AMOUNT) {
-                MutableComponent amountString = Component.translatable(Reference.MODID.concat(".tooltip.liquid.amount"), nf.format(milliBuckets));
+                MutableComponent amountString = new TranslatableComponent(Reference.MODID.concat(".tooltip.liquid.amount"), nf.format(milliBuckets));
                 tooltip.add(amountString.withStyle(ChatFormatting.GRAY));
             }
         } catch (RuntimeException e) {

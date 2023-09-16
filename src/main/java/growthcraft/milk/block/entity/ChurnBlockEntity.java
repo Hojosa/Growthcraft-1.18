@@ -24,6 +24,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.Connection;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
@@ -116,7 +117,7 @@ public class ChurnBlockEntity extends BlockEntity implements BlockEntityTicker<C
     public Component getDisplayName() {
         return this.customName != null
                 ? this.customName
-                : Component.translatable("container.growthcraft_milk.churn");
+                : new TranslatableComponent("container.growthcraft_milk.churn");
     }
 
     @Nullable
@@ -142,9 +143,9 @@ public class ChurnBlockEntity extends BlockEntity implements BlockEntityTicker<C
             boolean plungerState = blockState.getValue(PLUNGED);
 
             if(plungerState) {
-                level.playSound(null, this.getBlockPos(), SoundEvents.WOODEN_BUTTON_CLICK_OFF, SoundSource.BLOCKS);
+                level.playSound(null, this.getBlockPos(), SoundEvents.WOODEN_BUTTON_CLICK_OFF, SoundSource.BLOCKS, 1.0F, 1.0F);
             } else {
-                level.playSound(null, this.getBlockPos(), SoundEvents.WOODEN_BUTTON_CLICK_ON, SoundSource.BLOCKS);
+                level.playSound(null, this.getBlockPos(), SoundEvents.WOODEN_BUTTON_CLICK_ON, SoundSource.BLOCKS, 1.0F, 1.0F);
                 tryPlunger();
             }
 

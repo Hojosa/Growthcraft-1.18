@@ -231,7 +231,7 @@ public class GrowthcraftCropsRopeBlock extends BushBlock implements Bonemealable
     }
 
     @Override
-    public boolean isValidBonemealTarget(LevelReader level, BlockPos blockPos, BlockState state, boolean isClientSide) {
+    public boolean isValidBonemealTarget(BlockGetter level, BlockPos blockPos, BlockState state, boolean isClientSide) {
         return !this.isMaxAge(state);
     }
 
@@ -309,5 +309,7 @@ public class GrowthcraftCropsRopeBlock extends BushBlock implements Bonemealable
     public boolean canBeConnectedTo(BlockState state, BlockGetter world, BlockPos pos, Direction facing) {
         return BlockStateUtils.isRopeBlock(state);
     }
+
+
 
 }

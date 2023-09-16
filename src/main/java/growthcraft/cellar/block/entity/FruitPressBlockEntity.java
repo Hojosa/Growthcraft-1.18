@@ -25,6 +25,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.Connection;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
@@ -118,7 +119,7 @@ public class FruitPressBlockEntity extends BlockEntity implements BlockEntityTic
     public Component getDisplayName() {
         return this.customName != null
                 ? this.customName
-                : Component.translatable("container.growthcraft_cellar.fruit_press");
+                : new TranslatableComponent("container.growthcraft_cellar.fruit_press");
     }
 
     public void tick() {

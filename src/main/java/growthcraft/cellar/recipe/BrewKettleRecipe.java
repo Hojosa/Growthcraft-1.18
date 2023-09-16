@@ -65,7 +65,7 @@ public class BrewKettleRecipe implements Recipe<SimpleContainer> {
     }
 
     @Override
-    public ItemStack assemble(SimpleContainer container, RegistryAccess registryAccess) {
+    public ItemStack assemble(SimpleContainer container) {
         return this.outputFluidStack.getFluid().getBucket().getDefaultInstance();
     }
 
@@ -75,7 +75,7 @@ public class BrewKettleRecipe implements Recipe<SimpleContainer> {
     }
 
     @Override
-    public ItemStack getResultItem(RegistryAccess registryAccess) {
+    public ItemStack getResultItem() {
         return this.outputFluidStack.getFluid().getBucket().getDefaultInstance();
     }
 
@@ -140,6 +140,7 @@ public class BrewKettleRecipe implements Recipe<SimpleContainer> {
         public static final ResourceLocation ID = new ResourceLocation(
                 Reference.MODID,
                 Reference.UnlocalizedName.BREW_KETTLE_RECIPE);
+        private ResourceLocation name;
 
         @Override
         public @NotNull BrewKettleRecipe fromJson(ResourceLocation recipeId, JsonObject json) {
@@ -195,5 +196,25 @@ public class BrewKettleRecipe implements Recipe<SimpleContainer> {
             buffer.writeVarInt(recipe.getByProductChance());
         }
 
+		@Override
+		public RecipeSerializer<?> setRegistryName(ResourceLocation name) {
+			this.name = name;
+			return this;
+		}
+
+		@Override
+		public ResourceLocation getRegistryName() {
+			return name;
+		}
+
+		@Override
+		public Class<RecipeSerializer<?>> getRegistryType() {
+			// TODO Auto-generated method stub
+			return Serializer.<RecipeSerializer<?>>castClass(RecipeSerializer.class);
+		}
+
+		private static <G> Class<G> castClass(Class<?> cls) {
+	        return (Class<G>) cls;
+	    }
     }
 }

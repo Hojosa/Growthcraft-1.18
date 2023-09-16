@@ -2,6 +2,7 @@ package growthcraft.cellar.recipe;
 
 import com.google.gson.JsonObject;
 import growthcraft.cellar.GrowthcraftCellar;
+import growthcraft.cellar.recipe.BrewKettleRecipe.Serializer;
 import growthcraft.cellar.shared.Reference;
 import growthcraft.lib.utils.CraftingUtils;
 import net.minecraft.core.RegistryAccess;
@@ -46,7 +47,7 @@ public class CultureJarRecipe implements Recipe<SimpleContainer> {
     }
 
     @Override
-    public ItemStack assemble(SimpleContainer simpleContainer, RegistryAccess registryAccess) {
+    public ItemStack assemble(SimpleContainer simpleContainer) {
         return this.inputItem;
     }
 
@@ -56,7 +57,7 @@ public class CultureJarRecipe implements Recipe<SimpleContainer> {
     }
 
     @Override
-    public ItemStack getResultItem(RegistryAccess registryAccess) {
+    public ItemStack getResultItem() {
         return this.inputItem;
     }
 
@@ -104,6 +105,7 @@ public class CultureJarRecipe implements Recipe<SimpleContainer> {
         public static final ResourceLocation ID = new ResourceLocation(
                 Reference.MODID,
                 Reference.UnlocalizedName.CULTURE_JAR_RECIPE);
+        private ResourceLocation name;
 
         @Override
         public @NotNull CultureJarRecipe fromJson(ResourceLocation recipeId, JsonObject json) {
@@ -140,6 +142,27 @@ public class CultureJarRecipe implements Recipe<SimpleContainer> {
             buffer.writeVarInt(recipe.getRecipeProcessingTime());
             buffer.writeBoolean(recipe.isHeatSourceRequired());
         }
+        
+		@Override
+		public RecipeSerializer<?> setRegistryName(ResourceLocation name) {
+			this.name = name;
+			return this;
+		}
+
+		@Override
+		public ResourceLocation getRegistryName() {
+			return name;
+		}
+
+		@Override
+		public Class<RecipeSerializer<?>> getRegistryType() {
+			// TODO Auto-generated method stub
+			return Serializer.<RecipeSerializer<?>>castClass(RecipeSerializer.class);
+		}
+
+		private static <G> Class<G> castClass(Class<?> cls) {
+	        return (Class<G>) cls;
+	    }
 
     }
 }

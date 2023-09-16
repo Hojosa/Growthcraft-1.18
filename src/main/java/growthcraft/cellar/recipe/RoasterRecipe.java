@@ -1,9 +1,12 @@
 package growthcraft.cellar.recipe;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import com.google.gson.JsonObject;
+
 import growthcraft.cellar.GrowthcraftCellar;
 import growthcraft.cellar.shared.Reference;
-import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
@@ -14,8 +17,6 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.crafting.CraftingHelper;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 public class RoasterRecipe implements Recipe<SimpleContainer> {
 
@@ -44,18 +45,13 @@ public class RoasterRecipe implements Recipe<SimpleContainer> {
     }
 
     @Override
-    public ItemStack assemble(SimpleContainer simpleContainer, RegistryAccess registryAccess) {
+    public ItemStack assemble(SimpleContainer simpleContainer) {
         return this.inputItem;
     }
 
     @Override
     public boolean canCraftInDimensions(int width, int height) {
         return true;
-    }
-
-    @Override
-    public ItemStack getResultItem(RegistryAccess registryAccess) {
-        return this.resultItem;
     }
 
     public ItemStack getResultItem() {
@@ -98,6 +94,7 @@ public class RoasterRecipe implements Recipe<SimpleContainer> {
         public static final ResourceLocation ID = new ResourceLocation(
                 Reference.MODID,
                 Reference.UnlocalizedName.ROASTER_RECIPE);
+        private ResourceLocation name;
 
         @Override
         public @NotNull RoasterRecipe fromJson(ResourceLocation recipeId, JsonObject json) {
@@ -131,6 +128,27 @@ public class RoasterRecipe implements Recipe<SimpleContainer> {
             buffer.writeItemStack(recipe.getResultItem(), false);
             buffer.writeVarInt(recipe.getRecipeProcessingTime());
         }
+        
+		@Override
+		public RecipeSerializer<?> setRegistryName(ResourceLocation name) {
+			this.name = name;
+			return this;
+		}
+
+		@Override
+		public ResourceLocation getRegistryName() {
+			return name;
+		}
+
+		@Override
+		public Class<RecipeSerializer<?>> getRegistryType() {
+			// TODO Auto-generated method stub
+			return Serializer.<RecipeSerializer<?>>castClass(RecipeSerializer.class);
+		}
+
+		private static <G> Class<G> castClass(Class<?> cls) {
+	        return (Class<G>) cls;
+	    }
 
     }
 }

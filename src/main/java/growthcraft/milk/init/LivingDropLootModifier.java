@@ -16,7 +16,7 @@ import java.util.Collection;
 public class LivingDropLootModifier {
     @SubscribeEvent
     public void onLivingDropsEvent(LivingDropsEvent event) {
-        LivingEntity entity = event.getEntity();
+        LivingEntity entity = event.getEntityLiving();
         Level level = entity.getLevel();
 
         if(!level.getGameRules().getBoolean(GameRules.RULE_DOMOBLOOT)) {

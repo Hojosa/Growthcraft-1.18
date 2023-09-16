@@ -34,25 +34,25 @@ public class GrowthcraftCellarMessages {
         net.messageBuilder(BrewKettleFluidTankPacket.class, id(), NetworkDirection.PLAY_TO_CLIENT)
                 .decoder(BrewKettleFluidTankPacket::new)
                 .encoder(BrewKettleFluidTankPacket::toBytes)
-                .consumerMainThread(BrewKettleFluidTankPacket::handle)
+                .consumer(BrewKettleFluidTankPacket::handle)
                 .add();
 
         net.messageBuilder(CultureJarFluidSyncPacket.class, id(), NetworkDirection.PLAY_TO_CLIENT)
                 .decoder(CultureJarFluidSyncPacket::new)
                 .encoder(CultureJarFluidSyncPacket::toBytes)
-                .consumerMainThread(CultureJarFluidSyncPacket::handle)
+                .consumer(CultureJarFluidSyncPacket::handle)
                 .add();
 
         net.messageBuilder(FermentationBarrelFluidTankPacket.class, id(), NetworkDirection.PLAY_TO_CLIENT)
                 .decoder(FermentationBarrelFluidTankPacket::new)
                 .encoder(FermentationBarrelFluidTankPacket::toBytes)
-                .consumerMainThread(FermentationBarrelFluidTankPacket::handle)
+                .consumer(FermentationBarrelFluidTankPacket::handle)
                 .add();
 
         net.messageBuilder(FruitPressFluidTankPacket.class, id(), NetworkDirection.PLAY_TO_CLIENT)
                 .decoder(FruitPressFluidTankPacket::new)
                 .encoder(FruitPressFluidTankPacket::toBytes)
-                .consumerMainThread(FruitPressFluidTankPacket::handle)
+                .consumer(FruitPressFluidTankPacket::handle)
                 .add();
 
     }

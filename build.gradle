@@ -2,10 +2,12 @@ buildscript {
     repositories {
         // These repositories are only for Gradle plugins, put any other repositories in the repository block further below
         maven { url = 'https://maven.minecraftforge.net' }
+       // maven { url = 'https://maven.parchmentmc.org' }
         mavenCentral()
     }
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
+      //  classpath 'org.parchmentmc:librarian:1.+'
     }
 }
 
@@ -16,6 +18,7 @@ plugins {
 }
 
 apply plugin: 'net.minecraftforge.gradle'
+//apply plugin: 'org.parchmentmc.librarian.forgegradle'
 
 version = "${minecraft_version}-${growthcraft_version}"
 group = 'growthcraft'
@@ -118,12 +121,11 @@ repositories {
 
 dependencies {
     minecraft "net.minecraftforge:forge:${forge_version}"
-    runtimeOnly fg.deobf("curse.maven:growthcraft-trapper-${curseforge_growthcraft_trapper}")
+    //runtimeOnly fg.deobf("curse.maven:growthcraft-trapper-${curseforge_growthcraft_trapper}")
     runtimeOnly fg.deobf("curse.maven:growthcraft-decorations-${curseforge_growthcraft_deco}")
     runtimeOnly fg.deobf("curse.maven:jei-${curseforge_jei}")
     runtimeOnly fg.deobf("curse.maven:theoneprobe-${curseforge_theoneprobe}")
-    // TODO: 2023.04.08 - Not available for 1.19.4
-    //runtimeOnly fg.deobf("curse.maven:patchouli-${curseforge_patchouli}")
+    runtimeOnly fg.deobf("curse.maven:patchouli-${curseforge_patchouli}")
 }
 
 jar {
