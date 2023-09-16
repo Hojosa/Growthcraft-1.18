@@ -1,4 +1,4 @@
-# Growthcraft 8 for Minecraft 1.19.3 (Forge)
+# Growthcraft 7 for Minecraft 1.18.2 (Forge)
 
 [![Growthcraft Version](https://img.shields.io/badge/Growthcraft-8.1.0-orange.svg)](https://github.com/GrowthcraftCE/Growthcraft-1.19)
 [![](http://cf.way2muchnoise.eu/versions/growthcraft-community-edition_latest.svg)](https://minecraft.curseforge.com/projects/growthcraft-community-edition/)
