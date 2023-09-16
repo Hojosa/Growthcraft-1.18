@@ -26,6 +26,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.Connection;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
@@ -133,7 +134,7 @@ public class MixingVatBlockEntity extends BlockEntity implements BlockEntityTick
     public @NotNull Component getDisplayName() {
         return this.customName != null
                 ? this.customName
-                : Component.translatable("container.growthcraft_milk.mixing_vat");
+                : new TranslatableComponent("container.growthcraft_milk.mixing_vat");
     }
 
     @Nullable
@@ -504,7 +505,7 @@ public class MixingVatBlockEntity extends BlockEntity implements BlockEntityTick
 
     public void playSound(String sound) {
         if (Objects.equals(sound, "open") && this.level != null) {
-            this.level.playSound(null, this.getBlockPos(), SoundEvents.IRON_DOOR_OPEN, SoundSource.BLOCKS);
+            this.level.playSound(null, this.getBlockPos(), SoundEvents.IRON_DOOR_OPEN, SoundSource.BLOCKS, 1.0F, 1.0F);
         }
     }
 

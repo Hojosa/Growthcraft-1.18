@@ -1,5 +1,15 @@
 package growthcraft.cellar.block.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
+import javax.annotation.Nonnull;
+import javax.annotation.ParametersAreNonnullByDefault;
+
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import growthcraft.cellar.init.GrowthcraftCellarBlockEntities;
 import growthcraft.cellar.lib.networking.GrowthcraftCellarMessages;
 import growthcraft.cellar.lib.networking.packet.FermentationBarrelFluidTankPacket;
@@ -11,6 +21,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.Connection;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
@@ -29,7 +40,6 @@ import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
@@ -37,14 +47,6 @@ import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import javax.annotation.Nonnull;
-import javax.annotation.ParametersAreNonnullByDefault;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 
 public class FermentationBarrelBlockEntity extends BlockEntity implements BlockEntityTicker<FermentationBarrelBlockEntity>, MenuProvider {
 
@@ -114,7 +116,7 @@ public class FermentationBarrelBlockEntity extends BlockEntity implements BlockE
     public Component getDisplayName() {
         return this.customName != null
                 ? this.customName
-                : Component.translatable("container.growthcraft_cellar.fermentation_barrel");
+                : new TranslatableComponent("container.growthcraft_cellar.fermentation_barrel");
     }
 
     public void tick() {

@@ -3,7 +3,7 @@ package growthcraft.apiary.block.entity;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
-
+import net.minecraft.network.chat.TranslatableComponent;
 import javax.annotation.ParametersAreNonnullByDefault;
 
 import org.jetbrains.annotations.NotNull;
@@ -76,7 +76,7 @@ public class BeeBoxBlockEntity extends BlockEntity implements BlockEntityTicker<
 
     @Override
     public @NotNull Component getDisplayName() {
-        return Component.translatable("container.growthcraft_apiary.bee_box");
+        return new TranslatableComponent("container.growthcraft_apiary.bee_box");
     }
 
     @Nullable

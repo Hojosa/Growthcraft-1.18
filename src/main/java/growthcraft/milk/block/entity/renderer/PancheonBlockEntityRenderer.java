@@ -1,8 +1,13 @@
 package growthcraft.milk.block.entity.renderer;
 
+import java.awt.Color;
+
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.math.Axis;
+import com.mojang.math.Matrix3f;
+import com.mojang.math.Matrix4f;
+import com.mojang.math.Quaternion;
+
 import growthcraft.milk.block.entity.PancheonBlockEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -10,12 +15,9 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.texture.TextureAtlas;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraftforge.client.extensions.common.IClientFluidTypeExtensions;
+import net.minecraft.world.level.material.Fluid;
+import net.minecraftforge.fluids.FluidAttributes;
 import net.minecraftforge.fluids.FluidStack;
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-
-import java.awt.*;
 
 public class PancheonBlockEntityRenderer implements BlockEntityRenderer<PancheonBlockEntity> {
 
@@ -63,13 +65,16 @@ public class PancheonBlockEntityRenderer implements BlockEntityRenderer<Pancheon
         int alpha = 2 * 255;
 
         poseStack.translate(w, 0.0F, w);
-        poseStack.mulPose(Axis.XP.rotationDegrees(90.0F));
+        poseStack.mulPose(new Quaternion(null, 90.0F, true));
         poseStack.scale(s, s, s);
 
-        IClientFluidTypeExtensions fluidTypeExtensions = IClientFluidTypeExtensions.of(fluidStack.getFluid());
-        Color color = new Color(fluidTypeExtensions.getTintColor());
+        Fluid fluid = fluidStack.getFluid();
+        FluidAttributes fluidAttributes = fluid.getAttributes();
+        
+        //IClientFluidTypeExtensions fluidTypeExtensions = IClientFluidTypeExtensions.of(fluidStack.getFluid());
+        Color color = new Color(fluidAttributes.getColor());
 
-        TextureAtlasSprite sprite = Minecraft.getInstance().getTextureAtlas(TextureAtlas.LOCATION_BLOCKS).apply(fluidTypeExtensions.getStillTexture(fluidStack));
+        TextureAtlasSprite sprite = Minecraft.getInstance().getTextureAtlas(TextureAtlas.LOCATION_BLOCKS).apply(fluidAttributes.getStillTexture(fluidStack));
 
         VertexConsumer vertexBuilder = buffer.getBuffer(RenderType.translucent());
 
