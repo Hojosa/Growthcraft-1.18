@@ -8,6 +8,7 @@ import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import org.jetbrains.annotations.NotNull;
@@ -77,9 +78,8 @@ public class RoasterScreen extends AbstractContainerScreen<RoasterMenu> {
     private void renderProgressToolTip(PoseStack poseStack, int mouseX, int mouseY, int x, int y) {
         List<Component> tooltip = new ArrayList<>();
 
-        MutableComponent progressString = Component.translatable(Reference.MODID.concat(".tooltip.roaster.progress"), menu.getRoastingLevel(), menu.getPercentProgress());
+        MutableComponent progressString = new TranslatableComponent(Reference.MODID.concat(".tooltip.roaster.progress"), menu.getRoastingLevel(), menu.getPercentProgress());
         tooltip.add(progressString);
-
         if (isMouseAboveArea(mouseX, mouseY, x + 74, y + 45, 28, 9, 28, 9)) {
             renderTooltip(
                     poseStack,
