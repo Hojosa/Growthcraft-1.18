@@ -1,11 +1,12 @@
 package growthcraft.lib.utils;
 
 import net.minecraft.client.color.item.ItemColor;
-import org.joml.Vector3f;
 
 import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
+
+import com.mojang.math.Vector3f;
 
 public class ColorUtils {
     public static class GrowthcraftColor {
