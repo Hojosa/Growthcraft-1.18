@@ -49,13 +49,13 @@ public class MilkingBucketItem extends Item implements DispensibleContainerItem 
     public MilkingBucketItem(Fluid fluid) {
         super(getInitProperties());
         this.content = fluid;
-        this.fluidSupplier = net.minecraftforge.registries.ForgeRegistries.FLUIDS.getDelegateOrThrow(fluid);
+        this.fluidSupplier = this.content.delegate;
     }
 
     public MilkingBucketItem(Fluid fluid, Item.Properties properties) {
         super(properties);
         this.content = fluid;
-        this.fluidSupplier = net.minecraftforge.registries.ForgeRegistries.FLUIDS.getDelegateOrThrow(fluid);
+        this.fluidSupplier = this.content.delegate;
     }
 
     public MilkingBucketItem(Supplier<? extends Fluid> fluidSupplier, Properties properties) {
@@ -190,7 +190,7 @@ public class MilkingBucketItem extends Item implements DispensibleContainerItem 
     }
 
     protected void playEmptySound(@javax.annotation.Nullable Player p_40696_, LevelAccessor p_40697_, BlockPos p_40698_) {
-        SoundEvent soundevent = this.content.getFluidType().getSound(p_40696_, p_40697_, p_40698_, net.minecraftforge.common.SoundActions.BUCKET_EMPTY);
+        SoundEvent soundevent = this.content.getAttributes().getEmptySound(p_40697_, p_40698_);
         if(soundevent == null) soundevent = this.content.is(FluidTags.LAVA) ? SoundEvents.BUCKET_EMPTY_LAVA : SoundEvents.BUCKET_EMPTY;
         p_40697_.playSound(p_40696_, p_40698_, soundevent, SoundSource.BLOCKS, 1.0F, 1.0F);
         p_40697_.gameEvent(p_40696_, GameEvent.FLUID_PLACE, p_40698_);
