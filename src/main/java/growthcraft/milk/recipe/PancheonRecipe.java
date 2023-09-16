@@ -4,6 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import growthcraft.lib.utils.CraftingUtils;
 import growthcraft.milk.GrowthcraftMilk;
+import growthcraft.milk.recipe.MixingVatItemRecipe.Serializer;
 import growthcraft.milk.shared.Reference;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
@@ -53,7 +54,7 @@ public class PancheonRecipe implements Recipe<SimpleContainer> {
     }
 
     @Override
-    public ItemStack assemble(SimpleContainer simpleContainer, RegistryAccess registryAccess) {
+    public ItemStack assemble(SimpleContainer simpleContainer) {
         return this.outputFluidStack1.getFluid().getBucket().getDefaultInstance();
     }
 
@@ -63,7 +64,7 @@ public class PancheonRecipe implements Recipe<SimpleContainer> {
     }
 
     @Override
-    public ItemStack getResultItem(RegistryAccess registryAccess) {
+    public ItemStack getResultItem() {
         return this.getFluidStack(OUTPUT_0).getFluid().getBucket().getDefaultInstance();
     }
 
@@ -110,6 +111,7 @@ public class PancheonRecipe implements Recipe<SimpleContainer> {
         public static final ResourceLocation ID = new ResourceLocation(
                 Reference.MODID,
                 Reference.UnlocalizedName.PANCHEON_RECIPE);
+        private ResourceLocation name;
 
         @Override
         public @NotNull PancheonRecipe fromJson(ResourceLocation recipeId, JsonObject json) {
@@ -147,6 +149,27 @@ public class PancheonRecipe implements Recipe<SimpleContainer> {
             buffer.writeFluidStack(recipe.getFluidStack(OUTPUT_1));
             buffer.writeVarInt(recipe.getRecipeProcessingTime());
         }
+        
+		@Override
+		public RecipeSerializer<?> setRegistryName(ResourceLocation name) {
+			this.name = name;
+			return this;
+		}
+
+		@Override
+		public ResourceLocation getRegistryName() {
+			return name;
+		}
+
+		@Override
+		public Class<RecipeSerializer<?>> getRegistryType() {
+			// TODO Auto-generated method stub
+			return Serializer.<RecipeSerializer<?>>castClass(RecipeSerializer.class);
+		}
+
+		private static <G> Class<G> castClass(Class<?> cls) {
+	        return (Class<G>) cls;
+	    }
 
     }
 

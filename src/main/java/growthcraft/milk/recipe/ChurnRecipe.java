@@ -3,6 +3,7 @@ package growthcraft.milk.recipe;
 import com.google.gson.JsonObject;
 import growthcraft.lib.utils.CraftingUtils;
 import growthcraft.milk.GrowthcraftMilk;
+import growthcraft.milk.recipe.MixingVatItemRecipe.Serializer;
 import growthcraft.milk.shared.Reference;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
@@ -38,7 +39,7 @@ public class ChurnRecipe implements Recipe<SimpleContainer> {
     }
 
     @Override
-    public ItemStack assemble(SimpleContainer simpleContainer, RegistryAccess registryAccess) {
+    public ItemStack assemble(SimpleContainer simpleContainer) {
         return this.resultItemStack;
     }
 
@@ -74,7 +75,7 @@ public class ChurnRecipe implements Recipe<SimpleContainer> {
     }
 
     @Override
-    public ItemStack getResultItem(RegistryAccess registryAccess) {
+    public ItemStack getResultItem() {
         return this.resultItemStack;
     }
 
@@ -111,6 +112,7 @@ public class ChurnRecipe implements Recipe<SimpleContainer> {
         public static final ResourceLocation ID = new ResourceLocation(
                 Reference.MODID,
                 Reference.UnlocalizedName.CHURN_RECIPE);
+        private ResourceLocation name;
 
         @Override
         public @NotNull ChurnRecipe fromJson(ResourceLocation recipeId, JsonObject json) {
@@ -151,6 +153,27 @@ public class ChurnRecipe implements Recipe<SimpleContainer> {
             buffer.writeVarInt(recipe.getByProductChance());
 
         }
+        
+		@Override
+		public RecipeSerializer<?> setRegistryName(ResourceLocation name) {
+			this.name = name;
+			return this;
+		}
+
+		@Override
+		public ResourceLocation getRegistryName() {
+			return name;
+		}
+
+		@Override
+		public Class<RecipeSerializer<?>> getRegistryType() {
+			// TODO Auto-generated method stub
+			return Serializer.<RecipeSerializer<?>>castClass(RecipeSerializer.class);
+		}
+
+		private static <G> Class<G> castClass(Class<?> cls) {
+	        return (Class<G>) cls;
+	    }
 
     }
 }

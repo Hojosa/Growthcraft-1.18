@@ -3,6 +3,7 @@ package growthcraft.cellar.recipe;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import growthcraft.cellar.GrowthcraftCellar;
+import growthcraft.cellar.recipe.BrewKettleRecipe.Serializer;
 import growthcraft.cellar.shared.Reference;
 import growthcraft.lib.utils.CraftingUtils;
 import growthcraft.lib.utils.EffectUtils;
@@ -51,7 +52,7 @@ public class FermentationBarrelRecipe implements Recipe<SimpleContainer> {
         this.potionItemStack.setHoverName(
                 this.potionItemStack.getDisplayName().copy()
                         .append(" ")
-                        .append(Component.translatable(this.outputFluidStack.getTranslationKey()))
+                        .append(this.outputFluidStack.getTranslationKey())
         );
 
     }
@@ -121,7 +122,7 @@ public class FermentationBarrelRecipe implements Recipe<SimpleContainer> {
     }
 
     @Override
-    public ItemStack assemble(SimpleContainer simpleContainer, RegistryAccess registryAccess) {
+    public ItemStack assemble(SimpleContainer simpleContainer) {
         return this.inputItemStack;
     }
 
@@ -131,7 +132,7 @@ public class FermentationBarrelRecipe implements Recipe<SimpleContainer> {
     }
 
     @Override
-    public ItemStack getResultItem(RegistryAccess registryAccess) {
+    public ItemStack getResultItem() {
         return this.outputFluidStack.getFluid().getBucket().getDefaultInstance();
     }
 
@@ -196,6 +197,7 @@ public class FermentationBarrelRecipe implements Recipe<SimpleContainer> {
         public static final ResourceLocation ID = new ResourceLocation(
                 Reference.MODID,
                 Reference.UnlocalizedName.FERMENT_BARREL_RECIPE);
+        private ResourceLocation name;
 
         @Override
         public @NotNull FermentationBarrelRecipe fromJson(ResourceLocation recipeId, JsonObject json) {
@@ -250,6 +252,27 @@ public class FermentationBarrelRecipe implements Recipe<SimpleContainer> {
             buffer.writeVarInt(recipe.getProcessingTime());
             buffer.writeVarInt(recipe.getColor().hashCode());
         }
+        
+		@Override
+		public RecipeSerializer<?> setRegistryName(ResourceLocation name) {
+			this.name = name;
+			return this;
+		}
+
+		@Override
+		public ResourceLocation getRegistryName() {
+			return name;
+		}
+
+		@Override
+		public Class<RecipeSerializer<?>> getRegistryType() {
+			// TODO Auto-generated method stub
+			return Serializer.<RecipeSerializer<?>>castClass(RecipeSerializer.class);
+		}
+
+		private static <G> Class<G> castClass(Class<?> cls) {
+	        return (Class<G>) cls;
+	    }
 
     }
 }

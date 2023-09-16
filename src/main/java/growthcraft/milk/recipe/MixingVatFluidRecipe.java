@@ -5,6 +5,7 @@ import com.google.gson.JsonObject;
 import growthcraft.lib.utils.CraftingUtils;
 import growthcraft.lib.utils.RecipeUtils;
 import growthcraft.milk.GrowthcraftMilk;
+import growthcraft.milk.recipe.MixingVatItemRecipe.Serializer;
 import growthcraft.milk.shared.Reference;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
@@ -103,12 +104,12 @@ public class MixingVatFluidRecipe implements Recipe<SimpleContainer> {
     }
 
     @Override
-    public ItemStack assemble(SimpleContainer container, RegistryAccess registryAccess) {
+    public ItemStack assemble(SimpleContainer container) {
         return this.outputFluidStack.getFluid().getBucket().getDefaultInstance();
     }
 
     @Override
-    public ItemStack getResultItem(RegistryAccess registryAccess) {
+    public ItemStack getResultItem() {
         return this.outputFluidStack.getFluid().getBucket().getDefaultInstance();
     }
 
@@ -177,6 +178,7 @@ public class MixingVatFluidRecipe implements Recipe<SimpleContainer> {
         public static final ResourceLocation ID = new ResourceLocation(
                 Reference.MODID,
                 Reference.UnlocalizedName.MIXING_VAT_FLUID_RECIPE);
+        private ResourceLocation name;
 
         private static final int maxIngredients = 3;
 
@@ -262,5 +264,25 @@ public class MixingVatFluidRecipe implements Recipe<SimpleContainer> {
 
         }
 
+		@Override
+		public RecipeSerializer<?> setRegistryName(ResourceLocation name) {
+			this.name = name;
+			return this;
+		}
+
+		@Override
+		public ResourceLocation getRegistryName() {
+			return name;
+		}
+
+		@Override
+		public Class<RecipeSerializer<?>> getRegistryType() {
+			// TODO Auto-generated method stub
+			return Serializer.<RecipeSerializer<?>>castClass(RecipeSerializer.class);
+		}
+
+		private static <G> Class<G> castClass(Class<?> cls) {
+	        return (Class<G>) cls;
+	    }
     }
 }

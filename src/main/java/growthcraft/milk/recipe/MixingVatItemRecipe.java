@@ -2,6 +2,8 @@ package growthcraft.milk.recipe;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+
+import growthcraft.cellar.recipe.BrewKettleRecipe.Serializer;
 import growthcraft.lib.utils.CraftingUtils;
 import growthcraft.lib.utils.RecipeUtils;
 import growthcraft.milk.GrowthcraftMilk;
@@ -107,12 +109,12 @@ public class MixingVatItemRecipe implements Recipe<SimpleContainer> {
     }
 
 
-    public ItemStack assemble(SimpleContainer container, RegistryAccess registryAccess) {
+    public ItemStack assemble(SimpleContainer container) {
         return resultItemStack;
     }
 
 
-    public ItemStack getResultItem(RegistryAccess registryAccess) {
+    public ItemStack getResultItem() {
         return resultItemStack;
     }
 
@@ -157,6 +159,7 @@ public class MixingVatItemRecipe implements Recipe<SimpleContainer> {
         public static final ResourceLocation ID = new ResourceLocation(
                 Reference.MODID,
                 Reference.UnlocalizedName.MIXING_VAT_RECIPE);
+        private ResourceLocation name;
 
         private static final int maxIngredients = 3;
 
@@ -241,6 +244,27 @@ public class MixingVatItemRecipe implements Recipe<SimpleContainer> {
             buffer.writeItemStack(recipe.getResultActivationTool(), false);
 
         }
+        
+		@Override
+		public RecipeSerializer<?> setRegistryName(ResourceLocation name) {
+			this.name = name;
+			return this;
+		}
+
+		@Override
+		public ResourceLocation getRegistryName() {
+			return name;
+		}
+
+		@Override
+		public Class<RecipeSerializer<?>> getRegistryType() {
+			// TODO Auto-generated method stub
+			return Serializer.<RecipeSerializer<?>>castClass(RecipeSerializer.class);
+		}
+
+		private static <G> Class<G> castClass(Class<?> cls) {
+	        return (Class<G>) cls;
+	    }
 
     }
 }
