@@ -1,18 +1,27 @@
 package growthcraft.cellar;
 
-import growthcraft.cellar.init.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import growthcraft.cellar.init.GrowthcraftCellarBlockEntities;
+import growthcraft.cellar.init.GrowthcraftCellarBlocks;
+import growthcraft.cellar.init.GrowthcraftCellarFluids;
+import growthcraft.cellar.init.GrowthcraftCellarItems;
+import growthcraft.cellar.init.GrowthcraftCellarMenus;
+import growthcraft.cellar.init.GrowthcraftCellarRecipes;
 import growthcraft.cellar.init.client.GrowthcraftCellarBlockEntityRenderers;
 import growthcraft.cellar.init.client.GrowthcraftCellarBlockRenderers;
 import growthcraft.cellar.init.config.GrowthcraftCellarConfig;
 import growthcraft.cellar.lib.networking.GrowthcraftCellarMessages;
-import growthcraft.cellar.screen.*;
+import growthcraft.cellar.screen.BrewKettleScreen;
+import growthcraft.cellar.screen.CultureJarScreen;
+import growthcraft.cellar.screen.FermentationBarrelScreen;
+import growthcraft.cellar.screen.FruitPressScreen;
+import growthcraft.cellar.screen.RoasterScreen;
 import growthcraft.cellar.shared.Reference;
-import growthcraft.core.init.GrowthcraftCreativeModeTabs;
 import net.minecraft.client.gui.screens.MenuScreens;
-import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -20,8 +29,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 
 @Mod(Reference.MODID)
@@ -33,7 +40,7 @@ public class GrowthcraftCellar {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(this::setup);
         modEventBus.addListener(this::clientSetupEvent);
-        modEventBus.addListener(this::buildCreativeTabContents);
+        //modEventBus.addListener(this::buildCreativeTabContents);
         modEventBus.addListener(this::onRegisterRenderers);
 
         // Config
@@ -43,8 +50,8 @@ public class GrowthcraftCellar {
         GrowthcraftCellarBlocks.BLOCKS.register(modEventBus);
         GrowthcraftCellarItems.ITEMS.register(modEventBus);
         GrowthcraftCellarBlockEntities.BLOCK_ENTITIES.register(modEventBus);
-        GrowthcraftCellarFluids.FLUID_TYPES.register(modEventBus);
-        GrowthcraftCellarFluids.FLUIDS.register(modEventBus);
+        //GrowthcraftCellarFluids.FLUID_TYPES.register(modEventBus);
+        //GrowthcraftCellarFluids.FLUIDS.register(modEventBus);
         GrowthcraftCellarMenus.MENUS.register(modEventBus);
 
         GrowthcraftCellarRecipes.register(modEventBus);
@@ -86,15 +93,15 @@ public class GrowthcraftCellar {
         GrowthcraftCellarMessages.register();
     }
 
-    public void buildCreativeTabContents(CreativeModeTabEvent.BuildContents event) {
-        if (event.getTab() == GrowthcraftCreativeModeTabs.GROWTHCRAFT_CREATIVE_TAB) {
-            GrowthcraftCellarItems.ITEMS.getEntries().forEach(itemRegistryObject -> {
-                if (!GrowthcraftCellarItems.excludeItemRegistry(itemRegistryObject.getId())) {
-                    event.accept(new ItemStack(itemRegistryObject.get()));
-                }
-            });
-        }
-    }
+//    public void buildCreativeTabContents(CreativeModeTabEvent.BuildContents event) {
+//        if (event.getTab() == GrowthcraftCreativeModeTabs.GROWTHCRAFT_CREATIVE_TAB) {
+//            GrowthcraftCellarItems.ITEMS.getEntries().forEach(itemRegistryObject -> {
+//                if (!GrowthcraftCellarItems.excludeItemRegistry(itemRegistryObject.getId())) {
+//                    event.accept(new ItemStack(itemRegistryObject.get()));
+//                }
+//            });
+//        }
+//    }
 
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
