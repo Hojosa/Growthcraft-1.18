@@ -6,7 +6,7 @@ import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraftforge.client.extensions.common.IClientFluidTypeExtensions;
 import org.apache.commons.lang3.function.TriFunction;
-import org.joml.Vector3f;
+import com.mojang.math.Vector3f;
 
 public class ClientFluidTypeExtensions implements IClientFluidTypeExtensions {
     public final String modid;

@@ -1,7 +1,15 @@
 package growthcraft.lib.fluid;
 
+import java.util.function.Consumer;
+import java.util.function.Supplier;
+
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import com.mojang.blaze3d.shaders.FogShape;
 import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.math.Vector3f;
+
 import growthcraft.lib.client.ClientFluidTypeExtensions;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
@@ -25,12 +33,6 @@ import net.minecraftforge.fluids.FluidType;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-import org.joml.Vector3f;
-
-import java.util.function.Consumer;
-import java.util.function.Supplier;
 
 public class FluidRegistryContainer {
     public final RegistryObject<FluidType> type;
