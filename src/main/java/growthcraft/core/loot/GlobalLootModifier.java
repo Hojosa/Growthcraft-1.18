@@ -13,6 +13,7 @@ import net.minecraftforge.common.loot.LootModifier;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.List;
 import java.util.function.Supplier;
 
 public class GlobalLootModifier extends LootModifier {
@@ -28,7 +29,7 @@ public class GlobalLootModifier extends LootModifier {
     }
 
     @Override
-    protected @NotNull ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
+    protected @NotNull List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context) {
         generatedLoot.add(new ItemStack(item));
         return generatedLoot;
     }
