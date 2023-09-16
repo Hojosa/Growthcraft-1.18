@@ -1,16 +1,24 @@
 package growthcraft.core.shared;
 
+import growthcraft.cellar.init.GrowthcraftCellarBlocks;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.ItemStack;
 
 public class Reference {
     public static final String MODID = "growthcraft";
     public static final String NAME = "Growthcraft";
     public static final String NAME_SHORT = "core";
     public static final String VERSION = "8.1.0";
-
+    public static String CREATIVE_TAB = "Growthcraft";
+    
+    public static final CreativeModeTab ITEM_GROUP = new CreativeModeTab(CREATIVE_TAB) {
+        @Override
+        public ItemStack makeIcon() {
+            return new ItemStack(GrowthcraftCellarBlocks.FERMENTATION_BARREL_OAK.get());
+        }
+    };
+    
     private Reference() { /* Prevent default public constructor */ }
-
-    public static CreativeModeTab CREATIVE_TAB;
 
     public static class UnlocalizedName {
         public static final String CROWBAR_BLACK = "crowbar_black";
@@ -58,6 +66,8 @@ public class Reference {
 
         private UnlocalizedName() { /* Disable default public constructor. */ }
 
+
+        
     }
 
 }
