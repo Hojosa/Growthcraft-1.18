@@ -33,19 +33,19 @@ public class GrowthcraftMilkMessages {
         net.messageBuilder(MixingVatFluidSyncPacket.class, id(), NetworkDirection.PLAY_TO_CLIENT)
                 .decoder(MixingVatFluidSyncPacket::new)
                 .encoder(MixingVatFluidSyncPacket::toBytes)
-                .consumerMainThread(MixingVatFluidSyncPacket::handle)
+                .consumer(MixingVatFluidSyncPacket::handle)
                 .add();
 
         net.messageBuilder(PancheonFluidSyncPacket.class, id(), NetworkDirection.PLAY_TO_CLIENT)
                 .decoder(PancheonFluidSyncPacket::new)
                 .encoder(PancheonFluidSyncPacket::toBytes)
-                .consumerMainThread(PancheonFluidSyncPacket::handle)
+                .consumer(PancheonFluidSyncPacket::handle)
                 .add();
 
         net.messageBuilder(ChurnFluidTankSyncPacket.class, id(), NetworkDirection.PLAY_TO_CLIENT)
                 .decoder(ChurnFluidTankSyncPacket::new)
                 .encoder(ChurnFluidTankSyncPacket::toBytes)
-                .consumerMainThread(ChurnFluidTankSyncPacket::handle)
+                .consumer(ChurnFluidTankSyncPacket::handle)
                 .add();
     }
 
