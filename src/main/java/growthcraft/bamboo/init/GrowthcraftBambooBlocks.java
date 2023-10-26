@@ -111,7 +111,7 @@ public class GrowthcraftBambooBlocks {
     }
 
     private static Item.Properties getDefaultItemProperties() {
-        Item.Properties properties = new Item.Properties();
+        Item.Properties properties = new Item.Properties().tab(growthcraft.core.shared.Reference.ITEM_GROUP);
         return properties;
     }
 
