@@ -50,7 +50,7 @@ public class GrowthcraftMilk {
         GrowthcraftMilkItems.ITEMS.register(modEventBus);
         GrowthcraftMilkBlockEntities.BLOCK_ENTITIES.register(modEventBus);
         //GrowthcraftMilkFluids.FLUID_TYPES.register(modEventBus);
-        //GrowthcraftMilkFluids.FLUIDS.register(modEventBus);
+        GrowthcraftMilkFluids.FLUIDS.register(modEventBus);
         GrowthcraftMilkMenus.MENUS.register(modEventBus);
 
         GrowthcraftMilkRecipes.register(modEventBus);

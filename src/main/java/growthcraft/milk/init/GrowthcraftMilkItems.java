@@ -1,9 +1,13 @@
 package growthcraft.milk.init;
 
+import java.util.ArrayList;
+
 import growthcraft.lib.item.GrowthcraftBowlFoodItem;
+import growthcraft.lib.item.GrowthcraftBucketItem;
 import growthcraft.lib.item.GrowthcraftFoodItem;
 import growthcraft.lib.item.GrowthcraftItem;
 import growthcraft.lib.utils.CheeseUtils;
+import growthcraft.lib.utils.FluidUtils;
 import growthcraft.milk.item.CheeseCurdsDrainedItem;
 import growthcraft.milk.item.MilkingBucketItem;
 import growthcraft.milk.item.ThistleSeedItem;
@@ -14,8 +18,6 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-
-import java.util.ArrayList;
 
 public class GrowthcraftMilkItems {
 
@@ -235,7 +237,45 @@ public class GrowthcraftMilkItems {
             () -> new CheeseCurdsDrainedItem(Reference.ItemColor.RICOTTA_CHEESE.getColor())
     );
 
+    public static final RegistryObject<GrowthcraftBucketItem> BUTTER_MILK_BUCKET = ITEMS.register(
+    		FluidUtils.getFluidNames(Reference.UnlocalizedName.BUTTER_MILK).get(FluidUtils.BUCKET),
+    		() -> new GrowthcraftBucketItem(GrowthcraftMilkFluids.BUTTER_MILK, Reference.FluidColor.BUTTER_MILK.getColor()));
+    
+    public static final RegistryObject<GrowthcraftBucketItem> CHEESE_BASE_BUCKET = ITEMS.register(
+    		FluidUtils.getFluidNames(Reference.UnlocalizedName.CHEESE_BASE).get(FluidUtils.BUCKET),
+    		() -> new GrowthcraftBucketItem(GrowthcraftMilkFluids.CHEESE_BASE, Reference.FluidColor.CHEESE_BASE.getColor()));
+    
+    public static final RegistryObject<GrowthcraftBucketItem> CONDENSED_MILK_BUCKET = ITEMS.register(
+    		FluidUtils.getFluidNames(Reference.UnlocalizedName.CONDENSED_MILK).get(FluidUtils.BUCKET),
+    		() -> new GrowthcraftBucketItem(GrowthcraftMilkFluids.CONDENSED_MILK, Reference.FluidColor.CONDENSED_MILK.getColor()));
+    
+    public static final RegistryObject<GrowthcraftBucketItem> CREAM_BUCKET = ITEMS.register(
+    		FluidUtils.getFluidNames(Reference.UnlocalizedName.CREAM).get(FluidUtils.BUCKET),
+    		() -> new GrowthcraftBucketItem(GrowthcraftMilkFluids.CREAM, Reference.FluidColor.CREAM.getColor()));
+    
+    public static final RegistryObject<GrowthcraftBucketItem> CULTURED_MILK_BUCKET = ITEMS.register(
+    		FluidUtils.getFluidNames(Reference.UnlocalizedName.CULTURED_MILK).get(FluidUtils.BUCKET),
+    		() -> new GrowthcraftBucketItem(GrowthcraftMilkFluids.CULTURED_MILK, Reference.FluidColor.CULTURED_MILK.getColor()));
+    
+    public static final RegistryObject<GrowthcraftBucketItem> KUMIS_BUCKET = ITEMS.register(
+    		FluidUtils.getFluidNames(Reference.UnlocalizedName.KUMIS).get(FluidUtils.BUCKET),
+    		() -> new GrowthcraftBucketItem(GrowthcraftMilkFluids.KUMIS, Reference.FluidColor.KUMIS.getColor()));
+    
+    public static final RegistryObject<GrowthcraftBucketItem> MILK_BUCKET = ITEMS.register(
+    		FluidUtils.getFluidNames(Reference.UnlocalizedName.MILK).get(FluidUtils.BUCKET),
+    		() -> new GrowthcraftBucketItem(GrowthcraftMilkFluids.MILK, Reference.FluidColor.MILK.getColor()));
+    
+    public static final RegistryObject<GrowthcraftBucketItem> RENNET_BUCKET = ITEMS.register(
+            FluidUtils.getFluidNames(Reference.UnlocalizedName.RENNET).get(FluidUtils.BUCKET),
+            () -> new GrowthcraftBucketItem(GrowthcraftMilkFluids.RENNET, Reference.FluidColor.RENNET.getColor()));
 
+	public static final RegistryObject<GrowthcraftBucketItem> SKIM_MILK_BUCKET = ITEMS.register(
+	        FluidUtils.getFluidNames(Reference.UnlocalizedName.SKIM_MILK).get(FluidUtils.BUCKET),
+	        () -> new GrowthcraftBucketItem(GrowthcraftMilkFluids.SKIM_MILK, Reference.FluidColor.SKIM_MILK.getColor()));
+	
+	public static final RegistryObject<GrowthcraftBucketItem> WHEY_BUCKET = ITEMS.register(
+	        FluidUtils.getFluidNames(Reference.UnlocalizedName.WHEY).get(FluidUtils.BUCKET),
+	        () -> new GrowthcraftBucketItem(GrowthcraftMilkFluids.WHEY, Reference.FluidColor.WHEY.getColor()));
 
 
 

@@ -75,7 +75,7 @@ public class MilkingBucketItem extends Item implements DispensibleContainerItem 
         if (livingEntity.level.isClientSide) return InteractionResult.PASS;
 
         if (livingEntity.getType().is(GrowthcraftMilkTags.EntityTypes.MILKABLE)) {
-            player.getInventory().add(new ItemStack(GrowthcraftMilkFluids.MILK.bucket.get()));
+            player.getInventory().add(new ItemStack(GrowthcraftMilkFluids.MILK.get().getBucket()));
             player.getItemInHand(hand).shrink(1);
         }
 

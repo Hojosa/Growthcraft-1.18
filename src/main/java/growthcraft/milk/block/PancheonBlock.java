@@ -145,12 +145,14 @@ public class PancheonBlock extends BaseEntityBlock {
                 int capacity = blockEntity.getFluidTank(0).getCapacity();
                 int amount = blockEntity.getFluidTank(0).getFluidAmount();
                 int remainingFill = capacity - amount;
-
+                System.out.println("HELLO!");
+                System.out.println(blockEntity.getFluidStackInTank(0).getFluid());
+                System.out.println(GrowthcraftMilkFluids.MILK.get().getSource());
                 if(blockEntity.getFluidTank(0).isEmpty()
                     || (remainingFill >= 1000
-                        && blockEntity.getFluidStackInTank(0).getFluid().getFluidType() == GrowthcraftMilkFluids.MILK.source.get().getFluidType())
+                        && blockEntity.getFluidStackInTank(0).getFluid() == GrowthcraftMilkFluids.MILK.get().getSource())
                 ) {
-                    FluidStack fluidStack = new FluidStack( GrowthcraftMilkFluids.MILK.source.get().getSource(), 1000);
+                    FluidStack fluidStack = new FluidStack( GrowthcraftMilkFluids.MILK.get().getSource(), 1000);
                     blockEntity.getFluidTank(0).fill(fluidStack, IFluidHandler.FluidAction.EXECUTE);
                     player.setItemInHand(interactionHand, new ItemStack(Items.BUCKET));
                 }
