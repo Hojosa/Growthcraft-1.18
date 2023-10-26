@@ -51,7 +51,7 @@ public class GrowthcraftCellar {
         GrowthcraftCellarItems.ITEMS.register(modEventBus);
         GrowthcraftCellarBlockEntities.BLOCK_ENTITIES.register(modEventBus);
         //GrowthcraftCellarFluids.FLUID_TYPES.register(modEventBus);
-        //GrowthcraftCellarFluids.FLUIDS.register(modEventBus);
+        GrowthcraftCellarFluids.FLUIDS.register(modEventBus);
         GrowthcraftCellarMenus.MENUS.register(modEventBus);
 
         GrowthcraftCellarRecipes.register(modEventBus);
@@ -109,6 +109,6 @@ public class GrowthcraftCellar {
     }
 
     public void onRegisterRenderers(EntityRenderersEvent.RegisterRenderers event) {
-        GrowthcraftCellarBlockEntityRenderers.register(event);
+//        GrowthcraftCellarBlockEntityRenderers.register(event);
     }
 }

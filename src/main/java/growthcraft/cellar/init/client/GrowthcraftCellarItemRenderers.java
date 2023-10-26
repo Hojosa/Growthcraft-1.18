@@ -27,36 +27,36 @@ public class GrowthcraftCellarItemRenderers {
             event.getItemColors().register(itemColor, potion::get);
         }
 
-        ItemRendererUtils.registerItem(event, Reference.FluidColor.AMBER_ALE.toItemColor(), GrowthcraftCellarFluids.AMBER_ALE.bucket.get());
-        ItemRendererUtils.registerItem(event, Reference.FluidColor.AMBER_LAGER.toItemColor(), GrowthcraftCellarFluids.AMBER_LAGER.bucket.get());
-        ItemRendererUtils.registerItem(event, Reference.FluidColor.AMBER_WORT.toItemColor(), GrowthcraftCellarFluids.AMBER_WORT.bucket.get());
-        ItemRendererUtils.registerItem(event, Reference.FluidColor.BROWN_ALE.toItemColor(), GrowthcraftCellarFluids.BROWN_ALE.bucket.get());
-        ItemRendererUtils.registerItem(event, Reference.FluidColor.BROWN_LAGER.toItemColor(), GrowthcraftCellarFluids.BROWN_LAGER.bucket.get());
-        ItemRendererUtils.registerItem(event, Reference.FluidColor.BROWN_WORT.toItemColor(), GrowthcraftCellarFluids.BROWN_WORT.bucket.get());
-        ItemRendererUtils.registerItem(event, Reference.FluidColor.COPPER_ALE.toItemColor(), GrowthcraftCellarFluids.COPPER_ALE.bucket.get());
-        ItemRendererUtils.registerItem(event, Reference.FluidColor.COPPER_LAGER.toItemColor(), GrowthcraftCellarFluids.COPPER_LAGER.bucket.get());
-        ItemRendererUtils.registerItem(event, Reference.FluidColor.COPPER_WORT.toItemColor(), GrowthcraftCellarFluids.COPPER_WORT.bucket.get());
-        ItemRendererUtils.registerItem(event, Reference.FluidColor.DARK_LAGER.toItemColor(), GrowthcraftCellarFluids.DARK_LAGER.bucket.get());
-        ItemRendererUtils.registerItem(event, Reference.FluidColor.DARK_WORT.toItemColor(), GrowthcraftCellarFluids.DARK_WORT.bucket.get());
-        ItemRendererUtils.registerItem(event, Reference.FluidColor.DEEP_AMBER_WORT.toItemColor(), GrowthcraftCellarFluids.DEEP_AMBER_WORT.bucket.get());
-        ItemRendererUtils.registerItem(event, Reference.FluidColor.DEEP_COPPER_WORT.toItemColor(), GrowthcraftCellarFluids.DEEP_COPPER_WORT.bucket.get());
-        ItemRendererUtils.registerItem(event, Reference.FluidColor.GOLDEN_WORT.toItemColor(), GrowthcraftCellarFluids.GOLDEN_WORT.bucket.get());
-        ItemRendererUtils.registerItem(event, Reference.FluidColor.HOPPED_GOLDEN_WORT.toItemColor(), GrowthcraftCellarFluids.HOPPED_GOLDEN_WORT.bucket.get());
-        ItemRendererUtils.registerItem(event, Reference.FluidColor.IPA_ALE.toItemColor(), GrowthcraftCellarFluids.IPA_ALE.bucket.get());
-        ItemRendererUtils.registerItem(event, Reference.FluidColor.OLD_PORT_ALE.toItemColor(), GrowthcraftCellarFluids.OLD_PORT_ALE.bucket.get());
-        ItemRendererUtils.registerItem(event, Reference.FluidColor.PALE_ALE.toItemColor(), GrowthcraftCellarFluids.PALE_ALE.bucket.get());
-        ItemRendererUtils.registerItem(event, Reference.FluidColor.PALE_GOLDEN_WORT.toItemColor(), GrowthcraftCellarFluids.PALE_GOLDEN_WORT.bucket.get());
-        ItemRendererUtils.registerItem(event, Reference.FluidColor.PALE_LAGER.toItemColor(), GrowthcraftCellarFluids.PALE_LAGER.bucket.get());
-        ItemRendererUtils.registerItem(event, Reference.FluidColor.PILSNER_LAGER.toItemColor(), GrowthcraftCellarFluids.PILSNER_LAGER.bucket.get());
-        ItemRendererUtils.registerItem(event, Reference.FluidColor.PURPLE_GRAPE_JUICE.toItemColor(), GrowthcraftCellarFluids.PURPLE_GRAPE_JUICE.bucket.get());
-        ItemRendererUtils.registerItem(event, Reference.FluidColor.PURPLE_GRAPE_WINE.toItemColor(), GrowthcraftCellarFluids.PURPLE_GRAPE_WINE.bucket.get());
-        ItemRendererUtils.registerItem(event, Reference.FluidColor.RED_GRAPE_JUICE.toItemColor(), GrowthcraftCellarFluids.RED_GRAPE_JUICE.bucket.get());
-        ItemRendererUtils.registerItem(event, Reference.FluidColor.RED_GRAPE_WINE.toItemColor(), GrowthcraftCellarFluids.RED_GRAPE_WINE.bucket.get());
-        ItemRendererUtils.registerItem(event, Reference.FluidColor.STOUT_ALE.toItemColor(), GrowthcraftCellarFluids.STOUT_ALE.bucket.get());
-        ItemRendererUtils.registerItem(event, Reference.FluidColor.VIENNA_LAGER.toItemColor(), GrowthcraftCellarFluids.VIENNA_LAGER.bucket.get());
-        ItemRendererUtils.registerItem(event, Reference.FluidColor.WHITE_GRAPE_JUICE.toItemColor(), GrowthcraftCellarFluids.WHITE_GRAPE_JUICE.bucket.get());
-        ItemRendererUtils.registerItem(event, Reference.FluidColor.WHITE_GRAPE_WINE.toItemColor(), GrowthcraftCellarFluids.WHITE_GRAPE_WINE.bucket.get());
-        ItemRendererUtils.registerItem(event, Reference.FluidColor.WORT.toItemColor(), GrowthcraftCellarFluids.WORT.bucket.get());
+        ItemRendererUtils.registerItem(event, Reference.FluidColor.AMBER_ALE.toItemColor(), GrowthcraftCellarFluids.AMBER_ALE_FLUID.get().getBucket());
+        ItemRendererUtils.registerItem(event, Reference.FluidColor.AMBER_LAGER.toItemColor(), GrowthcraftCellarFluids.AMBER_LAGER_FLUID.get().getBucket());
+        ItemRendererUtils.registerItem(event, Reference.FluidColor.AMBER_WORT.toItemColor(), GrowthcraftCellarFluids.AMBER_WORT_FLUID.get().getBucket());
+        ItemRendererUtils.registerItem(event, Reference.FluidColor.BROWN_ALE.toItemColor(), GrowthcraftCellarFluids.BROWN_ALE_FLUID.get().getBucket());
+        ItemRendererUtils.registerItem(event, Reference.FluidColor.BROWN_LAGER.toItemColor(), GrowthcraftCellarFluids.BROWN_LAGER_FLUID.get().getBucket());
+        ItemRendererUtils.registerItem(event, Reference.FluidColor.BROWN_WORT.toItemColor(), GrowthcraftCellarFluids.BROWN_WORT_FLUID.get().getBucket());
+        ItemRendererUtils.registerItem(event, Reference.FluidColor.COPPER_ALE.toItemColor(), GrowthcraftCellarFluids.COPPER_ALE_FLUID.get().getBucket());
+        ItemRendererUtils.registerItem(event, Reference.FluidColor.COPPER_LAGER.toItemColor(), GrowthcraftCellarFluids.COPPER_LAGER_FLUID.get().getBucket());
+        ItemRendererUtils.registerItem(event, Reference.FluidColor.COPPER_WORT.toItemColor(), GrowthcraftCellarFluids.COPPER_WORT_FLUID.get().getBucket());
+        ItemRendererUtils.registerItem(event, Reference.FluidColor.DARK_LAGER.toItemColor(), GrowthcraftCellarFluids.DARK_LAGER_FLUID.get().getBucket());
+        ItemRendererUtils.registerItem(event, Reference.FluidColor.DARK_WORT.toItemColor(), GrowthcraftCellarFluids.DARK_WORT_FLUID.get().getBucket());
+        ItemRendererUtils.registerItem(event, Reference.FluidColor.DEEP_AMBER_WORT.toItemColor(), GrowthcraftCellarFluids.DEEP_AMBER_WORT_FLUID.get().getBucket());
+        ItemRendererUtils.registerItem(event, Reference.FluidColor.DEEP_COPPER_WORT.toItemColor(), GrowthcraftCellarFluids.DEEP_COPPER_WORT_FLUID.get().getBucket());
+        ItemRendererUtils.registerItem(event, Reference.FluidColor.GOLDEN_WORT.toItemColor(), GrowthcraftCellarFluids.GOLDEN_WORT_FLUID.get().getBucket());
+        ItemRendererUtils.registerItem(event, Reference.FluidColor.HOPPED_GOLDEN_WORT.toItemColor(), GrowthcraftCellarFluids.HOPPED_GOLDEN_WORT_FLUID.get().getBucket());
+        ItemRendererUtils.registerItem(event, Reference.FluidColor.IPA_ALE.toItemColor(), GrowthcraftCellarFluids.IPA_ALE_FLUID.get().getBucket());
+        ItemRendererUtils.registerItem(event, Reference.FluidColor.OLD_PORT_ALE.toItemColor(), GrowthcraftCellarFluids.OLD_PORT_ALE_FLUID.get().getBucket());
+        ItemRendererUtils.registerItem(event, Reference.FluidColor.PALE_ALE.toItemColor(), GrowthcraftCellarFluids.PALE_ALE_FLUID.get().getBucket());
+        ItemRendererUtils.registerItem(event, Reference.FluidColor.PALE_GOLDEN_WORT.toItemColor(), GrowthcraftCellarFluids.PALE_GOLDEN_WORT_FLUID.get().getBucket());
+        ItemRendererUtils.registerItem(event, Reference.FluidColor.PALE_LAGER.toItemColor(), GrowthcraftCellarFluids.PALE_LAGER_FLUID.get().getBucket());
+        ItemRendererUtils.registerItem(event, Reference.FluidColor.PILSNER_LAGER.toItemColor(), GrowthcraftCellarFluids.PILSNER_LAGER_FLUID.get().getBucket());
+        ItemRendererUtils.registerItem(event, Reference.FluidColor.PURPLE_GRAPE_JUICE.toItemColor(), GrowthcraftCellarFluids.PURPLE_GRAPE_JUICE_FLUID.get().getBucket());
+        ItemRendererUtils.registerItem(event, Reference.FluidColor.PURPLE_GRAPE_WINE.toItemColor(), GrowthcraftCellarFluids.PURPLE_GRAPE_WINE_FLUID.get().getBucket());
+        ItemRendererUtils.registerItem(event, Reference.FluidColor.RED_GRAPE_JUICE.toItemColor(), GrowthcraftCellarFluids.RED_GRAPE_JUICE_FLUID.get().getBucket());
+        ItemRendererUtils.registerItem(event, Reference.FluidColor.RED_GRAPE_WINE.toItemColor(), GrowthcraftCellarFluids.RED_GRAPE_WINE_FLUID.get().getBucket());
+        ItemRendererUtils.registerItem(event, Reference.FluidColor.STOUT_ALE.toItemColor(), GrowthcraftCellarFluids.STOUT_ALE_FLUID.get().getBucket());
+        ItemRendererUtils.registerItem(event, Reference.FluidColor.VIENNA_LAGER.toItemColor(), GrowthcraftCellarFluids.VIENNA_LAGER_FLUID.get().getBucket());
+        ItemRendererUtils.registerItem(event, Reference.FluidColor.WHITE_GRAPE_JUICE.toItemColor(), GrowthcraftCellarFluids.WHITE_GRAPE_JUICE_FLUID.get().getBucket());
+        ItemRendererUtils.registerItem(event, Reference.FluidColor.WHITE_GRAPE_WINE.toItemColor(), GrowthcraftCellarFluids.WHITE_GRAPE_WINE_FLUID.get().getBucket());
+        ItemRendererUtils.registerItem(event, Reference.FluidColor.WORT.toItemColor(), GrowthcraftCellarFluids.WORT_FLUID.get().getBucket());
     }
 
     private GrowthcraftCellarItemRenderers() {
