@@ -11,6 +11,7 @@ import growthcraft.apiary.init.GrowthcraftApiaryMenus;
 import growthcraft.apiary.init.client.GrowthcraftApiaryBlockRenders;
 import growthcraft.apiary.init.config.GrowthcraftApiaryConfig;
 import growthcraft.apiary.shared.Reference;
+import growthcraft.lib.utils.FluidUtils;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -30,14 +31,12 @@ public class GrowthcraftApiary {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(this::setup);
         modEventBus.addListener(this::clientSetupEvent);
-        //modEventBus.addListener(this::buildCreativeTabContents);
 
         GrowthcraftApiaryConfig.loadConfig();
 
         GrowthcraftApiaryBlocks.BLOCKS.register(modEventBus);
         GrowthcraftApiaryItems.ITEMS.register(modEventBus);
-        //GrowthcraftApiaryFluids.FLUID_TYPES.register(modEventBus);
-        //GrowthcraftApiaryFluids.FLUIDS.register(modEventBus);
+        GrowthcraftApiaryFluids.FLUIDS.register(modEventBus);
         GrowthcraftApiaryBlockEntities.BLOCK_ENTITIES.register(modEventBus);
         GrowthcraftApiaryMenus.MENUS.register(modEventBus);
 
@@ -50,9 +49,9 @@ public class GrowthcraftApiary {
     }
 
     private void setup(final FMLCommonSetupEvent event) {
-        //event.enqueueWork( () -> {
-        //   GrowthcraftOreGeneration.registerConfiguredFeatures();
-        //});
+//        event.enqueueWork( () -> {
+//           GrowthcraftOreGeneration.registerConfiguredFeatures();
+//        });
     }
 
 //    public void buildCreativeTabContents(CreativeModeTabEvent.BuildContents event) {

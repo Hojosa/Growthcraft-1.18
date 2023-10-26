@@ -11,7 +11,7 @@ import net.minecraftforge.fluids.FluidType;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Supplier;
-
+@Deprecated
 public class GrowthcraftApiaryFluidRegistryContainer extends FluidRegistryContainer {
 
     public GrowthcraftApiaryFluidRegistryContainer(

@@ -1,14 +1,19 @@
 package growthcraft.apiary.init;
 
 import growthcraft.apiary.shared.Reference;
+import growthcraft.lib.item.GrowthcraftBucketItem;
 import growthcraft.lib.item.GrowthcraftItem;
+import growthcraft.lib.utils.FluidUtils;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.ArrayList;
+
+import org.lwjgl.system.CallbackI.F;
 
 public class GrowthcraftApiaryItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(
@@ -95,6 +100,14 @@ public class GrowthcraftApiaryItems {
     public static final RegistryObject<GrowthcraftItem> HONEY_COMB_FULL = ITEMS.register(
             Reference.UnlocalizedName.HONEY_COMB_FULL, GrowthcraftItem::new
     );
+    
+    public static final RegistryObject<GrowthcraftBucketItem> HONEY_BUCKET = ITEMS.register(
+    		FluidUtils.getFluidNames(Reference.UnlocalizedName.HONEY).get(FluidUtils.BUCKET),
+    		() -> new GrowthcraftBucketItem(GrowthcraftApiaryFluids.HONEY_FLUID, Reference.FluidColor.HONEY.getColor()));
+    
+    public static final RegistryObject<GrowthcraftBucketItem> HONEY_MEAD_BUCKET = ITEMS.register(
+    		FluidUtils.getFluidNames(Reference.UnlocalizedName.HONEY_MEAD).get(FluidUtils.BUCKET),
+    		() -> new GrowthcraftBucketItem(GrowthcraftApiaryFluids.HONEY_MEAD_FLUID, Reference.FluidColor.HONEY_MEAD.getColor()));
 
     private GrowthcraftApiaryItems() {
         /* Prevent default public constructor */
