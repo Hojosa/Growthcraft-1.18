@@ -3,11 +3,12 @@ package growthcraft.apples;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import growthcraft.apiary.init.client.GrowthcraftApiaryBlockRenders;
 import growthcraft.apples.init.GrowthcraftApplesBlockEntities;
 import growthcraft.apples.init.GrowthcraftApplesBlocks;
 import growthcraft.apples.init.GrowthcraftApplesFluids;
 import growthcraft.apples.init.GrowthcraftApplesItems;
-import growthcraft.apples.init.client.GrowthcraftApplesBlockRenderers;
+import growthcraft.apples.init.client.GrowthcraftApplesBlockRenders;
 import growthcraft.apples.init.config.GrowthcraftApplesConfig;
 import growthcraft.apples.shared.Reference;
 import net.minecraftforge.common.MinecraftForge;
@@ -37,14 +38,14 @@ public class GrowthcraftApples {
         GrowthcraftApplesBlocks.BLOCKS.register(modEventBus);
         GrowthcraftApplesItems.ITEMS.register(modEventBus);
         //GrowthcraftApplesFluids.FLUID_TYPES.register(modEventBus);
-        //GrowthcraftApplesFluids.FLUIDS.register(modEventBus);
+        GrowthcraftApplesFluids.FLUIDS.register(modEventBus);
         GrowthcraftApplesBlockEntities.BLOCK_ENTITIES.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
     }
 
     private void clientSetupEvent(final FMLClientSetupEvent event) {
-        GrowthcraftApplesBlockRenderers.setRenderLayers();
+    	GrowthcraftApplesBlockRenders.setRenderLayers();
     }
 
     private void setup(final FMLCommonSetupEvent event) {

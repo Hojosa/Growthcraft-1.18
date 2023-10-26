@@ -1,7 +1,10 @@
 package growthcraft.apples.init;
 
+import growthcraft.apiary.init.GrowthcraftApiaryFluids;
 import growthcraft.apples.item.AppleSeedsItem;
 import growthcraft.apples.shared.Reference;
+import growthcraft.lib.item.GrowthcraftBucketItem;
+import growthcraft.lib.utils.FluidUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.ComposterBlock;
@@ -21,6 +24,14 @@ public class GrowthcraftApplesItems {
             Reference.UnlocalizedName.APPLE_SEEDS,
             AppleSeedsItem::new
     );
+    
+    public static final RegistryObject<GrowthcraftBucketItem> APPLE_CIDER_BUCKET = ITEMS.register(
+    		FluidUtils.getFluidNames(Reference.UnlocalizedName.APPLE_CIDER).get(FluidUtils.BUCKET),
+    		() -> new GrowthcraftBucketItem(GrowthcraftApplesFluids.APPLE_CIDER_FLUID, Reference.FluidColor.APPLE_CIDER_FLUID_COLOR.getColor()));
+    
+    public static final RegistryObject<GrowthcraftBucketItem> APPLE_JUICE_BUCKET = ITEMS.register(
+    		FluidUtils.getFluidNames(Reference.UnlocalizedName.APPLE_JUICE).get(FluidUtils.BUCKET),
+    		() -> new GrowthcraftBucketItem(GrowthcraftApplesFluids.APPLE_JUICE_FLUID, Reference.FluidColor.APPLE_JUICE_FLUID_COLOR.getColor()));
 
     public static void registerCompostables() {
         float f = 0.3F;

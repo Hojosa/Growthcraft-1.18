@@ -13,8 +13,8 @@ public class GrowthcraftApplesItemRenders {
 
     @SubscribeEvent
     public static void registerItemRenders(ColorHandlerEvent.Item event) {
-        ItemRendererUtils.registerItem(event, Reference.FluidColor.APPLE_CIDER_FLUID_COLOR.toItemColor(), GrowthcraftApplesFluids.APPLE_CIDER_FLUID.bucket.get());
-        ItemRendererUtils.registerItem(event, Reference.FluidColor.APPLE_JUICE_FLUID_COLOR.toItemColor(), GrowthcraftApplesFluids.APPLE_JUICE_FLUID.bucket.get());
+        ItemRendererUtils.registerItem(event, Reference.FluidColor.APPLE_CIDER_FLUID_COLOR.toItemColor(), GrowthcraftApplesFluids.APPLE_CIDER_FLUID.get().getBucket());
+        ItemRendererUtils.registerItem(event, Reference.FluidColor.APPLE_JUICE_FLUID_COLOR.toItemColor(), GrowthcraftApplesFluids.APPLE_JUICE_FLUID.get().getBucket());
     }
 
 }
