@@ -7,6 +7,7 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Matrix3f;
 import com.mojang.math.Matrix4f;
 import com.mojang.math.Quaternion;
+import com.mojang.math.Vector3f;
 
 import growthcraft.milk.block.entity.PancheonBlockEntity;
 import net.minecraft.client.Minecraft;
@@ -65,7 +66,7 @@ public class PancheonBlockEntityRenderer implements BlockEntityRenderer<Pancheon
         int alpha = 2 * 255;
 
         poseStack.translate(w, 0.0F, w);
-        poseStack.mulPose(new Quaternion(null, 90.0F, true));
+        poseStack.mulPose(Vector3f.XP.rotationDegrees(90.0F));
         poseStack.scale(s, s, s);
 
         Fluid fluid = fluidStack.getFluid();
