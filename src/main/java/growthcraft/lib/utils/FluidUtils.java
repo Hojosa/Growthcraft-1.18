@@ -25,7 +25,7 @@ public class FluidUtils {
         names.put("block", baseName);
         names.put("flowing", baseName + "_fluid_flowing");
         names.put("fluid", baseName + "_fluid");
-        names.put("bucket", baseName + "_bucket");
+        names.put("bucket", baseName + "_fluid_bucket");
         return names;
     }
 

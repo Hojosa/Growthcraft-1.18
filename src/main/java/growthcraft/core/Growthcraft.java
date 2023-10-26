@@ -9,6 +9,7 @@ import growthcraft.core.init.GrowthcraftItems;
 import growthcraft.core.init.GrowthcraftLootModifiers;
 import growthcraft.core.init.config.GrowthcraftConfig;
 import growthcraft.core.shared.Reference;
+import growthcraft.lib.utils.FluidUtils;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;

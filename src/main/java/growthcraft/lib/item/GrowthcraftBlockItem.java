@@ -1,5 +1,6 @@
 package growthcraft.lib.item;
 
+import growthcraft.core.shared.Reference;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.Block;
 
@@ -20,6 +21,7 @@ public class GrowthcraftBlockItem extends BlockItem {
     private static Properties getInitProperties(int maxStackSize) {
         Properties properties = new Properties();
         properties.stacksTo(maxStackSize);
+        properties.tab(Reference.ITEM_GROUP);
         return properties;
     }
 }

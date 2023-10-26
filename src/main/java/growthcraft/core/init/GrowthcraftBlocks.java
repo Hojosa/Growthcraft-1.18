@@ -3,6 +3,7 @@ package growthcraft.core.init;
 import growthcraft.core.block.RopeBlock;
 import growthcraft.core.shared.Reference;
 import growthcraft.lib.block.GrowthcraftBlock;
+import growthcraft.lib.utils.FluidUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -90,7 +91,7 @@ public class GrowthcraftBlocks {
     }
 
     private static Item.Properties getDefaultItemProperties() {
-        Item.Properties properties = new Item.Properties();
+        Item.Properties properties = new Item.Properties().tab(growthcraft.core.shared.Reference.ITEM_GROUP);
         return properties;
     }
 
