@@ -35,10 +35,10 @@ public class GrowthcraftRice {
         // Blocks, Items, Fluids, Block Entities, Containers
         GrowthcraftRiceBlocks.BLOCKS.register(modEventBus);
         GrowthcraftRiceItems.ITEMS.register(modEventBus);
-        //GrowthcraftRiceFluids.FLUID_TYPES.register(modEventBus);
-        //GrowthcraftRiceFluids.FLUIDS.register(modEventBus);
+//        GrowthcraftRiceFluids.FLUID_TYPES.register(modEventBus);
+        GrowthcraftRiceFluids.FLUIDS.register(modEventBus);
 
-        MinecraftForge.EVENT_BUS.register(this);
+//        MinecraftForge.EVENT_BUS.register(this);
     }
 
     private void clientSetupEvent(final FMLClientSetupEvent event) {

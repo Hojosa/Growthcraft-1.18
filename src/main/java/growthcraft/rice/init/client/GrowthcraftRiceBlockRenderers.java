@@ -11,12 +11,12 @@ public class GrowthcraftRiceBlockRenderers {
     }
 
     private static void setFluidRenderLayers() {
-        ItemBlockRenderTypes.setRenderLayer(GrowthcraftRiceFluids.RICE_WATER.source.get(), RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(GrowthcraftRiceFluids.RICE_WATER.flowing.get(), RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(GrowthcraftRiceFluids.RICE_WINE.source.get(), RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(GrowthcraftRiceFluids.RICE_WINE.flowing.get(), RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(GrowthcraftRiceFluids.SAKE.source.get(), RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(GrowthcraftRiceFluids.SAKE.flowing.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(GrowthcraftRiceFluids.RICE_WATER.get().getSource(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(GrowthcraftRiceFluids.RICE_WATER.get().getFlowing(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(GrowthcraftRiceFluids.RICE_WINE.get().getSource(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(GrowthcraftRiceFluids.RICE_WINE.get().getFlowing(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(GrowthcraftRiceFluids.SAKE.get().getSource(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(GrowthcraftRiceFluids.SAKE.get().getFlowing(), RenderType.translucent());
     }
 
     private GrowthcraftRiceBlockRenderers() {

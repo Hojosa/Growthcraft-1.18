@@ -1,7 +1,10 @@
 package growthcraft.rice.init;
 
+import growthcraft.lib.item.GrowthcraftBucketItem;
 import growthcraft.lib.item.GrowthcraftFoodItem;
 import growthcraft.lib.item.GrowthcraftItem;
+import growthcraft.lib.utils.FluidUtils;
+import growthcraft.milk.init.GrowthcraftMilkFluids;
 import growthcraft.rice.item.CultivatorItem;
 import growthcraft.rice.item.RiceSeedItem;
 import growthcraft.rice.shared.Reference;
@@ -48,6 +51,18 @@ public class GrowthcraftRiceItems {
             Reference.UnlocalizedName.SUSHI_ROLL,
             GrowthcraftFoodItem::new
     );
+    
+	public static final RegistryObject<GrowthcraftBucketItem> RICE_WATER_BUCKET = ITEMS.register(
+	        FluidUtils.getFluidNames(Reference.UnlocalizedName.RICE_WATER).get(FluidUtils.BUCKET),
+	        () -> new GrowthcraftBucketItem(GrowthcraftRiceFluids.RICE_WATER, Reference.FluidColor.RICE_WATER.getColor()));
+	
+	public static final RegistryObject<GrowthcraftBucketItem> RICE_WINE_BUCKET = ITEMS.register(
+	        FluidUtils.getFluidNames(Reference.UnlocalizedName.RICE_WINE).get(FluidUtils.BUCKET),
+	        () -> new GrowthcraftBucketItem(GrowthcraftRiceFluids.RICE_WINE, Reference.FluidColor.RICE_WINE.getColor()));
+	
+	public static final RegistryObject<GrowthcraftBucketItem> SAKE_BUCKET = ITEMS.register(
+	        FluidUtils.getFluidNames(Reference.UnlocalizedName.SAKE).get(FluidUtils.BUCKET),
+	        () -> new GrowthcraftBucketItem(GrowthcraftRiceFluids.SAKE, Reference.FluidColor.SAKE.getColor()));
 
     public static void registerCompostables() {
         float f = 0.3F;

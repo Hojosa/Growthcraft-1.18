@@ -13,9 +13,9 @@ public class GrowthcraftRiceItemRenderers {
 
     @SubscribeEvent
     public static void registerItemRenders(ColorHandlerEvent.Item event) {
-        ItemRendererUtils.registerItem(event, Reference.FluidColor.RICE_WATER.toItemColor(), GrowthcraftRiceFluids.RICE_WATER.bucket.get());
-        ItemRendererUtils.registerItem(event, Reference.FluidColor.RICE_WINE.toItemColor(), GrowthcraftRiceFluids.RICE_WINE.bucket.get());
-        ItemRendererUtils.registerItem(event, Reference.FluidColor.SAKE.toItemColor(), GrowthcraftRiceFluids.SAKE.bucket.get());
+        ItemRendererUtils.registerItem(event, Reference.FluidColor.RICE_WATER.toItemColor(), GrowthcraftRiceFluids.RICE_WATER.get().getBucket());
+        ItemRendererUtils.registerItem(event, Reference.FluidColor.RICE_WINE.toItemColor(), GrowthcraftRiceFluids.RICE_WINE.get().getBucket());
+        ItemRendererUtils.registerItem(event, Reference.FluidColor.SAKE.toItemColor(), GrowthcraftRiceFluids.SAKE.get().getBucket());
     }
 
     private GrowthcraftRiceItemRenderers() {
