@@ -13,7 +13,7 @@
     "count": 1
   },
   "output_fluid": {
-    "fluid": "growthcraft_milk:rennet_fluid_source",
+    "fluid": "growthcraft_milk:rennet_fluid",
     "amount": 125
   },
   "by_product": {

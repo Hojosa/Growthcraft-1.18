@@ -13,7 +13,7 @@
     "count": 1
   },
   "output_fluid": {
-    "fluid": "growthcraft_cellar:amber_wort_fluid_source",
+    "fluid": "growthcraft_cellar:amber_wort_fluid",
     "amount": 250
   },
   "by_product": {

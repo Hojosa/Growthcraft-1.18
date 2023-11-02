@@ -6,11 +6,11 @@
     "count": 1
   },
   "ingredient_fluid": {
-    "fluid": "growthcraft_cellar:purple_grape_juice_fluid_source",
+    "fluid": "growthcraft_cellar:purple_grape_juice_fluid",
     "amount": 1000
   },
   "result": {
-    "fluid": "growthcraft_cellar:purple_grape_wine_fluid_source",
+    "fluid": "growthcraft_cellar:purple_grape_wine_fluid",
     "amount": 1000
   },
   "effects": [

@@ -6,7 +6,7 @@
     "amount": 1000
   },
   "output_fluid": {
-    "fluid": "growthcraft_milk:butter_milk_fluid_source",
+    "fluid": "growthcraft_milk:butter_milk_fluid",
     "amount": 1000
   },
   "by_product": {

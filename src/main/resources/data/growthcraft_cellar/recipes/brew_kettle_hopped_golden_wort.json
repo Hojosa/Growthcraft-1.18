@@ -5,7 +5,7 @@
   "processing_time": 600,
   "by_product_chance": 10,
   "input_fluid": {
-    "fluid": "growthcraft_cellar:golden_wort_fluid_source",
+    "fluid": "growthcraft_cellar:golden_wort_fluid",
     "amount": 250
   },
   "input_item": {
@@ -13,7 +13,7 @@
     "count": 1
   },
   "output_fluid": {
-    "fluid": "growthcraft_cellar:hopped_golden_wort_fluid_source",
+    "fluid": "growthcraft_cellar:hopped_golden_wort_fluid",
     "amount": 250
   },
   "by_product": {

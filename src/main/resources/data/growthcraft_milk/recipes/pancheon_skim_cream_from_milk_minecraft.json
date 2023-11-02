@@ -7,11 +7,11 @@
   },
   "output_fluids": [
     {
-      "fluid": "growthcraft_milk:skim_milk_fluid_source",
+      "fluid": "growthcraft_milk:skim_milk_fluid",
       "amount": 1000
     },
     {
-      "fluid": "growthcraft_milk:cream_fluid_source",
+      "fluid": "growthcraft_milk:cream_fluid",
       "amount": 1000
     }
   ]
