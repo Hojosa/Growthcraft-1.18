@@ -148,8 +148,7 @@ public class FruitPressBlockEntity extends BlockEntity implements BlockEntityTic
                         recipe.getIngredientItemStack().getCount()
                 );
 
-                FluidStack resultingFluidStack = recipe.getResultingFluid().copy();
-
+                FluidStack resultingFluidStack = recipe.getResultingFluid().copy();                
                 this.getFluidTank(0).fill(resultingFluidStack, IFluidHandler.FluidAction.EXECUTE);
 
                 this.resetTickClock();

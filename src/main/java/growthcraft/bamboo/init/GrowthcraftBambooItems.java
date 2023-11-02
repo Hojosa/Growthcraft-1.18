@@ -1,12 +1,12 @@
 package growthcraft.bamboo.init;
 
+import java.util.ArrayList;
+
 import growthcraft.bamboo.shared.Reference;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-
-import java.util.ArrayList;
 
 public class GrowthcraftBambooItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(

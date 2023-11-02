@@ -1,19 +1,16 @@
 package growthcraft.apiary.init;
 
+import java.util.ArrayList;
+
 import growthcraft.apiary.shared.Reference;
 import growthcraft.lib.item.GrowthcraftBucketItem;
 import growthcraft.lib.item.GrowthcraftItem;
 import growthcraft.lib.utils.FluidUtils;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-
-import java.util.ArrayList;
-
-import org.lwjgl.system.CallbackI.F;
 
 public class GrowthcraftApiaryItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(

@@ -27,7 +27,6 @@ public class GrowthcraftRice {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(this::setup);
         modEventBus.addListener(this::clientSetupEvent);
-        //modEventBus.addListener(this::buildCreativeTabContents);
 
         // Config
         GrowthcraftRiceConfig.loadConfig();
@@ -35,10 +34,9 @@ public class GrowthcraftRice {
         // Blocks, Items, Fluids, Block Entities, Containers
         GrowthcraftRiceBlocks.BLOCKS.register(modEventBus);
         GrowthcraftRiceItems.ITEMS.register(modEventBus);
-//        GrowthcraftRiceFluids.FLUID_TYPES.register(modEventBus);
         GrowthcraftRiceFluids.FLUIDS.register(modEventBus);
 
-//        MinecraftForge.EVENT_BUS.register(this);
+        MinecraftForge.EVENT_BUS.register(this);
     }
 
     private void clientSetupEvent(final FMLClientSetupEvent event) {
@@ -48,16 +46,6 @@ public class GrowthcraftRice {
     private void setup(final FMLCommonSetupEvent event) {
         // Do Nothing for now ...
     }
-
-//    public void buildCreativeTabContents(CreativeModeTabEvent.BuildContents event) {
-//        if (event.getTab() == GrowthcraftCreativeModeTabs.GROWTHCRAFT_CREATIVE_TAB) {
-//            GrowthcraftRiceItems.ITEMS.getEntries().forEach(itemRegistryObject -> {
-//                if (!GrowthcraftRiceItems.excludeItemRegistry(itemRegistryObject.getId())) {
-//                    event.accept(new ItemStack(itemRegistryObject.get()));
-//                }
-//            });
-//        }
-//    }
 
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {

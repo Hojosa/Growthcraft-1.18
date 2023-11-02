@@ -9,7 +9,6 @@ import growthcraft.core.init.GrowthcraftItems;
 import growthcraft.core.init.GrowthcraftLootModifiers;
 import growthcraft.core.init.config.GrowthcraftConfig;
 import growthcraft.core.shared.Reference;
-import growthcraft.lib.utils.FluidUtils;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -28,15 +27,12 @@ public class Growthcraft {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(this::setup);
         modEventBus.addListener(this::clientSetupEvent);
-//        modEventBus.addListener(GrowthcraftCreativeModeTabs::registerCreativeModeTab);
-//        modEventBus.addListener(this::buildCreativeTabContents);
 
         GrowthcraftConfig.loadConfig();
 
         GrowthcraftBlocks.BLOCKS.register(modEventBus);
         GrowthcraftItems.ITEMS.register(modEventBus);
         GrowthcraftBlockEntities.BLOCK_ENTITIES.register(modEventBus);
-
         GrowthcraftLootModifiers.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
@@ -54,15 +50,4 @@ public class Growthcraft {
     public void onServerStarting(ServerStartingEvent event) {
         // Do nothing
     }
-
-//    public void buildCreativeTabContents(CreativeModeTabEvent.BuildContents event) {
-//        if(event.getTab() == GrowthcraftCreativeModeTabs.GROWTHCRAFT_CREATIVE_TAB) {
-//            GrowthcraftItems.ITEMS.getEntries().forEach(itemRegistryObject -> {
-//                if (!GrowthcraftItems.excludeItemRegistry(itemRegistryObject.getId())) {
-//                    event.accept(new ItemStack(itemRegistryObject.get()));
-//                }
-//            });
-//        }
-//    }
-
 }

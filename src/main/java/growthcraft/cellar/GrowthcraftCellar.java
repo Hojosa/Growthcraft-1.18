@@ -40,7 +40,6 @@ public class GrowthcraftCellar {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(this::setup);
         modEventBus.addListener(this::clientSetupEvent);
-        //modEventBus.addListener(this::buildCreativeTabContents);
         modEventBus.addListener(this::onRegisterRenderers);
 
         // Config
@@ -50,7 +49,6 @@ public class GrowthcraftCellar {
         GrowthcraftCellarBlocks.BLOCKS.register(modEventBus);
         GrowthcraftCellarItems.ITEMS.register(modEventBus);
         GrowthcraftCellarBlockEntities.BLOCK_ENTITIES.register(modEventBus);
-        //GrowthcraftCellarFluids.FLUID_TYPES.register(modEventBus);
         GrowthcraftCellarFluids.FLUIDS.register(modEventBus);
         GrowthcraftCellarMenus.MENUS.register(modEventBus);
 
@@ -93,22 +91,12 @@ public class GrowthcraftCellar {
         GrowthcraftCellarMessages.register();
     }
 
-//    public void buildCreativeTabContents(CreativeModeTabEvent.BuildContents event) {
-//        if (event.getTab() == GrowthcraftCreativeModeTabs.GROWTHCRAFT_CREATIVE_TAB) {
-//            GrowthcraftCellarItems.ITEMS.getEntries().forEach(itemRegistryObject -> {
-//                if (!GrowthcraftCellarItems.excludeItemRegistry(itemRegistryObject.getId())) {
-//                    event.accept(new ItemStack(itemRegistryObject.get()));
-//                }
-//            });
-//        }
-//    }
-
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
         LOGGER.info("Growthcraft Cellar starting up ...");
     }
 
     public void onRegisterRenderers(EntityRenderersEvent.RegisterRenderers event) {
-//        GrowthcraftCellarBlockEntityRenderers.register(event);
+        GrowthcraftCellarBlockEntityRenderers.register(event);
     }
 }

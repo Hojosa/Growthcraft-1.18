@@ -1,12 +1,25 @@
 package growthcraft.apples.init;
 
+import java.util.ArrayList;
+import java.util.function.Supplier;
+
 import growthcraft.apples.block.AppleBeeBoxBlock;
 import growthcraft.apples.block.AppleRopeBlock;
 import growthcraft.apples.block.AppleTreeFruit;
 import growthcraft.apples.block.AppleTreeLeaves;
 import growthcraft.apples.shared.Reference;
 import growthcraft.apples.world.feature.tree.AppleTreeGrower;
-import growthcraft.lib.block.*;
+import growthcraft.lib.block.GrowthcraftButtonBlock;
+import growthcraft.lib.block.GrowthcraftDoorBlock;
+import growthcraft.lib.block.GrowthcraftFenceBlock;
+import growthcraft.lib.block.GrowthcraftFenceGateBlock;
+import growthcraft.lib.block.GrowthcraftLogBlock;
+import growthcraft.lib.block.GrowthcraftPlankBlock;
+import growthcraft.lib.block.GrowthcraftPressurePlateBlock;
+import growthcraft.lib.block.GrowthcraftSaplingBlock;
+import growthcraft.lib.block.GrowthcraftSlabBlock;
+import growthcraft.lib.block.GrowthcraftStairsBlock;
+import growthcraft.lib.block.GrowthcraftTrapDoorBlock;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -14,9 +27,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-
-import java.util.ArrayList;
-import java.util.function.Supplier;
 
 public class GrowthcraftApplesBlocks {
 

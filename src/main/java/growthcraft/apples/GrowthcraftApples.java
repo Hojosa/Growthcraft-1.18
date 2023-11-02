@@ -3,7 +3,6 @@ package growthcraft.apples;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import growthcraft.apiary.init.client.GrowthcraftApiaryBlockRenders;
 import growthcraft.apples.init.GrowthcraftApplesBlockEntities;
 import growthcraft.apples.init.GrowthcraftApplesBlocks;
 import growthcraft.apples.init.GrowthcraftApplesFluids;
@@ -29,7 +28,6 @@ public class GrowthcraftApples {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(this::setup);
         modEventBus.addListener(this::clientSetupEvent);
-//        modEventBus.addListener(this::buildCreativeTabContents);
 
         // Config
         GrowthcraftApplesConfig.loadConfig();
@@ -37,7 +35,6 @@ public class GrowthcraftApples {
         // Blocks, Items, Fluids, Block Entities, Containers
         GrowthcraftApplesBlocks.BLOCKS.register(modEventBus);
         GrowthcraftApplesItems.ITEMS.register(modEventBus);
-        //GrowthcraftApplesFluids.FLUID_TYPES.register(modEventBus);
         GrowthcraftApplesFluids.FLUIDS.register(modEventBus);
         GrowthcraftApplesBlockEntities.BLOCK_ENTITIES.register(modEventBus);
 
@@ -56,14 +53,4 @@ public class GrowthcraftApples {
     public void onServerStarting(ServerStartingEvent event) {
         LOGGER.info("Growthcraft Apples starting up ...");
     }
-
-//    public void buildCreativeTabContents(CreativeModeTabEvent.BuildContents event) {
-//        if (event.getTab() == GrowthcraftCreativeModeTabs.GROWTHCRAFT_CREATIVE_TAB) {
-//            GrowthcraftApplesItems.ITEMS.getEntries().forEach(itemRegistryObject -> {
-//                if (!GrowthcraftApplesItems.excludeItemRegistry(itemRegistryObject.getId())) {
-//                    event.accept(new ItemStack(itemRegistryObject.get()));
-//                }
-//            });
-//        }
-//    }
 }

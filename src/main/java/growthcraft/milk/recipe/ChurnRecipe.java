@@ -1,11 +1,13 @@
 package growthcraft.milk.recipe;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import com.google.gson.JsonObject;
+
 import growthcraft.lib.utils.CraftingUtils;
 import growthcraft.milk.GrowthcraftMilk;
-import growthcraft.milk.recipe.MixingVatItemRecipe.Serializer;
 import growthcraft.milk.shared.Reference;
-import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
@@ -17,8 +19,6 @@ import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.fluids.FluidStack;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 public class ChurnRecipe implements Recipe<SimpleContainer> {
 

@@ -1,5 +1,6 @@
 package growthcraft.milk.item;
 
+import growthcraft.core.shared.Reference;
 import growthcraft.milk.init.GrowthcraftMilkFluids;
 import growthcraft.milk.init.GrowthcraftMilkItems;
 import growthcraft.milk.init.GrowthcraftMilkTags;
@@ -67,6 +68,7 @@ public class MilkingBucketItem extends Item implements DispensibleContainerItem 
     private static Properties getInitProperties() {
         Properties properties = new Properties();
         properties.stacksTo(16);
+        properties.tab(Reference.ITEM_GROUP);
         return properties;
     }
 

@@ -1,6 +1,7 @@
 package growthcraft.apples.init;
 
-import growthcraft.apiary.init.GrowthcraftApiaryFluids;
+import java.util.ArrayList;
+
 import growthcraft.apples.item.AppleSeedsItem;
 import growthcraft.apples.shared.Reference;
 import growthcraft.lib.item.GrowthcraftBucketItem;
@@ -11,8 +12,6 @@ import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-
-import java.util.ArrayList;
 
 public class GrowthcraftApplesItems {
 

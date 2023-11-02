@@ -1,10 +1,11 @@
 package growthcraft.rice.init;
 
+import java.util.ArrayList;
+
 import growthcraft.lib.item.GrowthcraftBucketItem;
 import growthcraft.lib.item.GrowthcraftFoodItem;
 import growthcraft.lib.item.GrowthcraftItem;
 import growthcraft.lib.utils.FluidUtils;
-import growthcraft.milk.init.GrowthcraftMilkFluids;
 import growthcraft.rice.item.CultivatorItem;
 import growthcraft.rice.item.RiceSeedItem;
 import growthcraft.rice.shared.Reference;
@@ -14,8 +15,6 @@ import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-
-import java.util.ArrayList;
 
 public class GrowthcraftRiceItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(

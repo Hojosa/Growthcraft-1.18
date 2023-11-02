@@ -11,7 +11,6 @@ import growthcraft.apiary.init.GrowthcraftApiaryMenus;
 import growthcraft.apiary.init.client.GrowthcraftApiaryBlockRenders;
 import growthcraft.apiary.init.config.GrowthcraftApiaryConfig;
 import growthcraft.apiary.shared.Reference;
-import growthcraft.lib.utils.FluidUtils;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -39,7 +38,7 @@ public class GrowthcraftApiary {
         GrowthcraftApiaryFluids.FLUIDS.register(modEventBus);
         GrowthcraftApiaryBlockEntities.BLOCK_ENTITIES.register(modEventBus);
         GrowthcraftApiaryMenus.MENUS.register(modEventBus);
-
+        
         MinecraftForge.EVENT_BUS.register(this);
     }
 
@@ -53,16 +52,6 @@ public class GrowthcraftApiary {
 //           GrowthcraftOreGeneration.registerConfiguredFeatures();
 //        });
     }
-
-//    public void buildCreativeTabContents(CreativeModeTabEvent.BuildContents event) {
-//        if (event.getTab() == GrowthcraftCreativeModeTabs.GROWTHCRAFT_CREATIVE_TAB) {
-//            GrowthcraftApiaryItems.ITEMS.getEntries().forEach(itemRegistryObject -> {
-//                if (!GrowthcraftApiaryItems.excludeItemRegistry(itemRegistryObject.getId())) {
-//                    event.accept(new ItemStack(itemRegistryObject.get()));
-//                }
-//            });
-//        }
-//    }
     
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {

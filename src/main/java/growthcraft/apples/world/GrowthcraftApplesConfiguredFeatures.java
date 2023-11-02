@@ -38,38 +38,5 @@ public class GrowthcraftApplesConfiguredFeatures {
 
     public static final Holder<ConfiguredFeature<RandomFeatureConfiguration, ?>> APPLE_TREE_SPAWN =
             FeatureUtils.register("apple_tree_spawn", Feature.RANDOM_SELECTOR,
-                    new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature(APPLE_TREE_CHECKED,
-                            0.5F)), APPLE_TREE_CHECKED));
-	
-//    public static final ResourceKey<ConfiguredFeature<?, ?>> APPLE_TREE_KEY = registerKey(Reference.UnlocalizedName.APPLE_TREE);
-//
-//    public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
-//        register(context, APPLE_TREE_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
-//                // Trunk block
-//                BlockStateProvider.simple(GrowthcraftApplesBlocks.APPLE_WOOD_LOG.get()),
-//                // Trunk placer (baseHeight, heightRandA, heightRandB)
-//                new StraightTrunkPlacer(5, 2, 0),
-//                // Leaves block
-//                BlockStateProvider.simple(GrowthcraftApplesBlocks.APPLE_TREE_LEAVES.get()),
-//                // Leaves placer (radius, offset, height)
-//                new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3),
-//                // Spawn Area Saturation (limit, lowerSize, upperSize)
-//                new TwoLayersFeatureSize(1, 0, 2)).build()
-//        );
-//
-//    }
-//
-//    public static final ResourceKey<ConfiguredFeature<?, ?>> registerKey(String name) {
-//        return ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation(Reference.MODID, name));
-//    }
-//
-//    private static <FC extends FeatureConfiguration, F extends Feature<FC>> void register(
-//            BootstapContext<ConfiguredFeature<?, ?>> context,
-//            ResourceKey<ConfiguredFeature<?, ?>> key,
-//            F feature,
-//            FC configuration
-//    ) {
-//        context.register(key, new ConfiguredFeature(feature, configuration));
-//    }
-
+                    new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature(APPLE_TREE_CHECKED,0.5F)), APPLE_TREE_CHECKED));
 }
