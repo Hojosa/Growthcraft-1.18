@@ -1,5 +1,5 @@
 {
-    "parent": "block/door_bottom_left",
+    "parent": "block/door_top_rh",
     "textures": {
         "bottom": "growthcraft_bamboo:block/bamboo_plank_door_bottom",
         "top": "growthcraft_bamboo:block/bamboo_plank_door_top"
