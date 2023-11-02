@@ -16,7 +16,12 @@ public class GrowthcraftMilkBlockRenderers {
 
     public static void setRenderLayers() {
         setFluidRenderLayers();
+        setBlockRenderLayers();
     }
+    
+	private static void setBlockRenderLayers() {
+		ItemBlockRenderTypes.setRenderLayer(GrowthcraftMilkBlocks.THISTLE_CROP.get(), RenderType.cutout());	
+	}
 
     private static void setFluidRenderLayers() {
         ItemBlockRenderTypes.setRenderLayer(GrowthcraftMilkFluids.BUTTER_MILK.get().getSource(), RenderType.translucent());

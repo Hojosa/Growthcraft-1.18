@@ -1,13 +1,18 @@
 package growthcraft.apples.init.client;
 
+import growthcraft.apples.init.GrowthcraftApplesBlocks;
 import growthcraft.apples.init.GrowthcraftApplesFluids;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 
 public class GrowthcraftApplesBlockRenders {
     public static void setRenderLayers() {
-        // No longer programmatically set for blocks. Use "render_type": "cutout|translucent" in block model json.
         setFluidRenderLayers();
+        setBlockRenderLayers();
+    }
+    
+    private static void setBlockRenderLayers() {
+    	ItemBlockRenderTypes.setRenderLayer(GrowthcraftApplesBlocks.APPLE_TREE_SAPLING.get(), RenderType.cutout());
     }
 
     private static void setFluidRenderLayers() {

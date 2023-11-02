@@ -1,5 +1,6 @@
 package growthcraft.cellar.init.client;
 
+import growthcraft.cellar.init.GrowthcraftCellarBlocks;
 import growthcraft.cellar.init.GrowthcraftCellarFluids;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
@@ -8,10 +9,23 @@ public class GrowthcraftCellarBlockRenderers {
 
     public static void setRenderLayers() {
         setFluidRenderLayers();
+        setBlockRenderLayers();
+    }
+    
+    private static void setBlockRenderLayers() {
+    	ItemBlockRenderTypes.setRenderLayer(GrowthcraftCellarBlocks.PURPLE_GRAPE_VINE.get(), RenderType.cutout());
+    	ItemBlockRenderTypes.setRenderLayer(GrowthcraftCellarBlocks.PURPLE_GRAPE_VINE_FRUIT.get(), RenderType.cutout());
+    	ItemBlockRenderTypes.setRenderLayer(GrowthcraftCellarBlocks.PURPLE_GRAPE_VINE_LEAVES.get(), RenderType.translucent());
+    	ItemBlockRenderTypes.setRenderLayer(GrowthcraftCellarBlocks.WHITE_GRAPE_VINE.get(), RenderType.cutout());
+    	ItemBlockRenderTypes.setRenderLayer(GrowthcraftCellarBlocks.WHITE_GRAPE_VINE_FRUIT.get(), RenderType.cutout());
+    	ItemBlockRenderTypes.setRenderLayer(GrowthcraftCellarBlocks.WHITE_GRAPE_VINE_LEAVES.get(), RenderType.translucent());
+    	ItemBlockRenderTypes.setRenderLayer(GrowthcraftCellarBlocks.HOPS_VINE.get(), RenderType.cutout());
+    	ItemBlockRenderTypes.setRenderLayer(GrowthcraftCellarBlocks.RED_GRAPE_VINE.get(), RenderType.cutout());
+    	ItemBlockRenderTypes.setRenderLayer(GrowthcraftCellarBlocks.RED_GRAPE_VINE_FRUIT.get(), RenderType.cutout());
+    	ItemBlockRenderTypes.setRenderLayer(GrowthcraftCellarBlocks.RED_GRAPE_VINE_LEAVES.get(), RenderType.translucent());
     }
 
     private static void setFluidRenderLayers() {
-        // TODO: Set GrowthcraftCellar Fluid Renderers
         ItemBlockRenderTypes.setRenderLayer(GrowthcraftCellarFluids.AMBER_ALE_FLUID.get().getSource(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(GrowthcraftCellarFluids.AMBER_ALE_FLUID.get().getFlowing(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(GrowthcraftCellarFluids.AMBER_LAGER_FLUID.get().getSource(), RenderType.translucent());
