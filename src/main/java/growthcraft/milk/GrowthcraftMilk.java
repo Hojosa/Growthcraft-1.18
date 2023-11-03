@@ -39,7 +39,6 @@ public class GrowthcraftMilk {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(this::setup);
         modEventBus.addListener(this::clientSetupEvent);
-//        modEventBus.addListener(this::buildCreativeTabContents);
         modEventBus.addListener(this::onRegisterRenderers);
 
         // Config
@@ -49,8 +48,7 @@ public class GrowthcraftMilk {
         GrowthcraftMilkBlocks.BLOCKS.register(modEventBus);
         GrowthcraftMilkItems.ITEMS.register(modEventBus);
         GrowthcraftMilkBlockEntities.BLOCK_ENTITIES.register(modEventBus);
-        //GrowthcraftMilkFluids.FLUID_TYPES.register(modEventBus);
-        //GrowthcraftMilkFluids.FLUIDS.register(modEventBus);
+        GrowthcraftMilkFluids.FLUIDS.register(modEventBus);
         GrowthcraftMilkMenus.MENUS.register(modEventBus);
 
         GrowthcraftMilkRecipes.register(modEventBus);
@@ -69,16 +67,6 @@ public class GrowthcraftMilk {
         MinecraftForge.EVENT_BUS.register(new LivingDropLootModifier());
         GrowthcraftMilkMessages.register();
     }
-
-//    public void buildCreativeTabContents(CreativeModeTabEvent.BuildContents event) {
-//        if (event.getTab() == GrowthcraftCreativeModeTabs.GROWTHCRAFT_CREATIVE_TAB) {
-//            GrowthcraftMilkItems.ITEMS.getEntries().forEach(itemRegistryObject -> {
-//                if (!GrowthcraftMilkItems.excludeItemRegistry(itemRegistryObject.getId())) {
-//                    event.accept(new ItemStack(itemRegistryObject.get()));
-//                }
-//            });
-//        }
-//    }
 
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {

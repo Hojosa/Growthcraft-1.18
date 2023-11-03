@@ -1,16 +1,19 @@
 package growthcraft.cellar.recipe;
 
+import java.awt.Color;
+
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+
 import growthcraft.cellar.GrowthcraftCellar;
-import growthcraft.cellar.recipe.BrewKettleRecipe.Serializer;
 import growthcraft.cellar.shared.Reference;
 import growthcraft.lib.utils.CraftingUtils;
 import growthcraft.lib.utils.EffectUtils;
 import net.minecraft.core.NonNullList;
-import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.world.SimpleContainer;
@@ -24,10 +27,6 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.registries.ForgeRegistries;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import java.awt.*;
 
 public class FermentationBarrelRecipe implements Recipe<SimpleContainer> {
 

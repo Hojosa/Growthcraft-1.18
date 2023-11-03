@@ -7,6 +7,7 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Matrix3f;
 import com.mojang.math.Matrix4f;
 import com.mojang.math.Quaternion;
+import com.mojang.math.Vector3f;
 
 import growthcraft.milk.block.entity.MixingVatBlockEntity;
 import net.minecraft.client.Minecraft;
@@ -36,7 +37,6 @@ public class MixingVatBlockEntityRenderer implements BlockEntityRenderer<MixingV
 
         float baseOffset = 4.0F / 16F;
         float maxFluidHeight = 14.0F / 16F;
-        Quaternion rotation = new Quaternion(null, 90.0F, true);
 
         if(!blockEntity.getFluidStackInTank(0).isEmpty()) {
 
@@ -46,7 +46,7 @@ public class MixingVatBlockEntityRenderer implements BlockEntityRenderer<MixingV
             float inputAmount = inputFluidStack.getAmount();
             float inputFluidHeight = baseOffset + (maxFluidHeight - baseOffset) * inputAmount / inputCapacity;
 
-            renderFluidSingle(poseStack, multiBufferSource, inputFluidStack, 0.0F, inputFluidHeight, 0.0F, rotation, light, overlay);
+            renderFluidSingle(poseStack, multiBufferSource, inputFluidStack, 0.0F, inputFluidHeight, 0.0F, Vector3f.XP.rotationDegrees(90.0F), light, overlay);
         }
 
         if(!blockEntity.getFluidStackInTank(1).isEmpty()) {
@@ -56,7 +56,7 @@ public class MixingVatBlockEntityRenderer implements BlockEntityRenderer<MixingV
             float outputAmount = outputFluidStack.getAmount();
             float outputFluidHeight = baseOffset + (maxFluidHeight - baseOffset) * outputAmount / outputCapacity;
 
-            renderFluidSingle(poseStack, multiBufferSource, outputFluidStack, 0.0F, outputFluidHeight, 0.0F, rotation, light, overlay);
+            renderFluidSingle(poseStack, multiBufferSource, outputFluidStack, 0.0F, outputFluidHeight, 0.0F, Vector3f.XP.rotationDegrees(90.0F), light, overlay);
         }
     }
 

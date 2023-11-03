@@ -7,6 +7,7 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Matrix3f;
 import com.mojang.math.Matrix4f;
 import com.mojang.math.Quaternion;
+import com.mojang.math.Vector3f;
 
 import growthcraft.cellar.block.entity.CultureJarBlockEntity;
 import net.minecraft.client.Minecraft;
@@ -49,17 +50,17 @@ public class CultureJarBlockEntityRenderer implements BlockEntityRenderer<Cultur
 
         //poseStack.popPose();
         // TOP
-        renderFluidSingle(poseStack, multiBufferSource, inputFluidStack, 0.0F, inputFluidHeight, 0.0F, new Quaternion(null, 90.0F, true), light, overlay);
+        renderFluidSingle(poseStack, multiBufferSource, inputFluidStack, 0.0F, inputFluidHeight, 0.0F, Vector3f.XP.rotationDegrees(90.0F), light, overlay);
         // SOUTH FACING
-        renderFluidSingle(poseStack, multiBufferSource, inputFluidStack, 0.0F, 0.605F, 0.6F, new Quaternion(null, 180.0F, true), light, overlay);
+        renderFluidSingle(poseStack, multiBufferSource, inputFluidStack, 0.0F, 0.605F, 0.6F, Vector3f.XP.rotationDegrees(180.0F), light, overlay);
         // NORTH FACING
-        renderFluidSingle(poseStack, multiBufferSource, inputFluidStack, 0.0F, -0.35F, 0.355F, new Quaternion(null, 0.0F, true), light, overlay);
+        renderFluidSingle(poseStack, multiBufferSource, inputFluidStack, 0.0F, -0.35F, 0.355F, Vector3f.XP.rotationDegrees(0.0F), light, overlay);
         // BOTTOM FACING
-        renderFluidSingle(poseStack, multiBufferSource, inputFluidStack, 0.0F, 0.01F, 0.955F, new Quaternion(null, 270.0F, true), light, overlay);
+        renderFluidSingle(poseStack, multiBufferSource, inputFluidStack, 0.0F, 0.01F, 0.955F, Vector3f.XP.rotationDegrees(270.0F), light, overlay);
         // WEST FACING
-        renderFluidSingle(poseStack, multiBufferSource, inputFluidStack, 0.355F, -0.35F, 0.956F, new Quaternion(null, 90.0F, true), light, overlay);
+        renderFluidSingle(poseStack, multiBufferSource, inputFluidStack, 0.355F, -0.35F, 0.956F, Vector3f.XP.rotationDegrees(90.0F), light, overlay);
         // EAST FACING
-        renderFluidSingle(poseStack, multiBufferSource, inputFluidStack, 0.6F, -0.35F, 0.0F, new Quaternion(null, 270.0F, true), light, overlay);
+        renderFluidSingle(poseStack, multiBufferSource, inputFluidStack, 0.6F, -0.35F, 0.0F, Vector3f.XP.rotationDegrees(270.0F), light, overlay);
 
         //poseStack.pushPose();
 

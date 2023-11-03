@@ -1,5 +1,9 @@
 package growthcraft.apples.block;
 
+import java.util.Random;
+
+import org.jetbrains.annotations.NotNull;
+
 import growthcraft.apples.init.GrowthcraftApplesBlocks;
 import growthcraft.apples.init.GrowthcraftApplesItems;
 import net.minecraft.core.BlockPos;
@@ -29,10 +33,6 @@ import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-
-import java.util.Random;
-
-import org.jetbrains.annotations.NotNull;
 
 public class AppleTreeFruit extends BushBlock implements BonemealableBlock {
     public static final int MAX_AGE = 7;

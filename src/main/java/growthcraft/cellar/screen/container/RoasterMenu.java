@@ -1,5 +1,7 @@
 package growthcraft.cellar.screen.container;
 
+import org.jetbrains.annotations.NotNull;
+
 import growthcraft.cellar.block.RoasterBlock;
 import growthcraft.cellar.block.entity.RoasterBlockEntity;
 import growthcraft.cellar.init.GrowthcraftCellarMenus;
@@ -24,7 +26,7 @@ public class RoasterMenu extends AbstractContainerMenu {
     private final RoasterBlockEntity blockEntity;
     private final RoasterBlock block;
     private final Level level;
-    private final ContainerData data;
+//    private final ContainerData data;
 
     public RoasterMenu(int containerId, Inventory inventory, FriendlyByteBuf extraData) {
         this(containerId, inventory, inventory.player.level.getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(2));
@@ -36,7 +38,7 @@ public class RoasterMenu extends AbstractContainerMenu {
         this.blockEntity = (RoasterBlockEntity) blockEntity;
         this.block = (RoasterBlock) inventory.player.level.getBlockEntity(this.blockEntity.getBlockPos()).getBlockState().getBlock();
         this.level = inventory.player.level;
-        this.data = data;
+//        this.data = data;
 
         addPlayerInventory(inventory);
         addPlayerHotbar(inventory);
@@ -47,7 +49,7 @@ public class RoasterMenu extends AbstractContainerMenu {
                 this.addSlot(new SlotItemHandler(handler, 1, 106, 42));
         });
 
-        addDataSlots(this.data);
+        addDataSlots(data);
 
     }
     
@@ -77,12 +79,12 @@ public class RoasterMenu extends AbstractContainerMenu {
     private static final int VANILLA_FIRST_SLOT_INDEX = 0;
     private static final int TE_INVENTORY_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
 
-    private static final int TE_INVENTORY_SLOT_COUNT = 0;  // must be the number of slots you have!
+    private static final int TE_INVENTORY_SLOT_COUNT = 2;  // must be the number of slots you have!
 
     @Override
-    public ItemStack quickMoveStack(Player playerIn, int index) {
+    public @NotNull ItemStack quickMoveStack(Player playerIn, int index) {
         Slot sourceSlot = slots.get(index);
-        if (sourceSlot == null || !sourceSlot.hasItem()) return ItemStack.EMPTY;  //EMPTY_ITEM
+        if (!sourceSlot.hasItem()) return ItemStack.EMPTY;  //EMPTY_ITEM
         ItemStack sourceStack = sourceSlot.getItem();
         ItemStack copyOfSourceStack = sourceStack.copy();
 
@@ -113,7 +115,7 @@ public class RoasterMenu extends AbstractContainerMenu {
     }
 
     @Override
-    public boolean stillValid(Player player) {
+    public boolean stillValid(@NotNull Player player) {
         return stillValid(
                 ContainerLevelAccess.create(
                         this.level,

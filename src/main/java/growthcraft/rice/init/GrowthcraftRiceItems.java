@@ -1,7 +1,11 @@
 package growthcraft.rice.init;
 
+import java.util.ArrayList;
+
+import growthcraft.lib.item.GrowthcraftBucketItem;
 import growthcraft.lib.item.GrowthcraftFoodItem;
 import growthcraft.lib.item.GrowthcraftItem;
+import growthcraft.lib.utils.FluidUtils;
 import growthcraft.rice.item.CultivatorItem;
 import growthcraft.rice.item.RiceSeedItem;
 import growthcraft.rice.shared.Reference;
@@ -11,8 +15,6 @@ import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-
-import java.util.ArrayList;
 
 public class GrowthcraftRiceItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(
@@ -48,6 +50,22 @@ public class GrowthcraftRiceItems {
             Reference.UnlocalizedName.SUSHI_ROLL,
             GrowthcraftFoodItem::new
     );
+    
+    public static final RegistryObject<GrowthcraftItem> YEAST_SEISHU = ITEMS.register(
+            Reference.UnlocalizedName.YEAST_SEISHU, GrowthcraftItem::new
+    );
+    
+	public static final RegistryObject<GrowthcraftBucketItem> RICE_WATER_BUCKET = ITEMS.register(
+	        FluidUtils.getFluidNames(Reference.UnlocalizedName.RICE_WATER).get(FluidUtils.BUCKET),
+	        () -> new GrowthcraftBucketItem(GrowthcraftRiceFluids.RICE_WATER, Reference.FluidColor.RICE_WATER.getColor()));
+	
+	public static final RegistryObject<GrowthcraftBucketItem> RICE_WINE_BUCKET = ITEMS.register(
+	        FluidUtils.getFluidNames(Reference.UnlocalizedName.RICE_WINE).get(FluidUtils.BUCKET),
+	        () -> new GrowthcraftBucketItem(GrowthcraftRiceFluids.RICE_WINE, Reference.FluidColor.RICE_WINE.getColor()));
+	
+	public static final RegistryObject<GrowthcraftBucketItem> SAKE_BUCKET = ITEMS.register(
+	        FluidUtils.getFluidNames(Reference.UnlocalizedName.SAKE).get(FluidUtils.BUCKET),
+	        () -> new GrowthcraftBucketItem(GrowthcraftRiceFluids.SAKE, Reference.FluidColor.SAKE.getColor()));
 
     public static void registerCompostables() {
         float f = 0.3F;

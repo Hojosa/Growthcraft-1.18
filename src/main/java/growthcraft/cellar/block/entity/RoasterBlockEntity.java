@@ -28,6 +28,8 @@ import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;
@@ -62,6 +64,11 @@ public class RoasterBlockEntity extends BlockEntity implements BlockEntityTicker
         @Override
         protected void onContentsChanged(int slot) {
             setChanged();
+        }
+        
+        @Override
+        public boolean isItemValid(int slot, @NotNull ItemStack stack) {
+            return slot != 1;
         }
     };
 
@@ -324,5 +331,12 @@ public class RoasterBlockEntity extends BlockEntity implements BlockEntityTicker
         float percentage = progress * 100;
 
         return Math.round(percentage);
+    }
+    
+
+    public void playSound(String sound) {
+        if (Objects.equals(sound, "open") && this.level != null) {
+            this.level.playSound(null, this.getBlockPos(), SoundEvents.IRON_DOOR_OPEN, SoundSource.BLOCKS,1.0F, 1.0F);
+        }
     }
 }

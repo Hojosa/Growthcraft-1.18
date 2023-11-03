@@ -1,8 +1,19 @@
 package growthcraft.lib.kaupenjoe.screen.renderer;
 
+import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.google.common.base.Preconditions;
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.*;
+import com.mojang.blaze3d.vertex.BufferBuilder;
+import com.mojang.blaze3d.vertex.DefaultVertexFormat;
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.Tesselator;
+import com.mojang.blaze3d.vertex.VertexFormat;
 import com.mojang.math.Matrix4f;
 
 import growthcraft.core.shared.Reference;
@@ -18,14 +29,8 @@ import net.minecraft.world.inventory.InventoryMenu;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraftforge.fluids.FluidAttributes;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.FluidType;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
-import java.text.NumberFormat;
-import java.util.ArrayList;
-import java.util.List;
 
 // CREDIT: https://github.com/mezz/JustEnoughItems by mezz
 // Under MIT-License: https://github.com/mezz/JustEnoughItems/blob/1.19/LICENSE.txt
@@ -151,16 +156,16 @@ public class FluidTankRenderer {
 
     private TextureAtlasSprite getStillFluidSprite(FluidStack fluidStack) {
         Fluid fluid = fluidStack.getFluid();
+        FluidAttributes fluidAttributes = fluid.getAttributes();
+        //IClientFluidTypeExtensions renderProperties;
 
-        IClientFluidTypeExtensions renderProperties;
+//        if(fluid.getFluidType().getRenderPropertiesInternal() instanceof IClientFluidTypeExtensions internalProperties) {
+//            renderProperties = internalProperties;
+//        } else {
+//            renderProperties = IClientFluidTypeExtensions.of(fluid);
+//        }
 
-        if(fluid.getFluidType().getRenderPropertiesInternal() instanceof IClientFluidTypeExtensions internalProperties) {
-            renderProperties = internalProperties;
-        } else {
-            renderProperties = IClientFluidTypeExtensions.of(fluid);
-        }
-
-        ResourceLocation fluidStill = renderProperties.getStillTexture(fluidStack);
+        ResourceLocation fluidStill = fluidAttributes.getStillTexture(fluidStack);
 
         Minecraft minecraft = Minecraft.getInstance();
         return minecraft.getTextureAtlas(InventoryMenu.BLOCK_ATLAS).apply(fluidStill);
@@ -168,21 +173,23 @@ public class FluidTankRenderer {
 
     private int getColorTint(FluidStack fluidStack) {
         Fluid fluid = fluidStack.getFluid();
-        IClientFluidTypeExtensions renderProperties;
+        FluidAttributes fluidAttributes = fluid.getAttributes();
+//        IClientFluidTypeExtensions renderProperties;
 
-        if(fluid.getFluidType().getRenderPropertiesInternal() instanceof IClientFluidTypeExtensions internalProperties) {
-            renderProperties = internalProperties;
-        } else {
-            renderProperties = IClientFluidTypeExtensions.of(fluid);
-        }
-
-        return renderProperties.getTintColor(fluidStack);
+//        if(fluid.getFluidType().getRenderPropertiesInternal() instanceof IClientFluidTypeExtensions internalProperties) {
+//            renderProperties = internalProperties;
+//        } else {
+//            renderProperties = IClientFluidTypeExtensions.of(fluid);
+//        }
+        
+        return fluidAttributes.getColor(fluidStack);
     }
 
     public List<Component> getTooltip(FluidStack fluidStack, TooltipFlag tooltipFlag) {
         List<Component> tooltip = new ArrayList<>();
 
         Fluid fluidType = fluidStack.getFluid();
+        FluidAttributes fluidAttributes = fluidType.getAttributes();
         try {
             if (fluidType.isSame(Fluids.EMPTY)) {
                 MutableComponent amountString = new TranslatableComponent(Reference.MODID.concat(".tooltip.liquid.empty"));
@@ -194,7 +201,7 @@ public class FluidTankRenderer {
             tooltip.add(displayName);
 
             long amount = fluidStack.getAmount();
-            long milliBuckets = (amount * 1000) / FluidType.BUCKET_VOLUME;
+            long milliBuckets = (amount * 1000) / fluidAttributes.BUCKET_VOLUME;
 
             if (tooltipMode == TooltipMode.SHOW_AMOUNT_AND_CAPACITY) {
                 MutableComponent amountString = new TranslatableComponent(Reference.MODID.concat(".tooltip.liquid.amount.with.capacity"), nf.format(milliBuckets), nf.format(capacity));

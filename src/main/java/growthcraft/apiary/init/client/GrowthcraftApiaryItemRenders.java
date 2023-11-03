@@ -13,8 +13,9 @@ public class GrowthcraftApiaryItemRenders {
 
     @SubscribeEvent
     public static void registerItemRenders(ColorHandlerEvent.Item event) {
-        ItemRendererUtils.registerItem(event, Reference.FluidColor.HONEY.toItemColor(), GrowthcraftApiaryFluids.HONEY.bucket.get());
-        ItemRendererUtils.registerItem(event, Reference.FluidColor.HONEY_MEAD.toItemColor(), GrowthcraftApiaryFluids.HONEY_MEAD.bucket.get());
+       ItemRendererUtils.registerItem(event, Reference.FluidColor.HONEY.toItemColor(), GrowthcraftApiaryFluids.HONEY_FLUID.get().getBucket());
+       ItemRendererUtils.registerItem(event, Reference.FluidColor.HONEY_MEAD.toItemColor(), GrowthcraftApiaryFluids.HONEY_MEAD_FLUID.get().getBucket()); 
+       ItemRendererUtils.registerItem(event, Reference.FluidColor.HONEY_MEAD_MUST.toItemColor(), GrowthcraftApiaryFluids.HONEY_MEAD_MUST_FLUID.get().getBucket());
     }
 
 }

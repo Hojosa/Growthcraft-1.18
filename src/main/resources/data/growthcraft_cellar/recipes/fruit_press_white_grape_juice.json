@@ -6,7 +6,7 @@
     "count": 1
   },
   "output_fluid": {
-    "fluid": "growthcraft_cellar:white_grape_juice_fluid_source",
+    "fluid": "growthcraft_cellar:white_grape_juice_fluid",
     "amount": 250
   },
   "by_product": {

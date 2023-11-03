@@ -18,7 +18,7 @@ import java.util.Optional;
 public class FermentationBarrelScreen extends AbstractContainerScreen<FermentationBarrelMenu> {
 
     private static final ResourceLocation TEXTURE = new ResourceLocation(
-            Reference.MODID, "textures/gui/fermentation_barrel.png"
+            Reference.MODID, "textures/gui/fermentation_barrel_screen.png"
     );
 
     private FluidTankRenderer fluidTankRenderer0;

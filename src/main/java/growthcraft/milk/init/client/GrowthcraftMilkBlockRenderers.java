@@ -16,29 +16,34 @@ public class GrowthcraftMilkBlockRenderers {
 
     public static void setRenderLayers() {
         setFluidRenderLayers();
+        setBlockRenderLayers();
     }
+    
+	private static void setBlockRenderLayers() {
+		ItemBlockRenderTypes.setRenderLayer(GrowthcraftMilkBlocks.THISTLE_CROP.get(), RenderType.cutout());	
+	}
 
     private static void setFluidRenderLayers() {
-        ItemBlockRenderTypes.setRenderLayer(GrowthcraftMilkFluids.BUTTER_MILK.source.get(), RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(GrowthcraftMilkFluids.BUTTER_MILK.flowing.get(), RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(GrowthcraftMilkFluids.CHEESE_BASE.source.get(), RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(GrowthcraftMilkFluids.CHEESE_BASE.flowing.get(), RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(GrowthcraftMilkFluids.CONDENSED_MILK.source.get(), RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(GrowthcraftMilkFluids.CONDENSED_MILK.flowing.get(), RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(GrowthcraftMilkFluids.CREAM.source.get(), RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(GrowthcraftMilkFluids.CREAM.flowing.get(), RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(GrowthcraftMilkFluids.CULTURED_MILK.source.get(), RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(GrowthcraftMilkFluids.CULTURED_MILK.flowing.get(), RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(GrowthcraftMilkFluids.KUMIS.source.get(), RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(GrowthcraftMilkFluids.KUMIS.flowing.get(), RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(GrowthcraftMilkFluids.MILK.source.get(), RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(GrowthcraftMilkFluids.MILK.flowing.get(), RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(GrowthcraftMilkFluids.RENNET.source.get(), RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(GrowthcraftMilkFluids.RENNET.flowing.get(), RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(GrowthcraftMilkFluids.SKIM_MILK.source.get(), RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(GrowthcraftMilkFluids.SKIM_MILK.flowing.get(), RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(GrowthcraftMilkFluids.WHEY.source.get(), RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(GrowthcraftMilkFluids.WHEY.flowing.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(GrowthcraftMilkFluids.BUTTER_MILK.get().getSource(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(GrowthcraftMilkFluids.BUTTER_MILK.get().getFlowing(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(GrowthcraftMilkFluids.CHEESE_BASE.get().getSource(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(GrowthcraftMilkFluids.CHEESE_BASE.get().getFlowing(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(GrowthcraftMilkFluids.CONDENSED_MILK.get().getSource(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(GrowthcraftMilkFluids.CONDENSED_MILK.get().getFlowing(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(GrowthcraftMilkFluids.CREAM.get().getSource(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(GrowthcraftMilkFluids.CREAM.get().getFlowing(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(GrowthcraftMilkFluids.CULTURED_MILK.get().getSource(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(GrowthcraftMilkFluids.CULTURED_MILK.get().getFlowing(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(GrowthcraftMilkFluids.KUMIS.get().getSource(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(GrowthcraftMilkFluids.KUMIS.get().getFlowing(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(GrowthcraftMilkFluids.MILK.get().getSource(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(GrowthcraftMilkFluids.MILK.get().getFlowing(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(GrowthcraftMilkFluids.RENNET.get().getSource(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(GrowthcraftMilkFluids.RENNET.get().getFlowing(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(GrowthcraftMilkFluids.SKIM_MILK.get().getSource(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(GrowthcraftMilkFluids.SKIM_MILK.get().getFlowing(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(GrowthcraftMilkFluids.WHEY.get().getSource(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(GrowthcraftMilkFluids.WHEY.get().getFlowing(), RenderType.translucent());
     }
 
     @SubscribeEvent

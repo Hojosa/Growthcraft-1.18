@@ -6,11 +6,11 @@
     "count": 1
   },
   "ingredient_fluid": {
-    "fluid": "growthcraft_cellar:pale_golden_wort_fluid_source",
+    "fluid": "growthcraft_cellar:pale_golden_wort_fluid",
     "amount": 1000
   },
   "result": {
-    "fluid": "growthcraft_cellar:pale_lager_fluid_source",
+    "fluid": "growthcraft_cellar:pale_lager_fluid",
     "amount": 1000
   },
   "effects": [

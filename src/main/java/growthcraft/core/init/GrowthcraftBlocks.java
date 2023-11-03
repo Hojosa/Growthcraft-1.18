@@ -1,5 +1,8 @@
 package growthcraft.core.init;
 
+import java.util.ArrayList;
+import java.util.function.Supplier;
+
 import growthcraft.core.block.RopeBlock;
 import growthcraft.core.shared.Reference;
 import growthcraft.lib.block.GrowthcraftBlock;
@@ -13,9 +16,6 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-
-import java.util.ArrayList;
-import java.util.function.Supplier;
 
 public class GrowthcraftBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Reference.MODID);
@@ -90,7 +90,7 @@ public class GrowthcraftBlocks {
     }
 
     private static Item.Properties getDefaultItemProperties() {
-        Item.Properties properties = new Item.Properties();
+        Item.Properties properties = new Item.Properties().tab(growthcraft.core.shared.Reference.ITEM_GROUP);
         return properties;
     }
 

@@ -30,17 +30,15 @@ public class GrowthcraftApiary {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(this::setup);
         modEventBus.addListener(this::clientSetupEvent);
-        //modEventBus.addListener(this::buildCreativeTabContents);
 
         GrowthcraftApiaryConfig.loadConfig();
 
         GrowthcraftApiaryBlocks.BLOCKS.register(modEventBus);
         GrowthcraftApiaryItems.ITEMS.register(modEventBus);
-        //GrowthcraftApiaryFluids.FLUID_TYPES.register(modEventBus);
-        //GrowthcraftApiaryFluids.FLUIDS.register(modEventBus);
+        GrowthcraftApiaryFluids.FLUIDS.register(modEventBus);
         GrowthcraftApiaryBlockEntities.BLOCK_ENTITIES.register(modEventBus);
         GrowthcraftApiaryMenus.MENUS.register(modEventBus);
-
+        
         MinecraftForge.EVENT_BUS.register(this);
     }
 
@@ -50,20 +48,10 @@ public class GrowthcraftApiary {
     }
 
     private void setup(final FMLCommonSetupEvent event) {
-        //event.enqueueWork( () -> {
-        //   GrowthcraftOreGeneration.registerConfiguredFeatures();
-        //});
+//        event.enqueueWork( () -> {
+//           GrowthcraftOreGeneration.registerConfiguredFeatures();
+//        });
     }
-
-//    public void buildCreativeTabContents(CreativeModeTabEvent.BuildContents event) {
-//        if (event.getTab() == GrowthcraftCreativeModeTabs.GROWTHCRAFT_CREATIVE_TAB) {
-//            GrowthcraftApiaryItems.ITEMS.getEntries().forEach(itemRegistryObject -> {
-//                if (!GrowthcraftApiaryItems.excludeItemRegistry(itemRegistryObject.getId())) {
-//                    event.accept(new ItemStack(itemRegistryObject.get()));
-//                }
-//            });
-//        }
-//    }
     
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {

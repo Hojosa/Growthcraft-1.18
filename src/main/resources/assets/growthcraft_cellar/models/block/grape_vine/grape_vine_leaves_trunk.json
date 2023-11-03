@@ -1,6 +1,5 @@
 {
   "credit": "Made with Blockbench",
-  "render_type": "cutout",
   "ambientocclusion": false,
   "textures": {
     "0": "growthcraft_cellar:block/grape_vine/grape_vine_trunk",

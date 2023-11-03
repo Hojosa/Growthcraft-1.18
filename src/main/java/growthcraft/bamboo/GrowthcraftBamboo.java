@@ -6,6 +6,7 @@ import org.apache.logging.log4j.Logger;
 import growthcraft.bamboo.init.GrowthcraftBambooBlockEntities;
 import growthcraft.bamboo.init.GrowthcraftBambooBlocks;
 import growthcraft.bamboo.init.GrowthcraftBambooItems;
+import growthcraft.bamboo.init.client.GrowthcraftBambooBlockRenderers;
 import growthcraft.bamboo.init.config.GrowthcraftBambooConfig;
 import growthcraft.bamboo.shared.Reference;
 import net.minecraftforge.common.MinecraftForge;
@@ -27,7 +28,6 @@ public class GrowthcraftBamboo {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(this::setup);
         modEventBus.addListener(this::clientSetupEvent);
-        //modEventBus.addListener(this::buildCreativeTabContents);
 
         // Config
         GrowthcraftBambooConfig.loadConfig();
@@ -40,18 +40,8 @@ public class GrowthcraftBamboo {
         MinecraftForge.EVENT_BUS.register(this);
     }
 
-//    public void buildCreativeTabContents(CreativeModeTabEvent.BuildContents event) {
-//        if (event.getTab() == GrowthcraftCreativeModeTabs.GROWTHCRAFT_CREATIVE_TAB) {
-//            GrowthcraftBambooItems.ITEMS.getEntries().forEach(itemRegistryObject -> {
-//                if (!GrowthcraftBambooItems.excludeItemRegistry(itemRegistryObject.getId())) {
-//                    event.accept(new ItemStack(itemRegistryObject.get()));
-//                }
-//            });
-//        }
-//    }
-
     private void clientSetupEvent(final FMLClientSetupEvent event) {
-        // Do nothing for now ...
+    	GrowthcraftBambooBlockRenderers.setRenderLayers();
     }
 
     private void setup(final FMLCommonSetupEvent event) {

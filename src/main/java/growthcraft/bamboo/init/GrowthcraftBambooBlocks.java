@@ -1,10 +1,21 @@
 package growthcraft.bamboo.init;
 
+import java.util.ArrayList;
+import java.util.function.Supplier;
+
 import growthcraft.bamboo.block.BambooBeeBoxBlock;
 import growthcraft.bamboo.block.BambooLogBlock;
 import growthcraft.bamboo.block.BambooRopeBlock;
 import growthcraft.bamboo.shared.Reference;
-import growthcraft.lib.block.*;
+import growthcraft.lib.block.GrowthcraftButtonBlock;
+import growthcraft.lib.block.GrowthcraftDoorBlock;
+import growthcraft.lib.block.GrowthcraftFenceBlock;
+import growthcraft.lib.block.GrowthcraftFenceGateBlock;
+import growthcraft.lib.block.GrowthcraftPlankBlock;
+import growthcraft.lib.block.GrowthcraftPressurePlateBlock;
+import growthcraft.lib.block.GrowthcraftSlabBlock;
+import growthcraft.lib.block.GrowthcraftStairsBlock;
+import growthcraft.lib.block.GrowthcraftTrapDoorBlock;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -14,9 +25,6 @@ import net.minecraft.world.level.material.Material;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-
-import java.util.ArrayList;
-import java.util.function.Supplier;
 
 public class GrowthcraftBambooBlocks {
 
@@ -111,7 +119,7 @@ public class GrowthcraftBambooBlocks {
     }
 
     private static Item.Properties getDefaultItemProperties() {
-        Item.Properties properties = new Item.Properties();
+        Item.Properties properties = new Item.Properties().tab(growthcraft.core.shared.Reference.ITEM_GROUP);
         return properties;
     }
 
