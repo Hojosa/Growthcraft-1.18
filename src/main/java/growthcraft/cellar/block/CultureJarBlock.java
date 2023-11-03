@@ -7,6 +7,7 @@ import growthcraft.cellar.block.entity.CultureJarBlockEntity;
 import growthcraft.cellar.init.GrowthcraftCellarBlockEntities;
 import growthcraft.core.utils.BlockPropertiesUtils;
 import growthcraft.lib.utils.BlockStateUtils;
+import growthcraft.milk.init.GrowthcraftMilkFluids;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerPlayer;
@@ -15,6 +16,8 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -37,8 +40,10 @@ import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
+import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.network.NetworkHooks;
 
 public class CultureJarBlock extends BaseEntityBlock {
@@ -146,14 +151,35 @@ public class CultureJarBlock extends BaseEntityBlock {
         }
 
         if (!level.isClientSide) {
-            if (
-                    FluidUtil.interactWithFluidHandler(player, interactionHand, level, blockPos, blockHitResult.getDirection())
-                            || player.getItemInHand(interactionHand).getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY).isPresent()
-            ) {
-                return InteractionResult.SUCCESS;
+            try {
+                // Handling of Vanilla Milk Bucket
+                if (player.getItemInHand(interactionHand).getItem() == Items.MILK_BUCKET) {
+                    CultureJarBlockEntity blockEntity = (CultureJarBlockEntity) level.getBlockEntity(blockPos);
+
+                    int capacity = blockEntity.getFluidTank(0).getCapacity();
+                    int amount = blockEntity.getFluidTank(0).getFluidAmount();
+                    int remainingFill = capacity - amount;
+
+                    if (blockEntity.getFluidTank(0).isEmpty()
+                            || (remainingFill >= 1000
+                            && blockEntity.getFluidStackInTank(0).getFluid() == GrowthcraftMilkFluids.MILK.get().getSource())
+                    ) {
+                        FluidStack fluidStack = new FluidStack(GrowthcraftMilkFluids.MILK.get().getSource(), 1000);
+                        blockEntity.getFluidTank(0).fill(fluidStack, IFluidHandler.FluidAction.EXECUTE);
+                        player.setItemInHand(interactionHand, new ItemStack(Items.BUCKET));
+                    }
+                } else if (
+                        FluidUtil.interactWithFluidHandler(player, interactionHand, level, blockPos, blockHitResult.getDirection())
+                                || player.getItemInHand(interactionHand).getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY).isPresent()
+                ) {
+                    return InteractionResult.SUCCESS;
+                }
+            } catch (Exception ex) {
+                GrowthcraftCellar.LOGGER.error(String.format("Exception Thrown: %s unable to place fluid in CultureJarBlockEntity at %s.", player.getDisplayName().getString(), blockPos));
+                GrowthcraftCellar.LOGGER.error(ex.getMessage());
+                GrowthcraftCellar.LOGGER.error(ex.fillInStackTrace());
             }
         }
-
         return InteractionResult.SUCCESS;
     }
 }
