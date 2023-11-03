@@ -22,6 +22,7 @@ import growthcraft.cellar.screen.container.BrewKettleMenu;
 import growthcraft.lib.block.entity.GrowthcraftFluidTank;
 import growthcraft.lib.utils.BlockStateUtils;
 import growthcraft.lib.utils.DirectionUtils;
+import growthcraft.lib.utils.RandomGeneratorUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -190,6 +191,17 @@ public class BrewKettleBlockEntity extends BlockEntity implements BlockEntityTic
                                 recipe.getOutputFluidStack().copy(),
                                 IFluidHandler.FluidAction.EXECUTE
                         );
+                        
+                        // Setting the by_product_chance to 0 in the recipe file should prevent it from being checked.
+                        if (recipe.getByProductChance() != 0 && RandomGeneratorUtils.getRandomInt() <= recipe.getByProductChance()) {
+                            ItemStack byProductItemStack = recipe.getByProduct();
+                            ItemStack existingByProductInSlot = this.itemStackHandler.getStackInSlot(2);
+                            if (existingByProductInSlot.isEmpty() || existingByProductInSlot.getItem() == byProductItemStack.getItem()) {
+                                byProductItemStack.setCount(byProductItemStack.getCount() + existingByProductInSlot.getCount());
+                                // Using insertStack does a check against isValiditem which is false by default for output only slots.
+                                this.itemStackHandler.setStackInSlot(2, byProductItemStack);
+                            }
+                        }
 
                         this.resetTickClock();
                     } else if (this.tickMax == -1) {
@@ -199,6 +211,8 @@ public class BrewKettleBlockEntity extends BlockEntity implements BlockEntityTic
                     }
 
                     level.sendBlockUpdated(this.getBlockPos(), this.getBlockState(), this.getBlockState(), Block.UPDATE_ALL);
+                } else {
+                    this.resetTickClock();
                 }
             }
         } else {
