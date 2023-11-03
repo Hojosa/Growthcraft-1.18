@@ -161,9 +161,6 @@ public class BrewKettleBlock extends BaseEntityBlock {
                     .getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY)
                     .isPresent()
             ) {
-//                boolean fluidInteractionResult = FluidUtil.interactWithFluidHandler(player, interactionHand, level, blockPos, hitResult.getDirection());
-//                if(fluidInteractionResult) return InteractionResult.SUCCESS;
-//            }
             	boolean fluidInteractionResult = false;
 
                 // If the player is holding a generic bucket. Always try and pull from the output fluid first.
@@ -192,9 +189,6 @@ public class BrewKettleBlock extends BaseEntityBlock {
                     // Otherwise, try and fill the input tank.
                     fluidInteractionResult = FluidUtil.interactWithFluidHandler(player, interactionHand, level, blockPos, Direction.UP);
                 }
-
-            // If the player is crouching, try and open the GUI
-//            if (player.isCrouching()) {
                 // Return based on whether interaction with the fluid handler item was successful or not.
                 return fluidInteractionResult ? InteractionResult.SUCCESS : InteractionResult.FAIL;
             } else {
@@ -214,7 +208,6 @@ public class BrewKettleBlock extends BaseEntityBlock {
                 }
             }
         }
-
         // Always return SUCCESS for client side.
         return InteractionResult.SUCCESS;
     }
