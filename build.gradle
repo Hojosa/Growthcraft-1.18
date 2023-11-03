@@ -121,11 +121,15 @@ repositories {
 
 dependencies {
     minecraft "net.minecraftforge:forge:${forge_version}"
-    //runtimeOnly fg.deobf("curse.maven:growthcraft-trapper-${curseforge_growthcraft_trapper}")
-    runtimeOnly fg.deobf("curse.maven:growthcraft-decorations-${curseforge_growthcraft_deco}")
-    runtimeOnly fg.deobf("curse.maven:jei-${curseforge_jei}")
+    
+    // compile against the JEI API but do not include it at runtime
+    compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}:${jei_version}:api")
+    
+    // Runtime mods for testing
     runtimeOnly fg.deobf("curse.maven:theoneprobe-${curseforge_theoneprobe}")
+    runtimeOnly fg.deobf("curse.maven:jei-${curseforge_jei}")
     runtimeOnly fg.deobf("curse.maven:patchouli-${curseforge_patchouli}")
+    runtimeOnly fg.deobf("curse.maven:appleskin-${curseforge_appleskin}")
 }
 
 jar {
