@@ -85,7 +85,7 @@ public class FermentationBarrelRecipeCategory implements IRecipeCategory<Ferment
         IRecipeCategory.super.draw(recipe, recipeSlotsView, stack, mouseX, mouseY);
         Font font = Minecraft.getInstance().font;
 
-        font.drawWordWrap(FormattedText.of("Time multiplies based on amount."), 114, 7, 50, 0x404040);
+        font.drawWordWrap(FormattedText.of("Time multiplies based on amount."), 274, 125, 50, 0x404040);
 
         font.draw(stack, "(" + TickUtils.toHoursMinutesSeconds(recipe.getProcessingTime()) + ")", 0, 55, 0x404040);
         

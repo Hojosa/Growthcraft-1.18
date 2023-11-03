@@ -105,7 +105,7 @@ public class CultureJarRecipeCategory implements IRecipeCategory<CultureJarRecip
             GrowthcraftCellar.LOGGER.error("Failure to draw heat texture for Culture Jar recipe with JEI integration.");
         }
 
-        font.drawWordWrap(FormattedText.of("Culturing requires a item to grow."), 0, 7, 50, 0x404040);
+        font.drawWordWrap(FormattedText.of("Culturing requires a item to grow."), 160, 125, 50, 0x404040);
 
         font.draw(stack, "(" + TickUtils.toHoursMinutesSeconds(recipe.getRecipeProcessingTime()) + ")", 106, 50, 0x404040);
     }

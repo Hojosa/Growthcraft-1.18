@@ -86,7 +86,7 @@ public class ChurnRecipeCategory implements IRecipeCategory<ChurnRecipe> {
         Float s = 0.9F;
         stack.scale(s, s, s);
 
-        font.drawWordWrap(FormattedText.of("Toggle plunge " + recipe.getPlungesNeeded() + " times."), 0, 70, 170, 0x404040);
+        font.draw(stack, FormattedText.of("Toggle plunge " + recipe.getPlungesNeeded()+ " times.").getString(), 0, 70, 0x404040);
     }
     
 	@Override

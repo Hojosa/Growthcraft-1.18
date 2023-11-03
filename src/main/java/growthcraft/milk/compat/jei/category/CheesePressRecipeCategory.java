@@ -78,9 +78,9 @@ public class CheesePressRecipeCategory implements IRecipeCategory<CheesePressRec
         IRecipeCategory.super.draw(recipe, recipeSlotsView, stack, mouseX, mouseY);
         Font font = Minecraft.getInstance().font;
 
-        font.drawWordWrap(FormattedText.of("Pressing Time " + TickUtils.toHoursMinutesSeconds(recipe.getProcessingTime())), 0, 62, 170, 0x404040);
+        font.drawWordWrap(FormattedText.of("Pressing Time " + TickUtils.toHoursMinutesSeconds(recipe.getProcessingTime())), 160, 181, 170, 0x404040);
 
-        font.drawWordWrap(FormattedText.of("Use the wrench to open and close the press."), 0, 1, 150, 0x404040);
+        font.drawWordWrap(FormattedText.of("Use the wrench to open and close the press."), 160, 119, 150, 0x404040);
 
     }
     

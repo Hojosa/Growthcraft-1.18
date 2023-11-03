@@ -102,7 +102,7 @@ public class CultureJarStarterRecipeCategory implements IRecipeCategory<CultureJ
             GrowthcraftCellar.LOGGER.error("Failure to draw heat texture for Culture Jar recipe with JEI integration.");
         }
 
-        font.drawWordWrap(FormattedText.of("Leave the item slot empty for creating a starter."), 0, 7, 50, 0x404040);
+        font.drawWordWrap(FormattedText.of("Leave the item slot empty for creating a starter."), 160, 125, 50, 0x404040);
 
         font.draw(stack, "(" + TickUtils.toHoursMinutesSeconds(recipe.getRecipeProcessingTime()) + ")", 106, 50, 0x404040);
     }

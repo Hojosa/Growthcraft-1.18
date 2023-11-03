@@ -1,5 +1,8 @@
 package growthcraft.cellar.compat.jei.category;
 
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
+
 import com.mojang.blaze3d.vertex.PoseStack;
 
 import growthcraft.cellar.compat.jei.JEIGrowthcraftCellarModPlugin;
@@ -23,6 +26,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.FormattedText;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.world.item.ItemStack;
 
 public class FruitPressRecipeCategory implements IRecipeCategory<FruitPressRecipe> {
@@ -84,8 +88,17 @@ public class FruitPressRecipeCategory implements IRecipeCategory<FruitPressRecip
         font.draw(stack, "(" + TickUtils.toHoursMinutesSeconds(recipe.getProcessingTime()) + ")", 0, 55, 0x404040);
 
         stack.scale(0.8F, 0.8F, 0.8F);
+        
+        List<FormattedCharSequence> splitFont = font.split(FormattedText.of("Watch for drainage particles until completed."), 60);
+        font.draw(stack, splitFont.get(0), 144, 7, 0x404040);
+        font.draw(stack, splitFont.get(1), 144, 17, 0x404040);
+        font.draw(stack, splitFont.get(2), 144, 27, 0x404040);
+        font.draw(stack, splitFont.get(3), 144, 37, 0x404040);
+        font.draw(stack, splitFont.get(4), 144, 47, 0x404040);
+        
+        font.split(FormattedText.of("Watch for drainage particles until completed."), 60);
 
-        font.drawWordWrap(FormattedText.of("Watch for drainage particles until completed."), 145, 7, 60, 0x404040);
+
 
     }
     

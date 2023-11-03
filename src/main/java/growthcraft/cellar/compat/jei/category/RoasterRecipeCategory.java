@@ -77,9 +77,9 @@ public class RoasterRecipeCategory implements IRecipeCategory<RoasterRecipe> {
         IRecipeCategory.super.draw(recipe, recipeSlotsView, stack, mouseX, mouseY);
         Font font = Minecraft.getInstance().font;
 
-        font.drawWordWrap(FormattedText.of("Roasting time is the same regardless of amount."), 0, 1, 150, 0x404040);
+       font.drawWordWrap(FormattedText.of("Roasting time is the same regardless of amount."), 160, 119, 150, 0x404040);
 
-        font.drawWordWrap(FormattedText.of("Roasting Level " + recipe.getRecipeProcessingTime() + " for " + TickUtils.toHoursMinutesSeconds(recipe.getRecipeProcessingTime() * 30 * 20)), 0, 63, 150, 0x404040);
+        font.drawWordWrap(FormattedText.of("Roasting Level " + recipe.getRecipeProcessingTime() + " for " + TickUtils.toHoursMinutesSeconds(recipe.getRecipeProcessingTime() * 30 * 20)), 160, 181, 150, 0x404040);
 
     }
     
