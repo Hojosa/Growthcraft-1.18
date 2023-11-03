@@ -145,9 +145,7 @@ public class PancheonBlock extends BaseEntityBlock {
                 int capacity = blockEntity.getFluidTank(0).getCapacity();
                 int amount = blockEntity.getFluidTank(0).getFluidAmount();
                 int remainingFill = capacity - amount;
-                System.out.println("HELLO!");
-                System.out.println(blockEntity.getFluidStackInTank(0).getFluid());
-                System.out.println(GrowthcraftMilkFluids.MILK.get().getSource());
+
                 if(blockEntity.getFluidTank(0).isEmpty()
                     || (remainingFill >= 1000
                         && blockEntity.getFluidStackInTank(0).getFluid() == GrowthcraftMilkFluids.MILK.get().getSource())
