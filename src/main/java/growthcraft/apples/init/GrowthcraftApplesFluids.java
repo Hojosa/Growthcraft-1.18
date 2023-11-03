@@ -26,7 +26,6 @@ public class GrowthcraftApplesFluids {
 	public static final RegistryObject<FlowingFluid> APPLE_CIDER_FLUID_FLOWING
 			= FLUIDS.register(FluidUtils.getFluidNames(Reference.UnlocalizedName.APPLE_CIDER).get(FluidUtils.FLOWING), () -> new ForgeFlowingFluid.Flowing(GrowthcraftApplesFluids.APPLE_CIDER_PROPERTIES));
 	
-	
 	public static final ForgeFlowingFluid.Properties APPLE_CIDER_PROPERTIES = new ForgeFlowingFluid.Properties(
 		    () -> APPLE_CIDER_FLUID.get(), () -> APPLE_CIDER_FLUID_FLOWING.get(), FluidAttributes.builder(FluidUtils.FluidResource.STILL, FluidUtils.FluidResource.FLOWING)
 		    .sound(SoundEvents.BUCKET_EMPTY).overlay(FluidUtils.FluidResource.OVERLAY)
