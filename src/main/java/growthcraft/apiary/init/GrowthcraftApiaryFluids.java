@@ -54,6 +54,22 @@ public class GrowthcraftApiaryFluids {
 	public static final RegistryObject<LiquidBlock> HONEY_MEAD_FLUID_BLOCK = GrowthcraftApiaryBlocks.BLOCKS.register(FluidUtils.getFluidNames(Reference.UnlocalizedName.HONEY_MEAD).get(FluidUtils.STILL),
 			() -> new LiquidBlock(() -> GrowthcraftApiaryFluids.HONEY_MEAD_FLUID.get(), BlockBehaviour.Properties.of(Material.WATER)
 	        .noCollission().strength(100f).noDrops()));
+	
+    public static final RegistryObject<FlowingFluid> HONEY_MEAD_MUST_FLUID
+			= FLUIDS.register(FluidUtils.getFluidNames(Reference.UnlocalizedName.HONEY_MEAD_MUST).get(FluidUtils.STILL), () -> new ForgeFlowingFluid.Source(GrowthcraftApiaryFluids.HONEY_MEAD_MUST_PROPERTIES));
+
+	public static final RegistryObject<FlowingFluid> HONEY_MEAD_MUST_FLOWING
+			= FLUIDS.register(FluidUtils.getFluidNames(Reference.UnlocalizedName.HONEY_MEAD_MUST).get(FluidUtils.FLOWING), () -> new ForgeFlowingFluid.Flowing(GrowthcraftApiaryFluids.HONEY_MEAD_MUST_PROPERTIES));
+	
+	public static final ForgeFlowingFluid.Properties HONEY_MEAD_MUST_PROPERTIES = new ForgeFlowingFluid.Properties(
+		    () -> HONEY_MEAD_MUST_FLUID.get(), () -> HONEY_MEAD_MUST_FLOWING.get(), FluidAttributes.builder(FluidUtils.FluidResource.STILL, FluidUtils.FluidResource.FLOWING)
+		    .sound(SoundEvents.HONEY_DRINK).overlay(FluidUtils.FluidResource.OVERLAY)
+		    .color(Reference.FluidColor.HONEY_MEAD_MUST.toIntValue())).slopeFindDistance(2).levelDecreasePerBlock(2)
+		    .block(() -> GrowthcraftApiaryFluids.HONEY_MEAD_MUST_FLUID_BLOCK.get()).bucket(() -> GrowthcraftApiaryItems.HONEY_MEAD_MUST_BUCKET.get());
+	
+	public static final RegistryObject<LiquidBlock> HONEY_MEAD_MUST_FLUID_BLOCK = GrowthcraftApiaryBlocks.BLOCKS.register(FluidUtils.getFluidNames(Reference.UnlocalizedName.HONEY_MEAD_MUST).get(FluidUtils.STILL),
+			() -> new LiquidBlock(() -> GrowthcraftApiaryFluids.HONEY_MEAD_MUST_FLUID.get(), BlockBehaviour.Properties.of(Material.WATER)
+		    .noCollission().strength(100f).noDrops()));
 
     private GrowthcraftApiaryFluids() {
         /* Prevent default public constructor */

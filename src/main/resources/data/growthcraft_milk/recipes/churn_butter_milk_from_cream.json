@@ -2,7 +2,7 @@
   "type": "growthcraft_milk:churn_recipe",
   "plunges": 7,
   "input_fluid": {
-    "fluid": "growthcraft_milk:cream_fluid_source",
+    "fluid": "growthcraft_milk:cream_fluid",
     "amount": 1000
   },
   "output_fluid": {

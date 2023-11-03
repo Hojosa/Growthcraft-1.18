@@ -51,6 +51,10 @@ public class GrowthcraftRiceItems {
             GrowthcraftFoodItem::new
     );
     
+    public static final RegistryObject<GrowthcraftItem> YEAST_SEISHU = ITEMS.register(
+            Reference.UnlocalizedName.YEAST_SEISHU, GrowthcraftItem::new
+    );
+    
 	public static final RegistryObject<GrowthcraftBucketItem> RICE_WATER_BUCKET = ITEMS.register(
 	        FluidUtils.getFluidNames(Reference.UnlocalizedName.RICE_WATER).get(FluidUtils.BUCKET),
 	        () -> new GrowthcraftBucketItem(GrowthcraftRiceFluids.RICE_WATER, Reference.FluidColor.RICE_WATER.getColor()));

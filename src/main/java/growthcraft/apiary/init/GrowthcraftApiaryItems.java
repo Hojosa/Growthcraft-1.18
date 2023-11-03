@@ -105,6 +105,10 @@ public class GrowthcraftApiaryItems {
     public static final RegistryObject<GrowthcraftBucketItem> HONEY_MEAD_BUCKET = ITEMS.register(
     		FluidUtils.getFluidNames(Reference.UnlocalizedName.HONEY_MEAD).get(FluidUtils.BUCKET),
     		() -> new GrowthcraftBucketItem(GrowthcraftApiaryFluids.HONEY_MEAD_FLUID, Reference.FluidColor.HONEY_MEAD.getColor()));
+    
+    public static final RegistryObject<GrowthcraftBucketItem> HONEY_MEAD_MUST_BUCKET = ITEMS.register(
+    		FluidUtils.getFluidNames(Reference.UnlocalizedName.HONEY_MEAD_MUST).get(FluidUtils.BUCKET),
+    		() -> new GrowthcraftBucketItem(GrowthcraftApiaryFluids.HONEY_MEAD_MUST_FLUID, Reference.FluidColor.HONEY_MEAD_MUST.getColor()));
 
     private GrowthcraftApiaryItems() {
         /* Prevent default public constructor */

@@ -15,6 +15,8 @@ public class GrowthcraftApiaryBlockRenders {
         ItemBlockRenderTypes.setRenderLayer(GrowthcraftApiaryFluids.HONEY_MEAD_FLUID.get().getSource(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(GrowthcraftApiaryFluids.HONEY_FLUID.get().getSource(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(GrowthcraftApiaryFluids.HONEY_FLUID.get().getFlowing(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(GrowthcraftApiaryFluids.HONEY_MEAD_MUST_FLUID.get().getSource(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(GrowthcraftApiaryFluids.HONEY_MEAD_MUST_FLUID.get().getFlowing(), RenderType.translucent());
     }
 
     private GrowthcraftApiaryBlockRenders() {
