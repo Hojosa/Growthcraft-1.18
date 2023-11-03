@@ -15,7 +15,9 @@ import growthcraft.cellar.block.entity.BrewKettleBlockEntity;
 import growthcraft.cellar.init.GrowthcraftCellarBlockEntities;
 import growthcraft.core.utils.BlockPropertiesUtils;
 import growthcraft.lib.utils.BlockStateUtils;
+import growthcraft.milk.init.GrowthcraftMilkFluids;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.server.level.ServerPlayer;
@@ -24,6 +26,8 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -44,8 +48,10 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
+import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.network.NetworkHooks;
 
 public class BrewKettleBlock extends BaseEntityBlock {
@@ -155,22 +161,58 @@ public class BrewKettleBlock extends BaseEntityBlock {
                     .getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY)
                     .isPresent()
             ) {
-                boolean fluidInteractionResult = FluidUtil.interactWithFluidHandler(player, interactionHand, level, blockPos, hitResult.getDirection());
-                if(fluidInteractionResult) return InteractionResult.SUCCESS;
-            }
+//                boolean fluidInteractionResult = FluidUtil.interactWithFluidHandler(player, interactionHand, level, blockPos, hitResult.getDirection());
+//                if(fluidInteractionResult) return InteractionResult.SUCCESS;
+//            }
+            	boolean fluidInteractionResult = false;
+
+                // If the player is holding a generic bucket. Always try and pull from the output fluid first.
+                if (player.getItemInHand(interactionHand).getItem() == Items.BUCKET) {
+                    if (!blockEntity.getFluidTank(1).isEmpty()) {
+                        fluidInteractionResult = FluidUtil.interactWithFluidHandler(player, interactionHand, level, blockPos, Direction.NORTH);
+                    } else if (!blockEntity.getFluidTank(0).isEmpty()) {
+                        fluidInteractionResult = FluidUtil.interactWithFluidHandler(player, interactionHand, level, blockPos, Direction.UP);
+                    }
+                } else if (player.getItemInHand(interactionHand).getItem() == Items.MILK_BUCKET) {
+                    // If the player is holding a vanilla milk bucket, then we need to process it
+                    // into a Growthcraft Milk Fluid.
+                    int capacity = blockEntity.getFluidTank(0).getCapacity();
+                    int amount = blockEntity.getFluidTank(0).getFluidAmount();
+                    int remainingFill = capacity - amount;
+
+                    if (blockEntity.getFluidTank(0).isEmpty()
+                            || (remainingFill >= 1000
+                            && blockEntity.getFluidStackInTank(0).getFluid() == GrowthcraftMilkFluids.MILK.get().getSource())
+                    ) {
+                        FluidStack fluidStack = new FluidStack(GrowthcraftMilkFluids.MILK.get().getSource(), 1000);
+                        blockEntity.getFluidTank(0).fill(fluidStack, IFluidHandler.FluidAction.EXECUTE);
+                        player.setItemInHand(interactionHand, new ItemStack(Items.BUCKET));
+                    }
+                } else {
+                    // Otherwise, try and fill the input tank.
+                    fluidInteractionResult = FluidUtil.interactWithFluidHandler(player, interactionHand, level, blockPos, Direction.UP);
+                }
 
             // If the player is crouching, try and open the GUI
-            if (player.isCrouching()) {
+//            if (player.isCrouching()) {
+                // Return based on whether interaction with the fluid handler item was successful or not.
+                return fluidInteractionResult ? InteractionResult.SUCCESS : InteractionResult.FAIL;
+            } else {
                 try {
                     blockEntity.playSound("open");
                     NetworkHooks.openGui(((ServerPlayer) player), blockEntity, blockPos);
+                    return InteractionResult.SUCCESS;
                 } catch (Exception ex) {
-                    GrowthcraftCellar.LOGGER.error(String.format("%s unable to open BrewKettleBlockEntity GUI at %s.", player.getDisplayName().getString(), blockPos));
+                    GrowthcraftCellar.LOGGER.error(
+                            String.format("%s unable to open BrewKettleBlockEntity GUI at %s.",
+                                    player.getDisplayName().getString(),
+                                    blockPos)
+                    );
                     GrowthcraftCellar.LOGGER.error(ex.getMessage());
                     GrowthcraftCellar.LOGGER.error(ex.fillInStackTrace());
+                    return InteractionResult.FAIL;
                 }
             }
-            return InteractionResult.SUCCESS;
         }
 
         // Always return SUCCESS for client side.
