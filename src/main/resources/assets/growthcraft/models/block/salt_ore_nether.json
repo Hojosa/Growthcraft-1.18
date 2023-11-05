@@ -4,7 +4,7 @@
     "textures": {
 	    "all": "minecraft:block/netherrack",
 	    "overlay": "growthcraft:block/salt_rock_ore_overlay",
-	    "particle": "growthcraft:block/netherrack"
+	    "particle": "minecraft:block/netherrack"
     },
     "elements": [
         {
