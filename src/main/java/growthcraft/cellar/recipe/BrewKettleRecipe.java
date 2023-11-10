@@ -1,5 +1,7 @@
 package growthcraft.cellar.recipe;
 
+import java.util.Arrays;
+
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -8,11 +10,13 @@ import com.google.gson.JsonObject;
 import growthcraft.cellar.GrowthcraftCellar;
 import growthcraft.cellar.shared.Reference;
 import growthcraft.lib.utils.CraftingUtils;
+import net.minecraft.core.NonNullList;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
@@ -24,7 +28,7 @@ public class BrewKettleRecipe implements Recipe<SimpleContainer> {
 
     private final ResourceLocation recipeId;
     private final FluidStack inputFluidStack;
-    private final ItemStack inputItemStack;
+    private final NonNullList<Ingredient> inputIngredients;
     private final FluidStack outputFluidStack;
     private final ItemStack byProduct;
     private final boolean requiresLid;
@@ -33,10 +37,10 @@ public class BrewKettleRecipe implements Recipe<SimpleContainer> {
     private final int processingTime;
 
 
-    public BrewKettleRecipe(ResourceLocation recipeId, FluidStack inputFluidStack, ItemStack inputItem, FluidStack outputFluidStack, ItemStack byProduct, int byProductChance, int processingTime, boolean requiresHeat, boolean requiresLid) {
+    public BrewKettleRecipe(ResourceLocation recipeId, FluidStack inputFluidStack, NonNullList<Ingredient> inputIngredients, FluidStack outputFluidStack, ItemStack byProduct, int byProductChance, int processingTime, boolean requiresHeat, boolean requiresLid) {
         this.recipeId = recipeId;
         this.inputFluidStack = inputFluidStack;
-        this.inputItemStack = inputItem;
+        this.inputIngredients = inputIngredients;
         this.outputFluidStack = outputFluidStack;
         this.byProduct = byProduct;
         this.processingTime = processingTime;
@@ -52,14 +56,18 @@ public class BrewKettleRecipe implements Recipe<SimpleContainer> {
 
     public boolean matches(ItemStack itemStack, FluidStack fluidStack, boolean needsLid, boolean needsHeat) {
 
-        boolean inputItemTypeMatches = this.inputItemStack.getItem() == itemStack.getItem();
-        boolean inputItemCountLessThan = this.inputItemStack.getCount() <= itemStack.getCount();
+    	boolean inputItemTypeMatches = Arrays.stream(
+                this.inputIngredients.get(0).getItems()).anyMatch(
+                ingredientItem -> ingredientItem.is(itemStack.getItem()) && ingredientItem.getCount() <= itemStack.getCount()
+        );
+
+        //boolean inputItemCountLessThan = this.inputIngredients.get(0).getItems()[0].getCount() <= itemStack.getCount();
         boolean inputFluidTypeMatches = this.inputFluidStack.getFluid() == fluidStack.getFluid();
         boolean inputFluidAmountLessThan = this.inputFluidStack.getAmount() <= fluidStack.getAmount();
         boolean hasRequiredLid = this.requiresLid == needsLid && this.requiresHeat == needsHeat;
 
         return inputItemTypeMatches
-                && inputItemCountLessThan
+//                && inputItemCountLessThan
                 && inputFluidTypeMatches
                 && inputFluidAmountLessThan
                 && hasRequiredLid;
@@ -94,7 +102,12 @@ public class BrewKettleRecipe implements Recipe<SimpleContainer> {
     }
 
     public ItemStack getInputItemStack() {
-        return inputItemStack;
+        return inputIngredients.get(0).getItems()[0];
+    }
+
+    @Override
+    public @NotNull NonNullList<Ingredient> getIngredients() {
+        return this.inputIngredients;
     }
 
     public ItemStack getByProduct() {
@@ -146,7 +159,7 @@ public class BrewKettleRecipe implements Recipe<SimpleContainer> {
         @Override
         public @NotNull BrewKettleRecipe fromJson(ResourceLocation recipeId, JsonObject json) {
 
-            ItemStack inputItemStack = CraftingHelper.getItemStack(GsonHelper.getAsJsonObject(json, "input_item"), false);
+        	NonNullList<Ingredient> inputIngredient = CraftingUtils.readIngredient(GsonHelper.getAsJsonObject(json, "input_item"));
             ItemStack byProductItemStack = CraftingHelper.getItemStack(GsonHelper.getAsJsonObject(json, "by_product"), false);
 
             FluidStack inputFluid = CraftingUtils.getFluidStack(GsonHelper.getAsJsonObject(json, "input_fluid"));
@@ -158,7 +171,7 @@ public class BrewKettleRecipe implements Recipe<SimpleContainer> {
             int processingTime = GsonHelper.getAsInt(json, "processing_time", 600);
             int byProductChance = GsonHelper.getAsInt(json, "by_product_chance", 10);
 
-            return new BrewKettleRecipe(recipeId, inputFluid, inputItemStack,
+            return new BrewKettleRecipe(recipeId, inputFluid, inputIngredient,
                     outputFluid, byProductItemStack, byProductChance, processingTime,
                     requiresHeat, requiresLid);
         }
@@ -166,7 +179,15 @@ public class BrewKettleRecipe implements Recipe<SimpleContainer> {
         @Override
         public @Nullable BrewKettleRecipe fromNetwork(ResourceLocation recipeId, FriendlyByteBuf buffer) {
             try {
-                ItemStack inputItemStack = buffer.readItem();
+
+                int i = buffer.readVarInt();
+                NonNullList<Ingredient> inputIngredients = NonNullList.withSize(i, Ingredient.EMPTY);
+
+                for (int j = 0; j < inputIngredients.size(); ++j) {
+                    inputIngredients.set(j, Ingredient.fromNetwork(buffer));
+
+                }
+
                 ItemStack byProductItemStack = buffer.readItem();
                 FluidStack inputFluidStack = buffer.readFluidStack();
                 FluidStack outputFluidStack = buffer.readFluidStack();
@@ -175,7 +196,7 @@ public class BrewKettleRecipe implements Recipe<SimpleContainer> {
                 int processingTime = buffer.readVarInt();
                 int byProductChance = buffer.readVarInt();
 
-                return new BrewKettleRecipe(recipeId, inputFluidStack, inputItemStack,
+                return new BrewKettleRecipe(recipeId, inputFluidStack, inputIngredients,
                         outputFluidStack, byProductItemStack, byProductChance, processingTime,
                         requiresHeat, requiresLid);
             } catch (Exception ex) {
@@ -187,7 +208,12 @@ public class BrewKettleRecipe implements Recipe<SimpleContainer> {
 
         @Override
         public void toNetwork(FriendlyByteBuf buffer, BrewKettleRecipe recipe) {
-            buffer.writeItemStack(recipe.getInputItemStack(), false);
+            buffer.writeVarInt(recipe.inputIngredients.size());
+
+            for (Ingredient ingredient : recipe.getIngredients()) {
+                ingredient.toNetwork(buffer);
+            }
+
             buffer.writeItemStack(recipe.getByProduct(), false);
             buffer.writeFluidStack(recipe.getInputFluidStack());
             buffer.writeFluidStack(recipe.getOutputFluidStack());
