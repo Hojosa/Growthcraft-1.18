@@ -3,6 +3,7 @@ package growthcraft.milk.recipe;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import com.google.gson.JsonArray;
@@ -12,11 +13,13 @@ import growthcraft.lib.utils.CraftingUtils;
 import growthcraft.lib.utils.RecipeUtils;
 import growthcraft.milk.GrowthcraftMilk;
 import growthcraft.milk.shared.Reference;
+import net.minecraft.core.NonNullList;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
@@ -29,20 +32,22 @@ public class MixingVatItemRecipe implements Recipe<SimpleContainer> {
     private final ResourceLocation recipeId;
     private final RecipeUtils.Category category;
     private final ItemStack activationTool;
-    private final List<ItemStack> ingredients;
+    private final NonNullList<Ingredient> inputIngredients;
+//    private final List<ItemStack> ingredients;
     private final FluidStack inputFluidStack;
     private final int processingTime;
     private final ItemStack resultItemStack;
     private final ItemStack resultActivationTool;
 
     public MixingVatItemRecipe(ResourceLocation recipeId, RecipeUtils.Category category,
-                               FluidStack inputFluidStack, List<ItemStack> ingredients, int processingTime,
+                               FluidStack inputFluidStack, NonNullList<Ingredient> inputIngredients, int processingTime,
                                ItemStack resultItemStack, ItemStack activationTool,
                                ItemStack resultActivationTool) {
         this.recipeId = recipeId;
         this.category = category;
         this.inputFluidStack = inputFluidStack;
-        this.ingredients = ingredients;
+        this.inputIngredients = inputIngredients;
+        //this.ingredients = ingredients;
         this.processingTime = processingTime;
         this.resultItemStack = resultItemStack;
         this.activationTool = activationTool;
@@ -68,7 +73,7 @@ public class MixingVatItemRecipe implements Recipe<SimpleContainer> {
             int itemCount = this.getIngredientList().size();
             int matchCount = 0;
             for (int i = 0; i < this.getIngredientList().size(); i++) {
-                if (this.getIngredientList().get(i).getItem() == testIngredients.get(i).getItem() &&
+                if (this.getIngredientList().get(i).getItems() == testIngredients.get(i).getItem() &&
                         this.getIngredientList().get(i).getCount() == testIngredients.get(i).getCount()) {
                     matchCount++;
                 }
@@ -95,8 +100,8 @@ public class MixingVatItemRecipe implements Recipe<SimpleContainer> {
         return processingTime;
     }
 
-    public List<ItemStack> getIngredientList() {
-        return ingredients;
+    public @NotNull NonNullList<Ingredient> getIngredientList() {
+        return this.inputIngredients;
     }
 
     public ItemStack getResultItemStack() {
@@ -177,9 +182,17 @@ public class MixingVatItemRecipe implements Recipe<SimpleContainer> {
 
             List<ItemStack> ingredients = new ArrayList<>();
             JsonArray jsonIngredients = GsonHelper.getAsJsonArray(json, "ingredients");
+            
+            NonNullList<Ingredient> inputIngredient = CraftingUtils.readIngredients(GsonHelper.getAsJsonArray(json, "ingredients"));
 
             if (jsonIngredients.size() <= maxIngredients) {
                 for (int i = 0; i < jsonIngredients.size(); i++) {
+                	System.out.println("HELLO");
+                	System.out.println(recipeId);
+                	System.out.println(jsonIngredients.get(i).getAsJsonObject());
+//                	System.out.println(jsonIngredients.get(i));
+                	System.out.println(inputIngredient.get(i).getItems()[0]);
+
                     ItemStack itemStack = CraftingHelper.getItemStack(jsonIngredients.get(i).getAsJsonObject(), false);
                     ingredients.add(itemStack);
                 }
@@ -192,7 +205,7 @@ public class MixingVatItemRecipe implements Recipe<SimpleContainer> {
                         GsonHelper.getAsJsonObject(json, "result_activation_tool"), false);
 
                 return new MixingVatItemRecipe(recipeId, RecipeUtils.Category.ITEM,
-                        inputFluid, ingredients, processingTime, resultItemStack, activationTool, resultActivationTool);
+                        inputFluid, inputIngredient, processingTime, resultItemStack, activationTool, resultActivationTool);
             }
 
 

@@ -8,7 +8,7 @@
   },
   "ingredients": [
     {
-      "item": "growthcraft:salt",
+      "tag": "forge:dusts/salt",
       "count": 1
     },
     {

@@ -27,6 +27,7 @@ import net.minecraft.network.chat.FormattedText;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 
 public class MixingVatRecipeItemCategory implements IRecipeCategory<MixingVatItemRecipe> {
 
@@ -82,8 +83,10 @@ public class MixingVatRecipeItemCategory implements IRecipeCategory<MixingVatIte
 
         // Input Inventory
         for (int i = 0; i < ingredientCount; i++) {
-            builder.addSlot(RecipeIngredientRole.INPUT, 61, 8 + (i * 18))
-                    .addItemStack(recipe.getIngredientList().get(i));
+        	for (Ingredient ingredient : recipe.getIngredients()) {
+        		builder.addSlot(RecipeIngredientRole.INPUT, 61, 8 + (i * 18))
+                    	.addIngredients(ingredient);
+        	}
         }
 
         // Fluid Tank 1

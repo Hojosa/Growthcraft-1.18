@@ -5,7 +5,7 @@
       "item": "growthcraft_milk:butter"
     },
     {
-      "item": "growthcraft:salt"
+      "tag": "forge:dusts/salt"
     }
   ],
   "result": {
