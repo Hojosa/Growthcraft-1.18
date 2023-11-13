@@ -79,7 +79,7 @@ public class GrowthcraftRiceItems {
         ComposterBlock.COMPOSTABLES.put(GrowthcraftRiceItems.RICE_COOKED.get(), f3);
         ComposterBlock.COMPOSTABLES.put(GrowthcraftRiceItems.RICE_STALK.get(), f1);
         ComposterBlock.COMPOSTABLES.put(GrowthcraftRiceItems.SUSHI_ROLL.get(), f4);
-
+        ComposterBlock.COMPOSTABLES.put(GrowthcraftRiceItems.YEAST_SEISHU.get(), f4);
     }
 
     public static boolean excludeItemRegistry(ResourceLocation registryName) {

@@ -136,8 +136,6 @@ dependencies {
     runtimeOnly fg.deobf("curse.maven:jei-${curseforge_jei}")
     runtimeOnly fg.deobf("curse.maven:patchouli-${curseforge_patchouli}")
     runtimeOnly fg.deobf("curse.maven:appleskin-${curseforge_appleskin}")
-    //runtimeOnly fg.deobf("curse.maven:growthcraft-trapper-${curseforge_growthcraft_trapper}")
-    //runtimeOnly fg.deobf("curse.maven:growthcraft-decorations-${curseforge_growthcraft_deco}")
     
     runtimeOnly fg.deobf("curse.maven:farmers_delight-${curseforge_farmers_delight}")
 }
