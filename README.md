@@ -1,12 +1,12 @@
 # Growthcraft 7 for Minecraft 1.18.2 (Forge)
 
-[![Growthcraft Version](https://img.shields.io/badge/Growthcraft-8.1.0-orange.svg)](https://github.com/GrowthcraftCE/Growthcraft-1.19)
+[![Growthcraft Version](https://img.shields.io/badge/Growthcraft-7.1.1-orange.svg)](https://github.com/GrowthcraftCE/Growthcraft-1.18)
 [![](http://cf.way2muchnoise.eu/versions/growthcraft-community-edition_latest.svg)](https://minecraft.curseforge.com/projects/growthcraft-community-edition/)
 [![](http://cf.way2muchnoise.eu/short_growthcraft-community-edition.svg)](https://minecraft.curseforge.com/projects/growthcraft-community-edition/)
-[![Forge Version](https://img.shields.io/badge/Minecraft%20Forge-43.1.7-yellow.svg)](http://files.minecraftforge.net/maven/net/minecraftforge/forge/index_1.19.3.html)
+[![Forge Version](https://img.shields.io/badge/Minecraft%20Forge-40.2.13-yellow.svg)](http://files.minecraftforge.net/maven/net/minecraftforge/forge/index_1.18.2.html)
 
-[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2FGrowthcraftCE%2FGrowthcraft-1.19%2Fbadge%3Fref%3Ddevelopment&style=flat)](https://actions-badge.atrox.dev/GrowthcraftCE/Growthcraft-1.19/goto?ref=development)
-[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/GrowthcraftCE/Growthcraft-1.19)
+[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2FGrowthcraftCE%2FGrowthcraft-1.18%2Fbadge%3Fref%3Ddevelopment&style=flat)](https://actions-badge.atrox.dev/GrowthcraftCE/Growthcraft-1.18/goto?ref=development)
+[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/GrowthcraftCE/Growthcraft-1.18)
 [![Discord Channel](https://img.shields.io/discord/333690296334548994.svg?color=green)](https://discord.gg/Quh76Jn)
 
 Welcome to Growthcraft. Growthcraft is a collection of Minecraft mods that adds an extra layer of immersion into the
@@ -14,21 +14,28 @@ world of Minecraft. Growthcraft adds the ability to grow Apple tress, collect ho
 
 ## Getting Started
 
-There are multiple starting points to Growthcraft. As we continue to develop and expand Growthcraft, we will be adding to our GitHub wiki documentation.
+There are multiple starting points to Growthcraft. As we continue to develop and expand Growthcraft, we will be adding
+to our GitHub wiki documentation. As of version 7 we have included an in-game manual.
 
 ## History
 
-### Growthcraft 8 (Minecraft 1.19)
+### Growthcraft 9 (Minecraft 1.20.1)
+
+End of Support: TBD  
+Latest Version: 9.1.2  
+Stable Version: 9.1.3
+
+### Growthcraft 8 (Minecraft 1.19.4)
 
 End of Support: TBD  
 Latest Version: 8.1.0  
-Stable Version: TBD
+Stable Version: 8.1.0
 
-### Growthcraft 7 (Minecraft 1.18)
+### Growthcraft 7 (Minecraft 1.18.2)
 
 End of Support: TBD  
-Latest Version: 7.0.0  
-Stable Version: TBD
+Latest Version: 7.1.1  
+Stable Version: 7.1.1
 
 ### Growthcraft 6 (Minecraft 1.16)
 
