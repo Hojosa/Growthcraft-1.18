@@ -1,5 +1,7 @@
 package growthcraft.cellar.compat.jei.category;
 
+import java.util.List;
+
 import com.mojang.blaze3d.vertex.PoseStack;
 
 import growthcraft.cellar.GrowthcraftCellar;
@@ -25,6 +27,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.FormattedText;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.world.item.ItemStack;
 
 public class CultureJarRecipeCategory implements IRecipeCategory<CultureJarRecipe> {
@@ -104,8 +107,12 @@ public class CultureJarRecipeCategory implements IRecipeCategory<CultureJarRecip
         } catch (Exception ex) {
             GrowthcraftCellar.LOGGER.error("Failure to draw heat texture for Culture Jar recipe with JEI integration.");
         }
-
-        font.drawWordWrap(FormattedText.of("Culturing requires a item to grow."), 160, 125, 50, 0x404040);
+        
+        List<FormattedCharSequence> splitFont = font.split(FormattedText.of("Culturing requires a item to grow."), 50);
+        font.draw(stack, splitFont.get(0), 0, 7, 0x404040);
+        font.draw(stack, splitFont.get(1), 0, 17, 0x404040);
+        font.draw(stack, splitFont.get(2), 0, 27, 0x404040);
+        font.draw(stack, splitFont.get(3), 0, 37, 0x404040);
 
         font.draw(stack, "(" + TickUtils.toHoursMinutesSeconds(recipe.getRecipeProcessingTime()) + ")", 106, 50, 0x404040);
     }

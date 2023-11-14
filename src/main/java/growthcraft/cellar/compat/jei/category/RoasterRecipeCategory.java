@@ -1,5 +1,7 @@
 package growthcraft.cellar.compat.jei.category;
 
+import java.util.List;
+
 import com.mojang.blaze3d.vertex.PoseStack;
 
 import growthcraft.cellar.compat.jei.JEIGrowthcraftCellarModPlugin;
@@ -23,6 +25,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.FormattedText;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.world.item.ItemStack;
 
 public class RoasterRecipeCategory implements IRecipeCategory<RoasterRecipe> {
@@ -77,10 +80,11 @@ public class RoasterRecipeCategory implements IRecipeCategory<RoasterRecipe> {
         IRecipeCategory.super.draw(recipe, recipeSlotsView, stack, mouseX, mouseY);
         Font font = Minecraft.getInstance().font;
 
-       font.drawWordWrap(FormattedText.of("Roasting time is the same regardless of amount."), 160, 119, 150, 0x404040);
+       List<FormattedCharSequence> splitFont = font.split(FormattedText.of("Roasting time is the same regardless of amount."), 140);
+       font.draw(stack, splitFont.get(0), 0, 1, 0x404040);
+       font.draw(stack, splitFont.get(1), 0, 10, 0x404040);
 
-        font.drawWordWrap(FormattedText.of("Roasting Level " + recipe.getRecipeProcessingTime() + " for " + TickUtils.toHoursMinutesSeconds(recipe.getRecipeProcessingTime() * 30 * 20)), 160, 181, 150, 0x404040);
-
+       font.draw(stack, FormattedText.of("Roasting Level " + recipe.getRecipeProcessingTime() + " for " + TickUtils.toHoursMinutesSeconds(recipe.getRecipeProcessingTime() * 30 * 20)).getString(), 0, 63, 0x404040);
     }
     
 	@Override

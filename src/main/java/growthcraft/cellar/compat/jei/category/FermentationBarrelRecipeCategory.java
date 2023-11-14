@@ -1,5 +1,7 @@
 package growthcraft.cellar.compat.jei.category;
 
+import java.util.List;
+
 import com.mojang.blaze3d.vertex.PoseStack;
 
 import growthcraft.cellar.compat.jei.JEIGrowthcraftCellarModPlugin;
@@ -23,6 +25,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.FormattedText;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.world.item.ItemStack;
 
 public class FermentationBarrelRecipeCategory implements IRecipeCategory<FermentationBarrelRecipe> {
@@ -86,6 +89,12 @@ public class FermentationBarrelRecipeCategory implements IRecipeCategory<Ferment
         Font font = Minecraft.getInstance().font;
 
         font.drawWordWrap(FormattedText.of("Time multiplies based on amount."), 274, 125, 50, 0x404040);
+        
+        List<FormattedCharSequence> splitFont = font.split(FormattedText.of("Time multiplies based on amount."), 50);
+        font.draw(stack, splitFont.get(0), 114, 7, 0x404040);
+        font.draw(stack, splitFont.get(1), 114, 16, 0x404040);
+        font.draw(stack, splitFont.get(2), 114, 25, 0x404040);
+        font.draw(stack, splitFont.get(3), 114, 34, 0x404040);
 
         font.draw(stack, "(" + TickUtils.toHoursMinutesSeconds(recipe.getProcessingTime()) + ")", 0, 55, 0x404040);
         
