@@ -1,6 +1,7 @@
 package growthcraft.cellar.compat.jei.category;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 
@@ -81,8 +82,12 @@ public class RoasterRecipeCategory implements IRecipeCategory<RoasterRecipe> {
         Font font = Minecraft.getInstance().font;
 
        List<FormattedCharSequence> splitFont = font.split(FormattedText.of("Roasting time is the same regardless of amount."), 140);
-       font.draw(stack, splitFont.get(0), 0, 1, 0x404040);
-       font.draw(stack, splitFont.get(1), 0, 10, 0x404040);
+       AtomicInteger hight = new AtomicInteger(7);
+
+       splitFont.forEach((f) -> {
+       	font.draw(stack, f, 0, hight.get(), 0x404040);
+       	hight.getAndAdd(9);
+       });
 
        font.draw(stack, FormattedText.of("Roasting Level " + recipe.getRecipeProcessingTime() + " for " + TickUtils.toHoursMinutesSeconds(recipe.getRecipeProcessingTime() * 30 * 20)).getString(), 0, 63, 0x404040);
     }

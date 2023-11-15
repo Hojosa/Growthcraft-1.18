@@ -90,16 +90,12 @@ public class FruitPressRecipeCategory implements IRecipeCategory<FruitPressRecip
         stack.scale(0.8F, 0.8F, 0.8F);
         
         List<FormattedCharSequence> splitFont = font.split(FormattedText.of("Watch for drainage particles until completed."), 60);
-        font.draw(stack, splitFont.get(0), 144, 7, 0x404040);
-        font.draw(stack, splitFont.get(1), 144, 17, 0x404040);
-        font.draw(stack, splitFont.get(2), 144, 27, 0x404040);
-        font.draw(stack, splitFont.get(3), 144, 37, 0x404040);
-        font.draw(stack, splitFont.get(4), 144, 47, 0x404040);
-        
-        font.split(FormattedText.of("Watch for drainage particles until completed."), 60);
+        AtomicInteger hight = new AtomicInteger(7);
 
-
-
+        splitFont.forEach((f) -> {
+        	font.draw(stack, f, 144, hight.get(), 0x404040);
+        	hight.getAndAdd(9);
+        });
     }
     
 	@Override

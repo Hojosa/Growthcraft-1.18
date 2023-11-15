@@ -1,6 +1,7 @@
 package growthcraft.cellar.compat.jei.category;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 
@@ -109,10 +110,12 @@ public class CultureJarRecipeCategory implements IRecipeCategory<CultureJarRecip
         }
         
         List<FormattedCharSequence> splitFont = font.split(FormattedText.of("Culturing requires a item to grow."), 50);
-        font.draw(stack, splitFont.get(0), 0, 7, 0x404040);
-        font.draw(stack, splitFont.get(1), 0, 17, 0x404040);
-        font.draw(stack, splitFont.get(2), 0, 27, 0x404040);
-        font.draw(stack, splitFont.get(3), 0, 37, 0x404040);
+        AtomicInteger hight = new AtomicInteger(7);
+
+        splitFont.forEach((f) -> {
+        	font.draw(stack, f, 0, hight.get(), 0x404040);
+        	hight.getAndAdd(9);
+        });
 
         font.draw(stack, "(" + TickUtils.toHoursMinutesSeconds(recipe.getRecipeProcessingTime()) + ")", 106, 50, 0x404040);
     }
