@@ -59,6 +59,7 @@ public class MixingVatBlockEntity extends BlockEntity implements BlockEntityTick
     private boolean activated = false;
     private ItemStack activationTool = ItemStack.EMPTY;
     private ItemStack resultActivationTool = ItemStack.EMPTY;
+    private boolean requiresHeatSource = true;
 
     protected final ContainerData data;
 
@@ -68,6 +69,11 @@ public class MixingVatBlockEntity extends BlockEntity implements BlockEntityTick
         @Override
         protected void onContentsChanged(int slot) {
             setChanged();
+        }
+
+        @Override
+        public int getSlotLimit(int slot) {
+            return 1;
         }
     };
 
@@ -219,10 +225,12 @@ public class MixingVatBlockEntity extends BlockEntity implements BlockEntityTick
                 this.tickMax = fluidRecipe.getProcessingTime();
                 this.activationTool = fluidRecipe.getActivationTool();
                 this.resultActivationTool = ItemStack.EMPTY;
+                this.requiresHeatSource = fluidRecipe.isHeatRequired();
             } else {
                 this.tickMax = itemRecipe.getProcessingTime();
                 this.activationTool = itemRecipe.getActivationTool();
                 this.resultActivationTool = itemRecipe.getResultActivationTool();
+                this.requiresHeatSource = itemRecipe.isHeatRequired();
             }
 
             level.sendBlockUpdated(this.getBlockPos(), this.getBlockState(), this.getBlockState(), Block.UPDATE_ALL);
@@ -273,7 +281,8 @@ public class MixingVatBlockEntity extends BlockEntity implements BlockEntityTick
             if (recipe.matches(
                     this.FLUID_TANK_INPUT.getFluid().copy(),
                     this.FLUID_TANK_OUTPUT.getFluid().copy(),
-                    currentItems)
+                    currentItems,
+                    isHeated())
             ) {
                 matchingRecipes.add(recipe);
             }
@@ -302,7 +311,8 @@ public class MixingVatBlockEntity extends BlockEntity implements BlockEntityTick
             for(MixingVatItemRecipe recipe : recipes) {
                 if (recipe.matches(
                         this.FLUID_TANK_INPUT.getFluid(),
-                        currentItems)
+                        currentItems,
+                        isHeated())
                 ) {
                     matchingRecipes.add(recipe);
                 }
@@ -334,6 +344,7 @@ public class MixingVatBlockEntity extends BlockEntity implements BlockEntityTick
         this.tickClock = nbt.getInt("CurrentProcessTicks");
         this.tickMax = nbt.getInt("MaxProcessTicks");
         this.activated = nbt.getBoolean("IsActivated");
+        this.requiresHeatSource = nbt.getBoolean("RequiresHeatSource");
 
         this.itemStackHandler.deserializeNBT(nbt.getCompound("inventory"));
         this.FLUID_TANK_INPUT.readFromNBT(nbt.getCompound("InputFluidTank"));
@@ -354,6 +365,7 @@ public class MixingVatBlockEntity extends BlockEntity implements BlockEntityTick
         nbt.putInt("CurrentProcessTicks", this.tickClock);
         nbt.putInt("MaxProcessTicks", this.tickMax);
         nbt.putBoolean("IsActivated", this.activated);
+        nbt.putBoolean("RequiresHeatSource", this.requiresHeatSource);
 
         nbt.put("inventory", itemStackHandler.serializeNBT());
         nbt.put("InputFluidTank", FLUID_TANK_INPUT.writeToNBT(new CompoundTag()));
@@ -454,21 +466,36 @@ public class MixingVatBlockEntity extends BlockEntity implements BlockEntityTick
         return tankID == 0 ? this.FLUID_TANK_INPUT : this.FLUID_TANK_OUTPUT;
     }
 
+    /**
+     * Attempt to activate the current recipe with an item.
+     * <p>
+     * Activation is true if ...
+     * - Activation tool is not null.
+     * - The checked item matches the recipe defined activation.
+     * - The block has a heat source and the recipe requires a heat source.
+     *
+     * @param stack ItemStack Item to use to activate the recipe for the block.
+     * @return boolean If the current block was activated with this check.
+     */
     public boolean activateRecipe(ItemStack stack) {
+        // Fail fast if vat is already activated.
         if(this.activated) return false;
-        this.activated = this.getActivationTool() != null && this.getActivationTool().getItem() == stack.getItem();
+        if(this.activated) return false;
+        this.activated = this.getActivationTool() != null
+                && this.getActivationTool().getItem() == stack.getItem()
+                && isHeated() == this.requiresHeatSource;
 
-        // Reset the activation tool.
-        this.activationTool = ItemStack.EMPTY;
+        // Reset the activation tool if recipe is activated
+        if (this.activated) this.activationTool = ItemStack.EMPTY;
 
         return this.activated;
     }
 
-    private ItemStack getActivationTool() {
+    public ItemStack getActivationTool() {
         return this.activationTool;
     }
 
-    private ItemStack getResultActivationTool() {
+    public ItemStack getResultActivationTool() {
         return this.resultActivationTool;
     }
 

@@ -26,6 +26,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 
 public class BrewKettleRecipeCategory implements IRecipeCategory<BrewKettleRecipe> {
 
@@ -87,9 +88,11 @@ public class BrewKettleRecipeCategory implements IRecipeCategory<BrewKettleRecip
                     .addItemStack(new ItemStack(GrowthcraftCellarItems.BREW_KETTLE_LID.get()));
         }
 
-        // Input Item
-        builder.addSlot(RecipeIngredientRole.INPUT, 70, 25)
-                .addItemStack(recipe.getInputItemStack());
+        // Input Item with Tag Support
+        for (Ingredient ingredient : recipe.getIngredients()) {
+            builder.addSlot(RecipeIngredientRole.INPUT, 70, 25)
+                    .addIngredients(ingredient);
+        }
 
         // TODO: Input Fluid
         builder.addSlot(RecipeIngredientRole.INPUT, 36, 7)

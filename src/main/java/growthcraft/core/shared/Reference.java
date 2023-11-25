@@ -8,7 +8,7 @@ public class Reference {
     public static final String MODID = "growthcraft";
     public static final String NAME = "Growthcraft";
     public static final String NAME_SHORT = "core";
-    public static final String VERSION = "7.1.0";
+    public static final String VERSION = "7.1.1";
     public static String CREATIVE_TAB = "Growthcraft";
     
     public static final CreativeModeTab ITEM_GROUP = new CreativeModeTab(CREATIVE_TAB) {

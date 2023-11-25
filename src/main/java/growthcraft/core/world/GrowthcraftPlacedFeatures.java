@@ -4,69 +4,39 @@ import growthcraft.core.init.config.GrowthcraftConfig;
 import growthcraft.core.shared.Reference;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
+import net.minecraft.data.worldgen.placement.PlacementUtils;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.HeightRangePlacement;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
+import net.minecraftforge.event.world.BiomeLoadingEvent;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.RegistryObject;
 
-public class GrowthcraftPlacedFeatures {
-	public static final DeferredRegister<PlacedFeature> PLACED_FEATURES = DeferredRegister.create(Registry.PLACED_FEATURE_REGISTRY, Reference.MODID);
+public class GrowthcraftPlacedFeatures {	
 	
+    public static void onBiomeLoadingEvent(BiomeLoadingEvent event) {
+    	if (event.getCategory() == Biome.BiomeCategory.NETHER) {
+            event.getGeneration().addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, NETHER_SALT_ORE_PLACED);
+        } else if (event.getCategory() == Biome.BiomeCategory.THEEND) {
+            event.getGeneration().addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, END_SALT_ORE_PLACED);
+        } else {
+        	event.getGeneration().addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, SALT_ORE_PLACED);
+        }
+    }
 	
-	public static final RegistryObject<PlacedFeature> SALT_ORE_PLACED = PLACED_FEATURES.register(Reference.UnlocalizedName.SALT_ORE_PLACED,
-            () -> new PlacedFeature((Holder<ConfiguredFeature<?,?>>)(Holder<? extends ConfiguredFeature<?,?>>)
-            		GrowthcraftConfiguredFeatures.SALT_ORE, GrowthcraftOrePlacement.commonOrePlacement(
-            				GrowthcraftConfig.getSaltOreGenSpreadAmount(), // VeinsPerChunk
-                    HeightRangePlacement.uniform(VerticalAnchor.absolute(GrowthcraftConfig.getSaltOreGenHeightMin()), VerticalAnchor.absolute(GrowthcraftConfig.getSaltOreGenHeightMax())))));
+	public static final Holder<PlacedFeature> SALT_ORE_PLACED = PlacementUtils.register(Reference.UnlocalizedName.SALT_ORE_PLACED,
+			GrowthcraftConfiguredFeatures.SALT_ORE, GrowthcraftOrePlacement.commonOrePlacement(GrowthcraftConfig.getSaltOreGenSpreadAmount(), // VeinsPerChunk
+					HeightRangePlacement.uniform(VerticalAnchor.absolute(GrowthcraftConfig.getSaltOreGenHeightMin()), VerticalAnchor.absolute(GrowthcraftConfig.getSaltOreGenHeightMax()))));
 	
-	public static final RegistryObject<PlacedFeature> NETHER_SALT_ORE_PLACED = PLACED_FEATURES.register(Reference.UnlocalizedName.SALT_ORE_PLACED + "_nether",
-            () -> new PlacedFeature((Holder<ConfiguredFeature<?,?>>)(Holder<? extends ConfiguredFeature<?,?>>)
-            		GrowthcraftConfiguredFeatures.NETHER_SALT_ORE, GrowthcraftOrePlacement.commonOrePlacement(
-            				GrowthcraftConfig.getSaltOreGenSpreadAmount(), // VeinsPerChunk
-                    HeightRangePlacement.uniform(VerticalAnchor.absolute(GrowthcraftConfig.getSaltOreGenHeightMin()), VerticalAnchor.absolute(GrowthcraftConfig.getSaltOreGenHeightMax())))));
-	
-	public static final RegistryObject<PlacedFeature> END_SALT_ORE_PLACED = PLACED_FEATURES.register(Reference.UnlocalizedName.SALT_ORE_PLACED + "_end",
-            () -> new PlacedFeature((Holder<ConfiguredFeature<?,?>>)(Holder<? extends ConfiguredFeature<?,?>>)
-            		GrowthcraftConfiguredFeatures.END_SALT_ORE, GrowthcraftOrePlacement.commonOrePlacement(
-            				GrowthcraftConfig.getSaltOreGenSpreadAmount(), // VeinsPerChunk
-                    HeightRangePlacement.uniform(VerticalAnchor.absolute(GrowthcraftConfig.getSaltOreGenHeightMin()), VerticalAnchor.absolute(GrowthcraftConfig.getSaltOreGenHeightMax())))));
-//    public static final ResourceKey<PlacedFeature> SALT_ORE_PLACED_KEY = createKey(Reference.UnlocalizedName.SALT_ORE_PLACED);
-
-//    public static void bootstrap(BootstapContext<PlacedFeature> context) {
-//    	GrowcraftHolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registry.PLACED_FEATURE_REGISTRY );
-//
-//        register(context, SALT_ORE_PLACED_KEY, configuredFeatures.getOrThrow(GrowthcraftConfiguredFeatures.OVERWORLD_SALT_ORE_KEY),
-//                GrowthcraftOrePlacement.commonOrePlacement(
-//                        GrowthcraftConfig.getSaltOreGenSpreadAmount(),
-//                        HeightRangePlacement.uniform(
-//                                VerticalAnchor.absolute(GrowthcraftConfig.getSaltOreGenHeightMin()),
-//                                VerticalAnchor.absolute(GrowthcraftConfig.getSaltOreGenHeightMax()))
-//                ));
-//    }
-//
-//    private static ResourceKey<PlacedFeature> createKey(String name) {
-//        return ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY, new ResourceLocation(Reference.MODID, name));
-//    }
-//
-//    private static void register(
-//            BootstapContext<PlacedFeature> context,
-//            ResourceKey<PlacedFeature> key,
-//            Holder<ConfiguredFeature<?, ?>> configuration,
-//            List<PlacementModifier> modifiers
-//    ) {
-//        context.register(key, new PlacedFeature(configuration, List.copyOf(modifiers)));
-//    }
-//
-//    private static void register(
-//            BootstapContext<PlacedFeature> context,
-//            ResourceKey<PlacedFeature> key,
-//            Holder<ConfiguredFeature<?, ?>> configuration,
-//            PlacementModifier... modifiers
-//    ) {
-//        register(context, key, configuration, List.of(modifiers));
-//    }
+	public static final Holder<PlacedFeature> NETHER_SALT_ORE_PLACED = PlacementUtils.register(Reference.UnlocalizedName.SALT_ORE_PLACED + "_nether",
+            		GrowthcraftConfiguredFeatures.NETHER_SALT_ORE, GrowthcraftOrePlacement.commonOrePlacement(GrowthcraftConfig.getSaltOreGenSpreadAmount(), // VeinsPerChunk
+                    HeightRangePlacement.uniform(VerticalAnchor.absolute(GrowthcraftConfig.getSaltOreGenHeightMin()), VerticalAnchor.absolute(GrowthcraftConfig.getSaltOreGenHeightMax()))));
+//	
+	public static final Holder<PlacedFeature> END_SALT_ORE_PLACED = PlacementUtils.register(Reference.UnlocalizedName.SALT_ORE_PLACED + "_end",
+            		GrowthcraftConfiguredFeatures.END_SALT_ORE, GrowthcraftOrePlacement.commonOrePlacement(GrowthcraftConfig.getSaltOreGenSpreadAmount(), // VeinsPerChunk
+                    HeightRangePlacement.uniform(VerticalAnchor.absolute(GrowthcraftConfig.getSaltOreGenHeightMin()), VerticalAnchor.absolute(GrowthcraftConfig.getSaltOreGenHeightMax()))));
 
     private GrowthcraftPlacedFeatures() {
         /* Prevent generation of default public constructor. */
