@@ -48,6 +48,8 @@ public class GrowthcraftApplesItemTags extends ItemTagsProvider{
 		.add(GrowthcraftApplesBlocks.APPLE_PLANK_PRESSURE_PLATE.get().asItem());
 		tag(ItemTags.WOODEN_TRAPDOORS)
 		.add(GrowthcraftApplesBlocks.APPLE_PLANK_TRAPDOOR.get().asItem());
+		tag(ItemTags.LEAVES)
+		.add(GrowthcraftApplesBlocks.APPLE_TREE_LEAVES.get().asItem());
 		
 	}
 

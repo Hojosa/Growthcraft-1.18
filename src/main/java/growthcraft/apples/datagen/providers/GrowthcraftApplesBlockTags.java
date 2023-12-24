@@ -46,6 +46,8 @@ public class GrowthcraftApplesBlockTags extends BlockTagsProvider {
 		.add(GrowthcraftApplesBlocks.APPLE_PLANK_PRESSURE_PLATE.get());
 		tag(BlockTags.WOODEN_TRAPDOORS)
 		.add(GrowthcraftApplesBlocks.APPLE_PLANK_TRAPDOOR.get());
+		tag(BlockTags.LEAVES)
+		.add(GrowthcraftApplesBlocks.APPLE_TREE_LEAVES.get());
 	
 	}
 
