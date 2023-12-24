@@ -9,7 +9,7 @@ public class Reference {
     public static final String NAME = "Growthcraft";
     public static final String NAME_SHORT = "core";
     public static final String VERSION = "7.1.1";
-    public static String CREATIVE_TAB = "Growthcraft";
+    public static String CREATIVE_TAB = "growthcraft";
     
     public static final CreativeModeTab ITEM_GROUP = new CreativeModeTab(CREATIVE_TAB) {
         @Override

@@ -19,6 +19,6 @@ public class GrowthcraftCoreRecipes extends RecipeProvider{
 	
     @Override
     public String getName() {
-        return "Growthcraft Apiary Recipes";
+        return "Growthcraft Core Recipes";
     }
 }

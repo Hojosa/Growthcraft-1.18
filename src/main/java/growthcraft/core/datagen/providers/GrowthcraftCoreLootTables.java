@@ -1,6 +1,5 @@
 package growthcraft.core.datagen.providers;
 
-import growthcraft.core.datagen.providers.BaseLootTableProvider;
 import net.minecraft.data.DataGenerator;
 
 public class GrowthcraftCoreLootTables extends BaseLootTableProvider{
@@ -16,6 +15,6 @@ public class GrowthcraftCoreLootTables extends BaseLootTableProvider{
 	
     @Override
     public String getName() {
-        return "Growthcraft Apiary LootTables";
+        return "Growthcraft Core LootTables";
     }
 }

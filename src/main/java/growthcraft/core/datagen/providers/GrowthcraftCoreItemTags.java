@@ -2,7 +2,7 @@ package growthcraft.core.datagen.providers;
 
 import org.jetbrains.annotations.Nullable;
 
-import growthcraft.apiary.shared.Reference;
+import growthcraft.core.shared.Reference;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.data.tags.ItemTagsProvider;
@@ -21,6 +21,6 @@ public class GrowthcraftCoreItemTags extends ItemTagsProvider{
 
     @Override
     public String getName() {
-        return "Growthcraft Apiary Item Tags";
+        return "Growthcraft Core Item Tags";
     }
 }
