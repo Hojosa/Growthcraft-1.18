@@ -3,6 +3,8 @@ package growthcraft.bamboo.init;
 import java.util.ArrayList;
 import java.util.function.Supplier;
 
+import com.google.common.collect.Maps;
+
 import growthcraft.bamboo.block.BambooBeeBoxBlock;
 import growthcraft.bamboo.block.BambooLogBlock;
 import growthcraft.bamboo.block.BambooRopeBlock;
@@ -16,7 +18,9 @@ import growthcraft.lib.block.GrowthcraftPressurePlateBlock;
 import growthcraft.lib.block.GrowthcraftSlabBlock;
 import growthcraft.lib.block.GrowthcraftStairsBlock;
 import growthcraft.lib.block.GrowthcraftTrapDoorBlock;
+import growthcraft.lib.utils.StrippedUtils;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -128,6 +132,14 @@ public class GrowthcraftBambooBlocks {
         ArrayList<String> excludeBlocks = new ArrayList<>();
         //excludeBlocks.add(Reference.MODID + ":" + Reference.UnlocalizedName.APPLE_TREE_FRUIT);
         return excludeBlocks.contains(registryName.toString());
+    }
+    
+    public static void registerStrippable() {
+        AxeItem.STRIPPABLES = Maps.newHashMap(AxeItem.STRIPPABLES);
+//    	StrippedUtils.addStrippable(BAMBOO_WOOD_LOG.get(), BAMBOO_WOOD_LOG_STRIPPED.get());
+//    	StrippedUtils.addStrippable(BAMBOO_WOOD.get(), BAMBOO_WOOD_STRIPPED.get());
+        AxeItem.STRIPPABLES.put(BAMBOO_WOOD_LOG.get(), BAMBOO_WOOD_LOG_STRIPPED.get());
+        AxeItem.STRIPPABLES.put(BAMBOO_WOOD.get(), BAMBOO_WOOD_STRIPPED.get());
     }
 
 

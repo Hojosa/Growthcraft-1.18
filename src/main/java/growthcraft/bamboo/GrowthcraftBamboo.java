@@ -45,7 +45,9 @@ public class GrowthcraftBamboo {
     }
 
     private void setup(final FMLCommonSetupEvent event) {
-        // Do Nothing for now ...
+    	event.enqueueWork(() -> {
+    	GrowthcraftBambooBlocks.registerStrippable();
+    	});
     }
 
     @SubscribeEvent
