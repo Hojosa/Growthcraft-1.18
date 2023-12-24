@@ -2,7 +2,7 @@
   "type": "minecraft:block",
   "pools": [
     {
-      "name": "apple_cider_fluid",
+      "name": "honey_mead_must_fluid",
       "rolls": 1.0,
       "bonus_rolls": 0.0,
       "entries": [
