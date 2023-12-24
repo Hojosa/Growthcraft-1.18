@@ -23,7 +23,6 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 @Mod(Reference.MODID)
 @Mod.EventBusSubscriber(modid = Reference.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class GrowthcraftApiary {
-
     public static final Logger LOGGER = LogManager.getLogger(Reference.MODID);
 
     public GrowthcraftApiary() {

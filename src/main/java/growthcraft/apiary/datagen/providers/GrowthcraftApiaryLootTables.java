@@ -1,5 +1,6 @@
 package growthcraft.apiary.datagen.providers;
 
+import growthcraft.apiary.init.GrowthcraftApiaryBlocks;
 import growthcraft.core.datagen.providers.BaseLootTableProvider;
 import net.minecraft.data.DataGenerator;
 
@@ -11,7 +12,7 @@ public class GrowthcraftApiaryLootTables extends BaseLootTableProvider{
 	
 	@Override
 	protected void addTables() {
-		
+		GrowthcraftApiaryBlocks.BLOCKS.getEntries().forEach(block -> addSimpleTable(block.get()));
 	}
 	
     @Override
