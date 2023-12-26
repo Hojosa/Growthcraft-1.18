@@ -63,6 +63,7 @@ public class Reference {
         public static final String TAG_ROPE_FENCE = "rope_fence";
         public static final String TAG_HEATSOURCES = "heatsources";
         public static final String WRENCH = "wrench";
+		public static final String DUSTS_SALT = "dusts/salt";
 
         private UnlocalizedName() { /* Disable default public constructor. */ }
 

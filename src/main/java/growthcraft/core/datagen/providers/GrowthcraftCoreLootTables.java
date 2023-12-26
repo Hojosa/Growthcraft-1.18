@@ -1,5 +1,6 @@
 package growthcraft.core.datagen.providers;
 
+import growthcraft.core.init.GrowthcraftBlocks;
 import net.minecraft.data.DataGenerator;
 
 public class GrowthcraftCoreLootTables extends BaseLootTableProvider{
@@ -10,6 +11,11 @@ public class GrowthcraftCoreLootTables extends BaseLootTableProvider{
 	
 	@Override
 	protected void addTables() {
+		GrowthcraftBlocks.BLOCKS.getEntries().forEach(block -> {
+			if(block.getId().getPath().contains("salt_ore")){
+		}
+			else lootTables.put(block.get(), createSimpleTable(block.get().getRegistryName().getPath(), GrowthcraftBlocks.ROPE_LINEN.get()));
+		});
 		
 	}
 	

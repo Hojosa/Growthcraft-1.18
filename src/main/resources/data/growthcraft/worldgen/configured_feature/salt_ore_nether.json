@@ -6,7 +6,7 @@
     "targets": [
       {
         "state": {
-          "Name": "growthcraft:salt_ore"
+          "Name": "growthcraft:salt_ore_nether"
         },
         "target": {
           "block": "minecraft:netherrack",
