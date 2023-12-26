@@ -3,13 +3,16 @@ package growthcraft.apples;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import growthcraft.apples.datagen.GrowthcraftApplesDataGenerators;
 import growthcraft.apples.init.GrowthcraftApplesBlockEntities;
 import growthcraft.apples.init.GrowthcraftApplesBlocks;
 import growthcraft.apples.init.GrowthcraftApplesFluids;
 import growthcraft.apples.init.GrowthcraftApplesItems;
+import growthcraft.apples.init.GrowthcraftApplesTags;
 import growthcraft.apples.init.client.GrowthcraftApplesBlockRenders;
 import growthcraft.apples.init.config.GrowthcraftApplesConfig;
 import growthcraft.apples.shared.Reference;
+import growthcraft.bamboo.datagen.GrowthcraftBambooDataGenerators;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -18,6 +21,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 
 @Mod(Reference.MODID)
 @Mod.EventBusSubscriber(modid = Reference.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
@@ -37,6 +41,7 @@ public class GrowthcraftApples {
         GrowthcraftApplesItems.ITEMS.register(modEventBus);
         GrowthcraftApplesFluids.FLUIDS.register(modEventBus);
         GrowthcraftApplesBlockEntities.BLOCK_ENTITIES.register(modEventBus);
+        GrowthcraftApplesTags.init();
 
         MinecraftForge.EVENT_BUS.register(this);
     }

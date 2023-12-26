@@ -4,6 +4,7 @@ import java.util.function.Consumer;
 
 import growthcraft.apiary.init.GrowthcraftApiaryBlocks;
 import growthcraft.apiary.init.GrowthcraftApiaryItems;
+import growthcraft.apiary.init.GrowthcraftApiaryTags;
 import growthcraft.apiary.shared.Reference;
 import growthcraft.lib.item.GrowthcraftItem;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
@@ -133,11 +134,10 @@ public class GrowthcraftApiaryRecipes extends RecipeProvider{
 		.pattern("S")
 		.pattern("H")
 		.define('S', Items.STRING)
-		.define('H', GrowthcraftApiaryItemTags.HONEY_COMB)
+		.define('H', GrowthcraftApiaryTags.Items.HONEY_COMB)
 		.unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(Items.HONEYCOMB))
 		.save(consumer);
 		
-		System.out.println("HELLO");
 		for (DyeColor dye : DyeColor.values()) {
 			
 			ShapelessRecipeBuilder.shapeless(ForgeRegistries.ITEMS.getValue(new ResourceLocation("minecraft:"+dye+"_candle")))

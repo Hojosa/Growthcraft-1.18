@@ -3,9 +3,11 @@ package growthcraft.bamboo;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import growthcraft.bamboo.datagen.GrowthcraftBambooDataGenerators;
 import growthcraft.bamboo.init.GrowthcraftBambooBlockEntities;
 import growthcraft.bamboo.init.GrowthcraftBambooBlocks;
 import growthcraft.bamboo.init.GrowthcraftBambooItems;
+import growthcraft.bamboo.init.GrowthcraftBambooTags;
 import growthcraft.bamboo.init.client.GrowthcraftBambooBlockRenderers;
 import growthcraft.bamboo.init.config.GrowthcraftBambooConfig;
 import growthcraft.bamboo.shared.Reference;
@@ -17,6 +19,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 
 
 @Mod(Reference.MODID)
@@ -36,6 +39,7 @@ public class GrowthcraftBamboo {
         GrowthcraftBambooBlocks.BLOCKS.register(modEventBus);
         GrowthcraftBambooItems.ITEMS.register(modEventBus);
         GrowthcraftBambooBlockEntities.BLOCK_ENTITIES.register(modEventBus);
+        GrowthcraftBambooTags.init();
 
         MinecraftForge.EVENT_BUS.register(this);
     }
