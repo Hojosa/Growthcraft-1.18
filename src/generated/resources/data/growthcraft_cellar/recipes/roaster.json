@@ -1,16 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
+  "group": "growthcraft_cellar",
   "pattern": [
     " I ",
     " B ",
     "I I"
   ],
   "key": {
-    "B": {
-      "item": "growthcraft_cellar:brew_kettle"
-    },
     "I": {
       "tag": "forge:ingots/iron"
+    },
+    "B": {
+      "item": "growthcraft_cellar:brew_kettle"
     }
   },
   "result": {

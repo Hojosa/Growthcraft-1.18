@@ -1,16 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
+  "group": "growthcraft_cellar",
   "pattern": [
     "AAA",
     "BBB",
     "AAA"
   ],
   "key": {
-    "B": {
-      "tag": "minecraft:planks"
-    },
     "A": {
       "tag": "forge:ingots/iron"
+    },
+    "B": {
+      "item": "minecraft:oak_planks"
     }
   },
   "result": {

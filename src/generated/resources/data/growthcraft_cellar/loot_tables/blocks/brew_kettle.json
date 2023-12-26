@@ -1,0 +1,53 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "name": "brew_kettle",
+      "rolls": 1.0,
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "function": "minecraft:copy_name",
+              "source": "block_entity"
+            },
+            {
+              "function": "minecraft:copy_nbt",
+              "source": "block_entity",
+              "ops": [
+                {
+                  "source": "inventory",
+                  "target": "BlockEntityTag.Inventory",
+                  "op": "replace"
+                },
+                {
+                  "source": "fluid_tank_input_0",
+                  "target": "BlockEntityTag.Fluid_Tank_Input_0",
+                  "op": "replace"
+                },
+                {
+                  "source": "fluid_tank_output_0",
+                  "target": "BlockEntityTag.Fluid_Tank_Output_0",
+                  "op": "replace"
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_contents",
+              "type": "growthcraft_cellar:brew_kettle",
+              "entries": [
+                {
+                  "type": "minecraft:dynamic",
+                  "name": "minecraft:contents"
+                }
+              ]
+            }
+          ],
+          "name": "growthcraft_cellar:brew_kettle"
+        }
+      ]
+    }
+  ]
+}
