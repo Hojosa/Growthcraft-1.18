@@ -107,11 +107,11 @@ public class Reference {
         public static final String YEAST_ETHEREAL = "yeast_ethereal";
         public static final String YEAST_LAGER = "yeast_lager";
         public static final String YEAST_LAGER_ETHEREAL = "yeast_lager_ethereal";
-        public static final String TAG_HEATSOURCES = "heat_sources";
+        public static final String HEATSOURCES = "heat_sources";
         public static final String KINDLING = "kindling";
-		public static final String BARLEY = "grain/barley";
-		public static final String GRAPE_SEEDS = "seeds/grapes";
-		public static final String GRAPE_FRUITS = "fruits/grapes";
+		public static final String TAG_BARLEY = "grain/barley";
+		public static final String TAG_GRAPE_SEEDS = "seeds/grapes";
+		public static final String TAG_GRAPE_FRUITS = "fruits/grapes";
 
         private UnlocalizedName() {
             /* Disable Automatic Creation of Public Constructor */

@@ -34,11 +34,11 @@ public class GrowthcraftCellarTags {
 
     public static class Items {
 
-        public static final TagKey<Item> GRAIN = tag(Reference.UnlocalizedName.GRAIN);
+        public static final TagKey<Item> TAG_GRAIN = tag(Reference.UnlocalizedName.GRAIN);
         
-        public static final TagKey<Item> BARLEY = forgeTag(Reference.UnlocalizedName.BARLEY);
-        public static final TagKey<Item> GRAPE_SEEDS = forgeTag(Reference.UnlocalizedName.GRAPE_SEEDS);
-        public static final TagKey<Item> GRAPE_FRUITS = forgeTag(Reference.UnlocalizedName.GRAPE_FRUITS);
+        public static final TagKey<Item> TAG_BARLEY = forgeTag(Reference.UnlocalizedName.TAG_BARLEY);
+        public static final TagKey<Item> TAG_GRAPE_SEEDS = forgeTag(Reference.UnlocalizedName.TAG_GRAPE_SEEDS);
+        public static final TagKey<Item> TAG_GRAPE_FRUITS = forgeTag(Reference.UnlocalizedName.TAG_GRAPE_FRUITS);
 
         private static void init() {
             // Do nothing, simply instantiate static variables
