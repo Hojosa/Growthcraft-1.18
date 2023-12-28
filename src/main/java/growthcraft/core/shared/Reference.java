@@ -64,6 +64,8 @@ public class Reference {
         public static final String TAG_HEATSOURCES = "heatsources";
         public static final String WRENCH = "wrench";
 		public static final String DUSTS_SALT = "dusts/salt";
+		public static final String TAG_CROPS_RICE = "crops/rice";
+		public static final String TAG_GRAIN_RICE = "grain/rice";
 
         private UnlocalizedName() { /* Disable default public constructor. */ }
 

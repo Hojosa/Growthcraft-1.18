@@ -22,6 +22,7 @@
     "growthcraft:rope_linen_nether_brick_fence",
     "growthcraft:rope_linen_oak_fence",
     "growthcraft:rope_linen_spruce_fence",
-    "growthcraft:rope_linen_warped_fence"
+    "growthcraft:rope_linen_warped_fence",
+    "growthcraft_milk:churn"
   ]
 }

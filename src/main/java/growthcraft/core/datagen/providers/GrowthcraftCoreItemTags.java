@@ -9,18 +9,20 @@ import growthcraft.apples.init.GrowthcraftApplesBlocks;
 import growthcraft.apples.init.GrowthcraftApplesTags;
 import growthcraft.bamboo.init.GrowthcraftBambooBlocks;
 import growthcraft.bamboo.init.GrowthcraftBambooTags;
-import growthcraft.cellar.GrowthcraftCellar;
 import growthcraft.cellar.init.GrowthcraftCellarItems;
 import growthcraft.cellar.init.GrowthcraftCellarTags;
 import growthcraft.core.init.GrowthcraftItems;
 import growthcraft.core.init.GrowthcraftTags;
 import growthcraft.core.shared.Reference;
 import growthcraft.lib.item.GrowthcraftItem;
+import growthcraft.milk.init.GrowthcraftMilkItems;
+import growthcraft.milk.init.GrowthcraftMilkTags;
+import growthcraft.rice.init.GrowthcraftRiceItems;
+import growthcraft.rice.init.GrowthcraftRiceTags;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -68,18 +70,24 @@ public class GrowthcraftCoreItemTags extends ItemTagsProvider{
 		.add(GrowthcraftItems.WRENCH.get());
 		tag(GrowthcraftTags.Items.SALT)
 		.add(GrowthcraftItems.SALT.get());
-		tag(GrowthcraftCellarTags.Items.GRAPE_FRUITS)
+		tag(GrowthcraftCellarTags.Items.TAG_GRAPE_FRUITS)
 		.add(GrowthcraftCellarItems.GRAPE_PURPLE.get());
-		tag(GrowthcraftCellarTags.Items.GRAPE_FRUITS)
+		tag(GrowthcraftCellarTags.Items.TAG_GRAPE_FRUITS)
 		.add(GrowthcraftCellarItems.GRAPE_RED.get());
-		tag(GrowthcraftCellarTags.Items.GRAPE_FRUITS)
+		tag(GrowthcraftCellarTags.Items.TAG_GRAPE_FRUITS)
 		.add(GrowthcraftCellarItems.GRAPE_WHITE.get());
-		tag(GrowthcraftCellarTags.Items.GRAPE_SEEDS)
+		tag(GrowthcraftCellarTags.Items.TAG_GRAPE_SEEDS)
 		.add(GrowthcraftCellarItems.GRAPE_SEEDS_PURPLE.get());
-		tag(GrowthcraftCellarTags.Items.GRAPE_SEEDS)
+		tag(GrowthcraftCellarTags.Items.TAG_GRAPE_SEEDS)
 		.add(GrowthcraftCellarItems.GRAPE_SEEDS_RED.get());
-		tag(GrowthcraftCellarTags.Items.GRAPE_SEEDS)
+		tag(GrowthcraftCellarTags.Items.TAG_GRAPE_SEEDS)
 		.add(GrowthcraftCellarItems.GRAPE_SEEDS_WHITE.get());
+		
+		tag(GrowthcraftMilkTags.Items.TAG_MILK_BUCKETS)
+		.add(GrowthcraftMilkItems.MILK_BUCKET.get())
+		.add(GrowthcraftMilkItems.BUTTER_MILK_BUCKET.get());
+		tag(GrowthcraftMilkTags.Items.TAG_MIXING_VAT_TOOLS)
+		.add(GrowthcraftMilkItems.CHEESE_CLOTH.get());
 		
 		//Vanilla Tags
 		tag(ItemTags.WOODEN_BUTTONS)
@@ -120,14 +128,18 @@ public class GrowthcraftCoreItemTags extends ItemTagsProvider{
 		//Forge Tags
 		GrowthcraftCellarItems.ITEMS.getEntries().forEach(grain -> {
 			if(grain.getId().getPath().contains("grain")) {
-				tag(GrowthcraftCellarTags.Items.BARLEY)
+				tag(GrowthcraftCellarTags.Items.TAG_BARLEY)
 				.add(grain.get());
-				tag(GrowthcraftCellarTags.Items.GRAIN)
+				tag(GrowthcraftCellarTags.Items.TAG_GRAIN)
 				.add(grain.get());
 			}
 		});
 		tag(GrowthcraftTags.Items.DUSTS_SALT)
 		.add(GrowthcraftItems.SALT.get());
+		tag(GrowthcraftRiceTags.Items.TAG_CROPS_RICE)
+		.add(GrowthcraftRiceItems.RICE.get());
+		tag(GrowthcraftRiceTags.Items.TAG_GRAIN_RICE)
+		.add(GrowthcraftRiceItems.RICE.get());
 	}
 
     @Override

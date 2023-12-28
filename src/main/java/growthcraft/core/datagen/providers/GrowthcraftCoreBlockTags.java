@@ -11,10 +11,11 @@ import growthcraft.cellar.init.GrowthcraftCellarBlocks;
 import growthcraft.core.init.GrowthcraftBlocks;
 import growthcraft.core.init.GrowthcraftTags;
 import growthcraft.core.shared.Reference;
+import growthcraft.milk.init.GrowthcraftMilkBlocks;
+import growthcraft.rice.init.GrowthcraftRiceBlocks;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -75,7 +76,7 @@ public class GrowthcraftCoreBlockTags extends BlockTagsProvider {
 		tag(GrowthcraftTags.Blocks.SALT)
 		.add(GrowthcraftBlocks.SALT_BLOCK.get());
 		
-		
+
 		
 		//Vanilla Tags
 		tag(BlockTags.WOODEN_BUTTONS)
@@ -127,7 +128,8 @@ public class GrowthcraftCoreBlockTags extends BlockTagsProvider {
 		.add(GrowthcraftBlocks.ROPE_LINEN_NETHER_BRICK_FENCE.get())
 		.add(GrowthcraftBlocks.ROPE_LINEN_OAK_FENCE.get())
 		.add(GrowthcraftBlocks.ROPE_LINEN_SPRUCE_FENCE.get())
-		.add(GrowthcraftBlocks.ROPE_LINEN_WARPED_FENCE.get());
+		.add(GrowthcraftBlocks.ROPE_LINEN_WARPED_FENCE.get())
+		.add(GrowthcraftMilkBlocks.CHURN.get());
 		tag(BlockTags.MINEABLE_WITH_PICKAXE)
 		.add(GrowthcraftCellarBlocks.BREW_KETTLE.get())
 		.add(GrowthcraftCellarBlocks.FRUIT_PRESS.get())
@@ -136,7 +138,12 @@ public class GrowthcraftCoreBlockTags extends BlockTagsProvider {
 		.add(GrowthcraftBlocks.SALT_ORE.get())
 		.add(GrowthcraftBlocks.SALT_ORE_DEEPSLATE.get())
 		.add(GrowthcraftBlocks.SALT_ORE_END.get())
-		.add(GrowthcraftBlocks.SALT_ORE_NETHER.get());
+		.add(GrowthcraftBlocks.SALT_ORE_NETHER.get())
+		.add(GrowthcraftMilkBlocks.CHEESE_PRESS.get())
+		.add(GrowthcraftMilkBlocks.MIXING_VAT.get())
+		.add(GrowthcraftMilkBlocks.PANCHEON.get());
+		tag(BlockTags.MINEABLE_WITH_SHOVEL)
+		.add(GrowthcraftRiceBlocks.CULTIVATED_FARMLAND.get());
 		tag(BlockTags.NEEDS_STONE_TOOL)
 		.add(GrowthcraftBlocks.SALT_ORE.get())
 		.add(GrowthcraftBlocks.SALT_ORE_DEEPSLATE.get())
