@@ -93,7 +93,10 @@ public class GrowthcraftBambooRecipes extends RecipeProvider{
 		.unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(GrowthcraftBambooBlocks.BAMBOO_WOOD_LOG.get()))
 		.save(consumer);
 		
-		SingleItemRecipeBuilder.stonecutting(Ingredient.of(Items.BAMBOO), GrowthcraftBambooBlocks.BAMBOO_WOOD.get());
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(Items.BAMBOO), GrowthcraftBambooBlocks.BAMBOO_WOOD_LOG.get())
+		.group(Reference.MODID)
+		.unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(Items.BAMBOO))
+		.save(consumer);;
 		
 		ShapedRecipeBuilder.shaped(GrowthcraftBambooBlocks.BAMBOO_WOOD.get(), 3)
 		.pattern("##")

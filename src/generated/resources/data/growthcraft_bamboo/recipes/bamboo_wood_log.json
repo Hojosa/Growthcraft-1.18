@@ -4,6 +4,6 @@
   "ingredient": {
     "item": "minecraft:bamboo"
   },
-  "result": "growthcraft_bamboo:bamboo_wood",
+  "result": "growthcraft_bamboo:bamboo_wood_log",
   "count": 1
 }

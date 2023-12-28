@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "growthcraft_bamboo:bamboo_wood"
+      "growthcraft_bamboo:bamboo_wood_log"
     ]
   },
   "criteria": {
@@ -21,7 +21,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "growthcraft_bamboo:bamboo_wood"
+        "recipe": "growthcraft_bamboo:bamboo_wood_log"
       }
     }
   },
