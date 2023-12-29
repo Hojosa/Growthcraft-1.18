@@ -84,7 +84,7 @@ public class PancheonRecipeCategory implements IRecipeCategory<PancheonRecipe> {
         IRecipeCategory.super.draw(recipe, recipeSlotsView, stack, mouseX, mouseY);
         Font font = Minecraft.getInstance().font;
 
-        font.drawWordWrap(FormattedText.of("Processing Time " + TickUtils.toHoursMinutesSeconds(recipe.getRecipeProcessingTime())), 160, 181, 170, 0x404040);
+        font.draw(stack, "Processing Time " + TickUtils.toHoursMinutesSeconds(recipe.getRecipeProcessingTime()), 0, 63, 0x404040);
     }
     
 	@Override

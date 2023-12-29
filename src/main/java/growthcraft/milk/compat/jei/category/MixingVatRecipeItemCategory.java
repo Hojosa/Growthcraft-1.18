@@ -109,7 +109,7 @@ public class MixingVatRecipeItemCategory implements IRecipeCategory<MixingVatIte
 
         overlayHeated.draw(stack, 89, 48);
 
-        font.drawWordWrap(FormattedText.of("Mixing Time " + TickUtils.toHoursMinutesSeconds(recipe.getProcessingTime())), 160, 181, 170, 0x404040);
+        font.draw(stack, "Mixing Time " + TickUtils.toHoursMinutesSeconds(recipe.getProcessingTime()), 0, 63, 0x404040);
     }
     
 	@Override
