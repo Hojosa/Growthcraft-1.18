@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:stonecutting",
+  "group": "growthcraft_cellar",
+  "ingredient": {
+    "item": "minecraft:wheat"
+  },
+  "result": "growthcraft_cellar:grain",
+  "count": 1
+}

@@ -137,7 +137,7 @@ public class GrowthcraftCoreItemTags extends ItemTagsProvider{
 		tag(GrowthcraftTags.Items.DUSTS_SALT)
 		.add(GrowthcraftItems.SALT.get());
 		tag(GrowthcraftRiceTags.Items.TAG_CROPS_RICE)
-		.add(GrowthcraftRiceItems.RICE.get());
+		.add(GrowthcraftRiceItems.RICE_STALK.get());
 		tag(GrowthcraftRiceTags.Items.TAG_GRAIN_RICE)
 		.add(GrowthcraftRiceItems.RICE.get());
 	}

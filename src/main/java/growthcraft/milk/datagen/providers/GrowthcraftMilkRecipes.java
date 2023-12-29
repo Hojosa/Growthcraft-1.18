@@ -61,6 +61,15 @@ public class GrowthcraftMilkRecipes extends RecipeProvider{
 		.unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item().of(ItemTags.PLANKS).build()))
 		.save(consumer);
 		
+		ShapelessRecipeBuilder.shapeless(GrowthcraftMilkItems.ICE_CREAM_APPLE.get())
+		.requires(GrowthcraftMilkTags.Items.TAG_MILK_BUCKETS)
+		.requires(Items.APPLE)
+		.requires(Items.SUGAR)
+		.requires(Items.BOWL)
+		.group(Reference.MODID)
+		.unlockedBy("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item().of(GrowthcraftMilkTags.Items.TAG_MILK_BUCKETS).build()))
+		.save(consumer);
+		
 		ShapelessRecipeBuilder.shapeless(GrowthcraftMilkItems.ICE_CREAM_CHOCOLATE.get())
 		.requires(GrowthcraftMilkTags.Items.TAG_MILK_BUCKETS)
 		.requires(Items.COCOA_BEANS)
