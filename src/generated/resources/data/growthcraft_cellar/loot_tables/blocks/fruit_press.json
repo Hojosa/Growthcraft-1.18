@@ -19,12 +19,12 @@
               "ops": [
                 {
                   "source": "inventory",
-                  "target": "BlockEntityTag.Inventory",
+                  "target": "BlockEntityTag.inventory",
                   "op": "replace"
                 },
                 {
                   "source": "fluid_tank_input_0",
-                  "target": "BlockEntityTag.Fluid_Tank_Input_0",
+                  "target": "BlockEntityTag.fluid_Tank_Input_0",
                   "op": "replace"
                 }
               ]
