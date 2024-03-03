@@ -34,6 +34,7 @@ import net.minecraft.world.level.storage.loot.LootTables;
 import net.minecraft.world.level.storage.loot.entries.AlternativesEntry;
 import net.minecraft.world.level.storage.loot.entries.DynamicLoot;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.entries.LootPoolSingletonContainer;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.ApplyExplosionDecay;
 import net.minecraft.world.level.storage.loot.functions.CopyNameFunction;
@@ -66,6 +67,20 @@ public abstract class BaseLootTableProvider extends LootTableProvider {
     protected void addStandardTable(Block block, BlockEntityType<?> type) {
 		lootTables.put(block, createStandardTable(block.getRegistryName().getPath(), block, type));
 	}
+    
+    private LootTable.Builder createStandardTable(Block block, BlockEntityType<?> type, String... tags) {
+        LootPoolSingletonContainer.Builder<?> lti = LootItem.lootTableItem(block);
+        lti.apply(CopyNameFunction.copyName(CopyNameFunction.NameSource.BLOCK_ENTITY));
+        for (String tag : tags) {
+            lti.apply(CopyNbtFunction.copyData(ContextNbtProvider.BLOCK_ENTITY).copy(tag, "BlockEntityTag." + tag, CopyNbtFunction.MergeStrategy.REPLACE));
+        }
+        lti.apply(SetContainerContents.setContents(type).withEntry(DynamicLoot.dynamicEntry(new ResourceLocation("minecraft", "contents"))));
+
+        LootPool.Builder builder = LootPool.lootPool()
+                .setRolls(ConstantValue.exactly(1))
+                .add(lti);
+        return LootTable.lootTable().withPool(builder);
+    }
 
     protected LootTable.Builder createStandardTable(String name, Block block, BlockEntityType<?> type) {
         LootPool.Builder builder = LootPool.lootPool()
@@ -74,7 +89,7 @@ public abstract class BaseLootTableProvider extends LootTableProvider {
                 .add(LootItem.lootTableItem(block)
                         .apply(CopyNameFunction.copyName(CopyNameFunction.NameSource.BLOCK_ENTITY))
                         .apply(CopyNbtFunction.copyData(ContextNbtProvider.BLOCK_ENTITY)
-                                .copy("inventory", "BlockEntityTag.Inventory", CopyNbtFunction.MergeStrategy.REPLACE))
+                                .copy("inventory", "BlockEntityTag.inventory", CopyNbtFunction.MergeStrategy.REPLACE))
                         .apply(SetContainerContents.setContents(type)
                                 .withEntry(DynamicLoot.dynamicEntry(new ResourceLocation("minecraft", "contents"))))
                 );
@@ -92,9 +107,9 @@ public abstract class BaseLootTableProvider extends LootTableProvider {
                 .add(LootItem.lootTableItem(block)
                         .apply(CopyNameFunction.copyName(CopyNameFunction.NameSource.BLOCK_ENTITY))
                         .apply(CopyNbtFunction.copyData(ContextNbtProvider.BLOCK_ENTITY)
-                                .copy("inventory", "BlockEntityTag.Inventory", CopyNbtFunction.MergeStrategy.REPLACE)
-                        		.copy("fluid_tank_input_0", "BlockEntityTag.Fluid_Tank_Input_0", CopyNbtFunction.MergeStrategy.REPLACE)
-                        		.copy("fluid_tank_output_0", "BlockEntityTag.Fluid_Tank_Output_0", CopyNbtFunction.MergeStrategy.REPLACE))
+                                .copy("inventory", "BlockEntityTag.inventory", CopyNbtFunction.MergeStrategy.REPLACE)
+                        		.copy("fluid_tank_input_0", "BlockEntityTag.fluid_Tank_Input_0", CopyNbtFunction.MergeStrategy.REPLACE)
+                        		.copy("fluid_tank_output_0", "BlockEntityTag.fluid_Tank_Output_0", CopyNbtFunction.MergeStrategy.REPLACE))
                         .apply(SetContainerContents.setContents(type)
                                 .withEntry(DynamicLoot.dynamicEntry(new ResourceLocation("minecraft", "contents"))))
                 );
@@ -112,8 +127,8 @@ public abstract class BaseLootTableProvider extends LootTableProvider {
                 .add(LootItem.lootTableItem(block)
                         .apply(CopyNameFunction.copyName(CopyNameFunction.NameSource.BLOCK_ENTITY))
                         .apply(CopyNbtFunction.copyData(ContextNbtProvider.BLOCK_ENTITY)
-                                .copy("inventory", "BlockEntityTag.Inventory", CopyNbtFunction.MergeStrategy.REPLACE)
-                        		.copy("fluid_tank_input_0", "BlockEntityTag.Fluid_Tank_Input_0", CopyNbtFunction.MergeStrategy.REPLACE))
+                                .copy("inventory", "BlockEntityTag.inventory", CopyNbtFunction.MergeStrategy.REPLACE)
+                        		.copy("fluid_tank_input_0", "BlockEntityTag.fluid_Tank_Input_0", CopyNbtFunction.MergeStrategy.REPLACE))
                         .apply(SetContainerContents.setContents(type)
                                 .withEntry(DynamicLoot.dynamicEntry(new ResourceLocation("minecraft", "contents"))))
                 );
@@ -145,9 +160,9 @@ public abstract class BaseLootTableProvider extends LootTableProvider {
                 .add(LootItem.lootTableItem(block)
                         .apply(CopyNameFunction.copyName(CopyNameFunction.NameSource.BLOCK_ENTITY))
                         .apply(CopyNbtFunction.copyData(ContextNbtProvider.BLOCK_ENTITY)
-                        		.copy("fluid_tank_input_0", "BlockEntityTag.Fluid_Tank_Input_0", CopyNbtFunction.MergeStrategy.REPLACE)
-                        		.copy("fluid_tank_output_0", "BlockEntityTag.Fluid_Tank_Output_0", CopyNbtFunction.MergeStrategy.REPLACE)
-                        		.copy("fluid_tank_output_1", "BlockEntityTag.Fluid_Tank_Output_0", CopyNbtFunction.MergeStrategy.REPLACE))
+                        		.copy("fluid_tank_input_0", "BlockEntityTag.fluid_Tank_Input_0", CopyNbtFunction.MergeStrategy.REPLACE)
+                        		.copy("fluid_tank_output_0", "BlockEntityTag.fluid_Tank_Output_0", CopyNbtFunction.MergeStrategy.REPLACE)
+                        		.copy("fluid_tank_output_1", "BlockEntityTag.fluid_Tank_Output_0", CopyNbtFunction.MergeStrategy.REPLACE))
                         .apply(SetContainerContents.setContents(type)
                                 .withEntry(DynamicLoot.dynamicEntry(new ResourceLocation("minecraft", "contents"))))
                 );
