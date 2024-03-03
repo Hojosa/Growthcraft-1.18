@@ -19,7 +19,7 @@
               "ops": [
                 {
                   "source": "inventory",
-                  "target": "BlockEntityTag.Inventory",
+                  "target": "BlockEntityTag.inventory",
                   "op": "replace"
                 }
               ]

@@ -81,7 +81,7 @@ public class GrowthcraftMilkRecipes extends RecipeProvider{
 		
 		ShapelessRecipeBuilder.shapeless(GrowthcraftMilkItems.ICE_CREAM_GRAPE_PURPLE.get())
 		.requires(GrowthcraftMilkTags.Items.TAG_MILK_BUCKETS)
-		.requires(GrowthcraftCellarItems.GRAPE_SEEDS_PURPLE.get())
+		.requires(GrowthcraftCellarItems.GRAPE_PURPLE.get())
 		.requires(Items.SUGAR)
 		.requires(Items.BOWL)
 		.group(Reference.MODID)
@@ -90,7 +90,7 @@ public class GrowthcraftMilkRecipes extends RecipeProvider{
 		
 		ShapelessRecipeBuilder.shapeless(GrowthcraftMilkItems.ICE_CREAM_GRAPE_RED.get())
 		.requires(GrowthcraftMilkTags.Items.TAG_MILK_BUCKETS)
-		.requires(GrowthcraftCellarItems.GRAPE_SEEDS_RED.get())
+		.requires(GrowthcraftCellarItems.GRAPE_RED.get())
 		.requires(Items.SUGAR)
 		.requires(Items.BOWL)
 		.group(Reference.MODID)
@@ -99,7 +99,7 @@ public class GrowthcraftMilkRecipes extends RecipeProvider{
 		
 		ShapelessRecipeBuilder.shapeless(GrowthcraftMilkItems.ICE_CREAM_GRAPE_WHITE.get())
 		.requires(GrowthcraftMilkTags.Items.TAG_MILK_BUCKETS)
-		.requires(GrowthcraftCellarItems.GRAPE_SEEDS_WHITE.get())
+		.requires(GrowthcraftCellarItems.GRAPE_WHITE.get())
 		.requires(Items.SUGAR)
 		.requires(Items.BOWL)
 		.group(Reference.MODID)
