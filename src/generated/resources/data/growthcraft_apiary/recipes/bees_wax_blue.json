@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "growthcraft_apiary",
+  "pattern": [
+    "AAA",
+    "ABA",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "item": "growthcraft_apiary:bees_wax"
+    },
+    "B": {
+      "tag": "forge:dyes/blue"
+    }
+  },
+  "result": {
+    "item": "growthcraft_apiary:bees_wax_blue",
+    "count": 8
+  }
+}

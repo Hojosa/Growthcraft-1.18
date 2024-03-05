@@ -3,6 +3,8 @@ package growthcraft.apples.init;
 import java.util.ArrayList;
 import java.util.function.Supplier;
 
+import com.google.common.collect.Maps;
+
 import growthcraft.apples.block.AppleBeeBoxBlock;
 import growthcraft.apples.block.AppleRopeBlock;
 import growthcraft.apples.block.AppleTreeFruit;
@@ -21,6 +23,7 @@ import growthcraft.lib.block.GrowthcraftSlabBlock;
 import growthcraft.lib.block.GrowthcraftStairsBlock;
 import growthcraft.lib.block.GrowthcraftTrapDoorBlock;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -156,5 +159,11 @@ public class GrowthcraftApplesBlocks {
         ArrayList<String> excludeBlocks = new ArrayList<>();
         //excludeBlocks.add(Reference.MODID + ":" + Reference.UnlocalizedName.APPLE_TREE_FRUIT);
         return excludeBlocks.contains(registryName.toString());
+    }
+    
+    public static void registerStrippable() {
+        AxeItem.STRIPPABLES = Maps.newHashMap(AxeItem.STRIPPABLES);
+        AxeItem.STRIPPABLES.put(APPLE_WOOD_LOG.get(), APPLE_WOOD_LOG_STRIPPED.get());
+        AxeItem.STRIPPABLES.put(APPLE_WOOD.get(), APPLE_WOOD_STRIPPED.get());
     }
 }

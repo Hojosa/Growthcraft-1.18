@@ -6,6 +6,7 @@ import org.apache.logging.log4j.Logger;
 import growthcraft.bamboo.init.GrowthcraftBambooBlockEntities;
 import growthcraft.bamboo.init.GrowthcraftBambooBlocks;
 import growthcraft.bamboo.init.GrowthcraftBambooItems;
+import growthcraft.bamboo.init.GrowthcraftBambooTags;
 import growthcraft.bamboo.init.client.GrowthcraftBambooBlockRenderers;
 import growthcraft.bamboo.init.config.GrowthcraftBambooConfig;
 import growthcraft.bamboo.shared.Reference;
@@ -36,6 +37,7 @@ public class GrowthcraftBamboo {
         GrowthcraftBambooBlocks.BLOCKS.register(modEventBus);
         GrowthcraftBambooItems.ITEMS.register(modEventBus);
         GrowthcraftBambooBlockEntities.BLOCK_ENTITIES.register(modEventBus);
+        GrowthcraftBambooTags.init();
 
         MinecraftForge.EVENT_BUS.register(this);
     }
@@ -45,7 +47,9 @@ public class GrowthcraftBamboo {
     }
 
     private void setup(final FMLCommonSetupEvent event) {
-        // Do Nothing for now ...
+    	event.enqueueWork(() -> {
+    	GrowthcraftBambooBlocks.registerStrippable();
+    	});
     }
 
     @SubscribeEvent

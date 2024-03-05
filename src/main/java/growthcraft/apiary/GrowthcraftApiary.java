@@ -8,6 +8,7 @@ import growthcraft.apiary.init.GrowthcraftApiaryBlocks;
 import growthcraft.apiary.init.GrowthcraftApiaryFluids;
 import growthcraft.apiary.init.GrowthcraftApiaryItems;
 import growthcraft.apiary.init.GrowthcraftApiaryMenus;
+import growthcraft.apiary.init.GrowthcraftApiaryTags;
 import growthcraft.apiary.init.client.GrowthcraftApiaryBlockRenders;
 import growthcraft.apiary.init.config.GrowthcraftApiaryConfig;
 import growthcraft.apiary.shared.Reference;
@@ -23,7 +24,6 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 @Mod(Reference.MODID)
 @Mod.EventBusSubscriber(modid = Reference.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class GrowthcraftApiary {
-
     public static final Logger LOGGER = LogManager.getLogger(Reference.MODID);
 
     public GrowthcraftApiary() {
@@ -38,6 +38,7 @@ public class GrowthcraftApiary {
         GrowthcraftApiaryFluids.FLUIDS.register(modEventBus);
         GrowthcraftApiaryBlockEntities.BLOCK_ENTITIES.register(modEventBus);
         GrowthcraftApiaryMenus.MENUS.register(modEventBus);
+        GrowthcraftApiaryTags.init();
         
         MinecraftForge.EVENT_BUS.register(this);
     }
