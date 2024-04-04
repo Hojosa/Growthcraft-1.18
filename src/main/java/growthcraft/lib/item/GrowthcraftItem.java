@@ -1,5 +1,6 @@
 package growthcraft.lib.item;
 
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
@@ -10,6 +11,7 @@ import growthcraft.core.shared.Reference;
 public class GrowthcraftItem extends Item {
 
     private int color;
+    private DyeColor dye;
 
     public GrowthcraftItem() {
         this(64);
@@ -25,6 +27,11 @@ public class GrowthcraftItem extends Item {
         this(maxStackSize);
         this.color = color.getRGB();
     }
+    
+    public GrowthcraftItem(DyeColor dye) {
+        this(64);
+        this.dye = dye;
+    }
 
     private static Properties getInitProperties(int maxStackSize) {
         Properties properties = new Properties();
@@ -39,5 +46,9 @@ public class GrowthcraftItem extends Item {
 
     public int getColor(int layer) {
         return layer == 0 ? this.color : 0xFFFFFF;
+    }
+    
+    public DyeColor getDyeColor() {
+    	return this.dye;
     }
 }

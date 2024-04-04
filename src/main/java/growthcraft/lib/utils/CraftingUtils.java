@@ -45,6 +45,12 @@ public class CraftingUtils {
 
         return nonnulllist;
     }
+    
+    public static boolean doesFluidMatch(FluidStack controlFluidStack, FluidStack testFluidStack) {
+        boolean inputFluidTypeMatches = controlFluidStack.getFluid() == testFluidStack.getFluid();
+        boolean inputFluidAmountMatches = controlFluidStack.getAmount() == testFluidStack.getAmount();
+        return inputFluidTypeMatches && inputFluidAmountMatches;
+    }
 
     private CraftingUtils() { /* Prevent automatic public constructor */ }
 }

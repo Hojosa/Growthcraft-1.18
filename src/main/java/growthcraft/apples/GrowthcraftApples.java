@@ -7,11 +7,10 @@ import growthcraft.apples.init.GrowthcraftApplesBlockEntities;
 import growthcraft.apples.init.GrowthcraftApplesBlocks;
 import growthcraft.apples.init.GrowthcraftApplesFluids;
 import growthcraft.apples.init.GrowthcraftApplesItems;
+import growthcraft.apples.init.GrowthcraftApplesTags;
 import growthcraft.apples.init.client.GrowthcraftApplesBlockRenders;
 import growthcraft.apples.init.config.GrowthcraftApplesConfig;
 import growthcraft.apples.shared.Reference;
-import growthcraft.apples.world.GrowthcraftApplesPlacedFeatures;
-import growthcraft.core.world.GrowthcraftPlacedFeatures;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -39,6 +38,7 @@ public class GrowthcraftApples {
         GrowthcraftApplesItems.ITEMS.register(modEventBus);
         GrowthcraftApplesFluids.FLUIDS.register(modEventBus);
         GrowthcraftApplesBlockEntities.BLOCK_ENTITIES.register(modEventBus);
+        GrowthcraftApplesTags.init();
 
         MinecraftForge.EVENT_BUS.register(this);
     }
@@ -48,7 +48,10 @@ public class GrowthcraftApples {
     }
 
     private void setup(final FMLCommonSetupEvent event) {
+    	event.enqueueWork(() -> {
         GrowthcraftApplesItems.registerCompostables();
+        GrowthcraftApplesBlocks.registerStrippable();
+    	});
     }
 
     @SubscribeEvent

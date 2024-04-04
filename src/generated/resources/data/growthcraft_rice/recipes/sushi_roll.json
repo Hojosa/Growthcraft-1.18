@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "growthcraft_rice",
+  "pattern": [
+    "F",
+    "R",
+    "K"
+  ],
+  "key": {
+    "F": {
+      "tag": "minecraft:fishes"
+    },
+    "R": {
+      "item": "growthcraft_rice:rice_cooked"
+    },
+    "K": {
+      "item": "minecraft:kelp"
+    }
+  },
+  "result": {
+    "item": "growthcraft_rice:sushi_roll"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:stonecutting",
+  "group": "growthcraft_rice",
+  "ingredient": {
+    "item": "growthcraft_rice:rice_stalk"
+  },
+  "result": "growthcraft_rice:rice",
+  "count": 1
+}

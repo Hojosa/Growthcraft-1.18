@@ -71,7 +71,7 @@ public class GrowthcraftCellarItems {
             Reference.UnlocalizedName.GRAPE_PURPLE, GrowthcraftFoodItem::new
     );
 
-    public static final RegistryObject<GrapeSeedsItem> PURPLE_RED_SEEDS = ITEMS.register(
+    public static final RegistryObject<GrapeSeedsItem> GRAPE_SEEDS_PURPLE = ITEMS.register(
             Reference.UnlocalizedName.GRAPE_SEEDS_PURPLE,
             () -> new GrapeSeedsItem(
                     GrowthcraftCellarBlocks.PURPLE_GRAPE_VINE.get(),
@@ -83,7 +83,7 @@ public class GrowthcraftCellarItems {
             Reference.UnlocalizedName.GRAPE_RED, GrowthcraftFoodItem::new
     );
 
-    public static final RegistryObject<GrapeSeedsItem> GRAPE_RED_SEEDS = ITEMS.register(
+    public static final RegistryObject<GrapeSeedsItem> GRAPE_SEEDS_RED = ITEMS.register(
             Reference.UnlocalizedName.GRAPE_SEEDS_RED,
             () -> new GrapeSeedsItem(
                     GrowthcraftCellarBlocks.RED_GRAPE_VINE.get(),
@@ -95,7 +95,7 @@ public class GrowthcraftCellarItems {
             Reference.UnlocalizedName.GRAPE_WHITE, GrowthcraftFoodItem::new
     );
 
-    public static final RegistryObject<GrapeSeedsItem> WHITE_RED_SEEDS = ITEMS.register(
+    public static final RegistryObject<GrapeSeedsItem> GRAPE_SEEDS_WHITE = ITEMS.register(
             Reference.UnlocalizedName.GRAPE_SEEDS_WHITE,
             () -> new GrapeSeedsItem(
                     GrowthcraftCellarBlocks.WHITE_GRAPE_VINE.get(),

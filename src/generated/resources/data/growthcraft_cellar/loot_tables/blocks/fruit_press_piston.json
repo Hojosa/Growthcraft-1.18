@@ -1,0 +1,48 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "name": "fruit_press_piston",
+      "rolls": 1.0,
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "function": "minecraft:copy_name",
+              "source": "block_entity"
+            },
+            {
+              "function": "minecraft:copy_nbt",
+              "source": "block_entity",
+              "ops": [
+                {
+                  "source": "inventory",
+                  "target": "BlockEntityTag.inventory",
+                  "op": "replace"
+                },
+                {
+                  "source": "fluid_tank_input_0",
+                  "target": "BlockEntityTag.fluid_Tank_Input_0",
+                  "op": "replace"
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_contents",
+              "type": "growthcraft_cellar:fruit_press",
+              "entries": [
+                {
+                  "type": "minecraft:dynamic",
+                  "name": "minecraft:contents"
+                }
+              ]
+            }
+          ],
+          "name": "minecraft:air"
+        }
+      ]
+    }
+  ]
+}

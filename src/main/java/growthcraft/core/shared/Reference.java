@@ -8,8 +8,8 @@ public class Reference {
     public static final String MODID = "growthcraft";
     public static final String NAME = "Growthcraft";
     public static final String NAME_SHORT = "core";
-    public static final String VERSION = "7.1.0";
-    public static String CREATIVE_TAB = "Growthcraft";
+    public static final String VERSION = "7.1.1";
+    public static String CREATIVE_TAB = "growthcraft";
     
     public static final CreativeModeTab ITEM_GROUP = new CreativeModeTab(CREATIVE_TAB) {
         @Override
@@ -63,6 +63,9 @@ public class Reference {
         public static final String TAG_ROPE_FENCE = "rope_fence";
         public static final String TAG_HEATSOURCES = "heatsources";
         public static final String WRENCH = "wrench";
+		public static final String DUSTS_SALT = "dusts/salt";
+		public static final String TAG_CROPS_RICE = "crops/rice";
+		public static final String TAG_GRAIN_RICE = "grain/rice";
 
         private UnlocalizedName() { /* Disable default public constructor. */ }
 

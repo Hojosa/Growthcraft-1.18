@@ -78,12 +78,12 @@ public class MixingVatRecipeFluidCategory implements IRecipeCategory<MixingVatFl
     @Override
     public void setRecipe(@NotNull IRecipeLayoutBuilder builder, MixingVatFluidRecipe recipe, @NotNull IFocusGroup focuses) {
 
-        int ingredientCount = recipe.getIngredientList().size();
+        int ingredientCount = recipe.getIngredients().size();
 
         // Input Inventory
         for(int i = 0; i < ingredientCount; i++) {
             builder.addSlot(RecipeIngredientRole.INPUT, 61, 8 + ( i * 16))
-                    .addItemStack(recipe.getIngredientList().get(i));
+                    .addIngredients(recipe.getIngredients().get(i));
         }
 
         // Fluid Tank 0
@@ -118,8 +118,7 @@ public class MixingVatRecipeFluidCategory implements IRecipeCategory<MixingVatFl
         Font font = Minecraft.getInstance().font;
 
         overlayHeated.draw(stack, 89, 48);
-
-        font.drawWordWrap(FormattedText.of("Mixing Time " + TickUtils.toHoursMinutesSeconds(recipe.getProcessingTime())), 160, 181, 170, 0x404040);
+        font.draw(stack, "Mixing Time " + TickUtils.toHoursMinutesSeconds(recipe.getProcessingTime()), 0, 63, 0x404040);
     }
     
 	@Override
