@@ -1,6 +1,5 @@
 package growthcraft.milk.recipe;
 
-import java.util.Arrays;
 import java.util.List;
 
 import org.jetbrains.annotations.NotNull;
@@ -37,7 +36,7 @@ public class MixingVatItemRecipe implements Recipe<SimpleContainer> {
     private final ItemStack resultItemStack;
     private final ItemStack resultActivationTool;
     private final boolean requiresHeat;
-
+    
     public MixingVatItemRecipe(ResourceLocation recipeId, RecipeUtils.Category category,
                                FluidStack inputFluidStack, NonNullList<Ingredient> ingredients, int processingTime,
                                ItemStack resultItemStack, ItemStack activationTool,
@@ -54,7 +53,6 @@ public class MixingVatItemRecipe implements Recipe<SimpleContainer> {
         this.requiresHeat = requiresHeat;
     }
 
-
     @Override
     public boolean matches(@NotNull SimpleContainer p_44002_, @NotNull Level p_44003_) {
         return false;
@@ -67,11 +65,11 @@ public class MixingVatItemRecipe implements Recipe<SimpleContainer> {
         boolean ingredientMatches = false;
 
         if (this.getIngredients().size() == testIngredients.size()) {
-            int itemCount = this.getIngredientList().size();
+            int itemCount = this.getIngredients().size();
             int matchCount = 0;
-            for (int i = 0; i < this.getIngredientList().size(); i++) {
-                if (this.getIngredientList().get(i).getItem() == testIngredients.get(i).getItem() &&
-                        this.getIngredientList().get(i).getCount() == testIngredients.get(i).getCount()) {
+            for (int i = 0; i < this.getIngredients().size(); i++) {
+                if (this.getIngredients().get(i).getItems()[0].getItem() == testIngredients.get(i).getItem() &&
+                        this.getIngredients().get(i).getItems()[1].getCount() == testIngredients.get(i).getCount()) {
                     matchCount++;
                 }
             }
@@ -100,10 +98,6 @@ public class MixingVatItemRecipe implements Recipe<SimpleContainer> {
     @Override
     public @NotNull NonNullList<Ingredient> getIngredients() {
         return this.ingredients;
-    }
-
-    public List<ItemStack> getIngredientList() {
-    	return Arrays.stream(ingredients.get(0).getItems()).toList();
     }
 
     public ItemStack getResultItemStack() {
@@ -196,10 +190,9 @@ public class MixingVatItemRecipe implements Recipe<SimpleContainer> {
                         GsonHelper.getAsJsonObject(json, "result_activation_tool"), false);
 
                 return new MixingVatItemRecipe(recipeId, RecipeUtils.Category.ITEM,
-                        inputFluid, ingredients, processingTime, resultItemStack, activationTool, resultActivationTool,requiresHeat);
+                        inputFluid, ingredients, processingTime, resultItemStack, activationTool, resultActivationTool, requiresHeat);
             }
-
-
+            
             return null;
         }
 
@@ -243,7 +236,7 @@ public class MixingVatItemRecipe implements Recipe<SimpleContainer> {
             buffer.writeFluidStack(recipe.getInputFluidStack());
             buffer.writeItemStack(recipe.getActivationTool(), false);
             
-            buffer.writeVarInt(recipe.getIngredientList().size());
+            buffer.writeVarInt(recipe.getIngredients().size());
 
             for (Ingredient ingredient : recipe.getIngredients()) {
                 ingredient.toNetwork(buffer);
@@ -267,7 +260,6 @@ public class MixingVatItemRecipe implements Recipe<SimpleContainer> {
 
 		@Override
 		public Class<RecipeSerializer<?>> getRegistryType() {
-			// TODO Auto-generated method stub
 			return Serializer.<RecipeSerializer<?>>castClass(RecipeSerializer.class);
 		}
 

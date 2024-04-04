@@ -23,7 +23,6 @@ import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.FormattedText;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -78,14 +77,14 @@ public class MixingVatRecipeItemCategory implements IRecipeCategory<MixingVatIte
     @Override
     public void setRecipe(@NotNull IRecipeLayoutBuilder builder, MixingVatItemRecipe recipe, @NotNull IFocusGroup focuses) {
 
-        int ingredientCount = recipe.getIngredientList().size();
+        int ingredientCount = recipe.getIngredients().size();
 
         // Input Inventory
         for (int i = 0; i < ingredientCount; i++) {
             builder.addSlot(RecipeIngredientRole.INPUT, 61, 8 + (i * 18))
-                    .addItemStack(recipe.getIngredientList().get(i));
+                    .addIngredients(recipe.getIngredients().get(i));
         }
-
+        
         // Fluid Tank 1
         builder.addSlot(RecipeIngredientRole.INPUT, 39, 22)
                 .setFluidRenderer(4000, true, 16, 38)
@@ -108,7 +107,6 @@ public class MixingVatRecipeItemCategory implements IRecipeCategory<MixingVatIte
         Font font = Minecraft.getInstance().font;
 
         overlayHeated.draw(stack, 89, 48);
-
         font.draw(stack, "Mixing Time " + TickUtils.toHoursMinutesSeconds(recipe.getProcessingTime()), 0, 63, 0x404040);
     }
     

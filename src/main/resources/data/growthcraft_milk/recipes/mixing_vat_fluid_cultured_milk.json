@@ -4,11 +4,11 @@
   "requires_heat": true,
   "result_type": "fluid",
   "input_fluid": {
-    "fluid": "growthcraft_milk:milk_fluid_source",
+    "fluid": "growthcraft_milk:milk_fluid",
     "amount": 4000
   },
   "reagent_fluid": {
-    "fluid": "growthcraft_milk:rennet_fluid_source",
+    "fluid": "growthcraft_milk:rennet_fluid",
     "amount": 1000
   },
   "ingredients": [
@@ -18,11 +18,11 @@
     }
   ],
   "result_fluid": {
-    "fluid": "growthcraft_milk:cultured_milk_fluid_source",
+    "fluid": "growthcraft_milk:cultured_milk_fluid",
     "amount": 4000
   },
   "result_fluid_waste": {
-    "fluid": "growthcraft_milk:whey_fluid_source",
+    "fluid": "growthcraft_milk:whey_fluid",
     "amount": 1000
   },
   "activation_tool": {

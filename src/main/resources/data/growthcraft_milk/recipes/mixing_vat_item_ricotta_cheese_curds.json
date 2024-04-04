@@ -4,7 +4,7 @@
   "requires_heat": true,
   "result_type": "item",
   "input_fluid": {
-    "fluid": "growthcraft_milk:whey_fluid_source",
+    "fluid": "growthcraft_milk:whey_fluid",
     "amount": 4000
   },
   "ingredients": [
