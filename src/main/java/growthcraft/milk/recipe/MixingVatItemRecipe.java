@@ -70,7 +70,7 @@ public class MixingVatItemRecipe implements Recipe<SimpleContainer> {
             
             for (int i = 0; i < this.getIngredients().size(); i++) {
                 if (this.getIngredients().get(i).getItems()[0].getItem() == testIngredients.get(i).getItem() &&
-                        this.getIngredients().get(i).getItems()[1].getCount() == testIngredients.get(i).getCount()) {
+                        this.getIngredients().get(i).getItems()[0].getCount() == testIngredients.get(i).getCount()) {
                     matchCount++;
                 }
             }
