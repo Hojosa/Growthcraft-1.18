@@ -48,7 +48,6 @@ public class MixingVatBlock extends BaseEntityBlock {
     public MixingVatBlock(Properties properties) {
         super(properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(LIT, false));
-
     }
 
     private static Properties getInitProperties() {
@@ -93,7 +92,6 @@ public class MixingVatBlock extends BaseEntityBlock {
                     (worldLevel, pos, blockState, blockEntity) -> (blockEntity).tick()
             );
         }
-
         return null;
     }
 
@@ -108,14 +106,12 @@ public class MixingVatBlock extends BaseEntityBlock {
         assert blockEntity != null;
         FluidTank inputFluidTank = blockEntity.getFluidTank("input");
         FluidTank reagentFluidTank = blockEntity.getFluidTank("reagent");
-
         // Try to do fluid handling first.
         if (player.getItemInHand(interactionHand)
-                .getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
+                .getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY)
                 .isPresent()
         ) {
             boolean fluidInteractionResult = false;
-
             if (player.getItemInHand(interactionHand).getItem() == Items.BUCKET) {
                 // Then we are trying to drain the tanks.
                 if (!reagentFluidTank.isEmpty()) {
